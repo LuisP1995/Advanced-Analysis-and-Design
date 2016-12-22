@@ -7,25 +7,24 @@ import android.view.View;
 import android.widget.Button;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class SplashScreen extends AppCompatActivity implements View.OnClickListener {
 
     Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash);
 //        Thread myThread = new Thread(); //for splash screen purposes
 
         button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(MainActivity.this);
+        button.setOnClickListener(SplashScreen.this);
     }
 
     @Override
     public void onClick(View v)
     {
-        Intent newIntent = new Intent(MainActivity.this, MainScreen.class);
-        newIntent.putExtra(EXTRA_MESSAGE, "Zu Li");
+        Intent newIntent = new Intent(SplashScreen.this, MainScreen.class); //Instead main to CreateProfile
         startActivity(newIntent);
     }
 }

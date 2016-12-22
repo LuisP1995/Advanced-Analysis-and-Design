@@ -11,13 +11,13 @@ public class MainScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_screen);
+        setContentView(R.layout.activity_mainscreen);
 
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString(EXTRA_MESSAGE);
 
-        TextView textView = (TextView)findViewById(R.id.messageShow);
-        textView.setText(message);
+//        TextView textView = (TextView)findViewById(R.id.messageShow);
+//        textView.setText(message);
 
     }
 }
