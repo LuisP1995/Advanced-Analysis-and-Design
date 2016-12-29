@@ -20,11 +20,22 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <ImageView
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginTop="11dp"
+        android:id="@+id/avatarImage"
+        android:scaleType="center"
+        android:adjustViewBounds="true"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
     <TabHost
-        android:layout_width="310dip"
-        android:layout_height="230dip"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_width="match_parent"
+        android:layout_height="300dip"
+        android:layout_below="@+id/avatarImage"
+        android:id="@+id/tabHost">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,45 +53,90 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/Pairs"
-                    android:layout_width="200dp"
+                    android:id="@+id/pairs"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.jjoe64.graphview.GraphView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:id="@+id/pairsGraph" />
+
+                    <TextView
+                    android:text="Games Played:1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView9"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black" />
+
+                    <TextView
+                    android:text="Average:1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView10"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/sequence"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <com.jjoe64.graphview.GraphView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/graph" />
+                        android:layout_height="120dp"
+                        android:id="@+id/seqGraph" />
+                    <TextView
+                        android:text="Games Played:2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView11"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:text="Average:2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView12"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black" />
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/Sequence"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/Image"
+                    android:id="@+id/image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:id="@+id/imageGraph" />
+                    <TextView
+                        android:text="Games Played:3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView13"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:text="Average:3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView14"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black" />
 
                 </LinearLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>
-
-    <ImageView
-        android:layout_width="190dp"
-        android:layout_height="190dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_marginTop="11dp"
-        android:id="@+id/avatarImage"
-        android:scaleType="center"
-        android:adjustViewBounds="true"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
