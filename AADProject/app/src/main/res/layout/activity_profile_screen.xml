@@ -33,7 +33,7 @@
 
     <TabHost
         android:layout_width="match_parent"
-        android:layout_height="300dip"
+        android:layout_height="match_parent"
         android:layout_below="@+id/avatarImage"
         android:id="@+id/tabHost">
 
@@ -57,27 +57,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+                    <TextView
+                        android:text="Games Played:1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pairsGp"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:text="Average:1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/pairsAvg"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/black" />
 
                     <com.jjoe64.graphview.GraphView
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:id="@+id/pairsGraph" />
+                    android:layout_height="match_parent"
+                    android:id="@+id/pairsGraph"/>
 
-                    <TextView
-                    android:text="Games Played:1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView9"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/black" />
-
-                    <TextView
-                    android:text="Average:1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView10"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/black" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -86,15 +86,12 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.jjoe64.graphview.GraphView
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:id="@+id/seqGraph" />
+
                     <TextView
                         android:text="Games Played:2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView11"
+                        android:id="@+id/seqGp"
                         android:textSize="18sp"
                         android:textColor="@android:color/black" />
 
@@ -102,9 +99,14 @@
                         android:text="Average:2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView12"
+                        android:id="@+id/seqAvg"
                         android:textSize="18sp"
                         android:textColor="@android:color/black" />
+
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/seqGraph" />
 
                 </LinearLayout>
 
@@ -114,15 +116,11 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.jjoe64.graphview.GraphView
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:id="@+id/imageGraph" />
                     <TextView
                         android:text="Games Played:3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView13"
+                        android:id="@+id/imgGp"
                         android:textSize="18sp"
                         android:textColor="@android:color/black" />
 
@@ -130,9 +128,14 @@
                         android:text="Average:3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView14"
+                        android:id="@+id/imgAvg"
                         android:textSize="18sp"
                         android:textColor="@android:color/black" />
+
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/imageGraph" />
 
                 </LinearLayout>
             </FrameLayout>

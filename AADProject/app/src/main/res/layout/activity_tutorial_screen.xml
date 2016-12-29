@@ -103,18 +103,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/TutImg1"
-        android:layout_alignStart="@+id/TutImg1"
-        android:id="@+id/TutImg2" />
+        android:id="@+id/TutImg3"
+        android:layout_alignBottom="@+id/step4"
+        android:layout_alignLeft="@+id/proceed"
+        android:layout_alignStart="@+id/proceed" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/TutImg3"
-        android:layout_alignBottom="@+id/step4"
-        android:layout_alignLeft="@+id/proceed"
-        android:layout_alignStart="@+id/proceed" />
+        android:id="@+id/TutImg2"
+        android:layout_above="@+id/step4"
+        android:layout_alignLeft="@+id/TutImg3"
+        android:layout_alignStart="@+id/TutImg3"
+        android:layout_marginBottom="20dp" />
 
 </RelativeLayout>
