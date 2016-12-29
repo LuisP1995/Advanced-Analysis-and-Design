@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Profile$profileView" />
-        <activity android:name=".MainScreen"></activity>
+        <activity android:name=".MainScreen" />
+        <activity android:name=".ProfileScreen"></activity>
     </application>
 
 </manifest>
