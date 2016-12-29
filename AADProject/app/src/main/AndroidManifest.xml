@@ -19,7 +19,8 @@
         <activity android:name=".MainScreen" />
         <activity android:name=".ProfileScreen" />
         <activity android:name=".TutorialScreen" />
-        <activity android:name=".SettingScreen"></activity>
+        <activity android:name=".SettingScreen" />
+        <activity android:name=".GenScoreScreen"></activity>
     </application>
 
 </manifest>
