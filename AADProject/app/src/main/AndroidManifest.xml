@@ -18,7 +18,8 @@
         <activity android:name=".Profile$profileView" />
         <activity android:name=".MainScreen" />
         <activity android:name=".ProfileScreen" />
-        <activity android:name=".TutorialScreen"></activity>
+        <activity android:name=".TutorialScreen" />
+        <activity android:name=".SettingScreen"></activity>
     </application>
 
 </manifest>
