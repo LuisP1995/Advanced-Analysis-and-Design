@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_tutorial_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.rebecca.aadproject.TutorialScreen">
+
+    <TextView
+        android:text="1."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="28dp"
+        android:id="@+id/textView4"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="Tutorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="1."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="28dp"
+        android:id="@+id/step1"
+        android:textSize="24sp"
+        android:layout_alignRight="@+id/textView4"
+        android:layout_alignEnd="@+id/textView4" />
+
+    <TextView
+        android:text="2."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_marginTop="74dp"
+        android:id="@+id/step2"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="3."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/step2"
+        android:layout_alignLeft="@+id/step2"
+        android:layout_alignStart="@+id/step2"
+        android:layout_marginTop="70dp"
+        android:id="@+id/step3"
+        android:textSize="24sp" />
+
+    <TextView
+        android:text="4."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/step3"
+        android:layout_alignLeft="@+id/step3"
+        android:layout_alignStart="@+id/step3"
+        android:layout_marginTop="75dp"
+        android:id="@+id/step4"
+        android:textSize="24sp" />
+
+    <Button
+        android:text="Proceed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/proceed" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/TutImg1"
+        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/proceed"
+        android:layout_alignStart="@+id/proceed" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/TutImg1"
+        android:layout_alignStart="@+id/TutImg1"
+        android:id="@+id/TutImg2" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/TutImg3"
+        android:layout_alignBottom="@+id/step4"
+        android:layout_alignLeft="@+id/proceed"
+        android:layout_alignStart="@+id/proceed" />
+
+</RelativeLayout>
