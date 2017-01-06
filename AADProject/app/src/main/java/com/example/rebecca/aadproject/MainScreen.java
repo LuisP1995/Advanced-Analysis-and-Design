@@ -56,5 +56,25 @@ public class MainScreen extends AppCompatActivity {
                 startActivity(newIntent);
             }
         });
+
+        Button seq_button = (Button) findViewById(R.id.seq_button);
+        seq_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(MainScreen.this, TutorialScreen.class);
+                newIntent.putExtra(EXTRA_MESSAGE, "Seq");
+                startActivity(newIntent);
+            }
+        });
+
+        Button img_button = (Button) findViewById(R.id.img_button);
+        img_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(MainScreen.this, TutorialScreen.class);
+                newIntent.putExtra(EXTRA_MESSAGE, "Image");
+                startActivity(newIntent);
+            }
+        });
     }
 }

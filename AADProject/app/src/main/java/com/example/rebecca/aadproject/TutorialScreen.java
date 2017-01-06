@@ -22,12 +22,36 @@ public class TutorialScreen extends AppCompatActivity {
         TextView textview = (TextView)findViewById(R.id.step1);
         textview.setText(message);
 
+        StartGame(message);
+    }
+
+    private void StartGame(String message) {
         if (message.equals("Pairs")){
             Button button = (Button)findViewById(R.id.proceed);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent newIntent = new Intent(TutorialScreen.this, SplashScreen.class); //Change to pairsScreen
+                    Intent newIntent = new Intent(TutorialScreen.this, SplashScreen.class); //Change to pairsGame
+                    startActivity(newIntent);
+                }
+            });
+        }
+        if (message.equals("Seq")){
+            Button button = (Button)findViewById(R.id.proceed);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent newIntent = new Intent(TutorialScreen.this, SplashScreen.class); //Change to SequenceGame
+                    startActivity(newIntent);
+                }
+            });
+        }
+        if (message.equals("Image")){
+            Button button = (Button)findViewById(R.id.proceed);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent newIntent = new Intent(TutorialScreen.this, SplashScreen.class); //Change to ImageGame
                     startActivity(newIntent);
                 }
             });
