@@ -21,7 +21,7 @@ public class SplashScreen extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v)
     {
-        Intent newIntent = new Intent(SplashScreen.this, MainScreen.class); //Instead main to CreateProfile
+        Intent newIntent = new Intent(SplashScreen.this, ProfileCreationScreen.class); //Instead main to CreateProfile
         startActivity(newIntent);
     }
 }
