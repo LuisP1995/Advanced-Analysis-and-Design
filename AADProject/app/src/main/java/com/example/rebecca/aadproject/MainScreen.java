@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 
 public class MainScreen extends AppCompatActivity {
 
@@ -21,31 +23,38 @@ public class MainScreen extends AppCompatActivity {
 
     private void SetButtonListeners() {
         Button settings_button = (Button) findViewById(R.id.settings_button);
-        settings_button.setOnClickListener(new View.OnClickListener(){
+        settings_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent newIntent = new Intent(MainScreen.this, SettingScreen.class);
                 startActivity(newIntent);
             }
         });
 
         Button profile_button = (Button) findViewById(R.id.profile_button);
-        profile_button.setOnClickListener(new View.OnClickListener(){
+        profile_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Intent newIntent = new Intent(MainScreen.this, ProfileScreen.class);
                 startActivity(newIntent);
             }
         });
 
         Button info_button = (Button) findViewById(R.id.info_button);
-        info_button.setOnClickListener(new View.OnClickListener(){
+        info_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Information Here", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Button pairs_button = (Button) findViewById(R.id.pairs_button);
+        pairs_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(MainScreen.this, TutorialScreen.class);
+                newIntent.putExtra(EXTRA_MESSAGE, "Pairs");
+                startActivity(newIntent);
             }
         });
     }
