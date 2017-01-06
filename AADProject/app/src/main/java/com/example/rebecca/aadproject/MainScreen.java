@@ -18,7 +18,6 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_mainscreen);
 
         SetButtonListeners();
-
     }
 
     private void SetButtonListeners() {
