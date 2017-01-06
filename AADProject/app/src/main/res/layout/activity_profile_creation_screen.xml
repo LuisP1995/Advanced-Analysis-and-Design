@@ -17,7 +17,6 @@
         app:srcCompat="@mipmap/ic_launcher"
         android:layout_marginTop="42dp"
         android:id="@+id/avatar1"
-        android:onClick="setAvatar"
         android:layout_below="@+id/textView6"
         android:layout_alignLeft="@+id/textView6"
         android:layout_alignStart="@+id/textView6" />
@@ -50,35 +49,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/avatar4"
-        android:onClick="setAvatar"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_alignTop="@+id/avatar3"
-        android:layout_toRightOf="@+id/avatar3"
-        android:layout_toEndOf="@+id/avatar3" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
         android:id="@+id/avatar3"
-        android:onClick="setAvatar"
         android:layout_alignTop="@+id/avatar1"
         android:layout_toRightOf="@+id/avatar2"
         android:layout_toEndOf="@+id/avatar2"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/avatar2"
-        android:onClick="setAvatar"
-        android:layout_alignTop="@+id/avatar1"
-        android:layout_toRightOf="@+id/avatar1"
-        android:layout_toEndOf="@+id/avatar1"
         android:layout_marginLeft="24dp"
         android:layout_marginStart="24dp" />
 
@@ -103,5 +77,16 @@
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/avatar2"
+        android:layout_alignTop="@+id/avatar3"
+        android:layout_toLeftOf="@+id/submit_button"
+        android:layout_toStartOf="@+id/submit_button"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp" />
 
 </RelativeLayout>

@@ -45,13 +45,12 @@ public class ProfileCreationPresenter {
     }
 
     private boolean loadProfile() {
-        return false;
-        /*try {
+        try {
             pm.loadProfile();
             return pm.checkProfileExists();
         } catch (IOException e) {
             return false;
-        }*/
+        }
     }
 
 }
