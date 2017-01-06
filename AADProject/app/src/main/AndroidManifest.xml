@@ -15,7 +15,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Profile$profileView" />
         <activity android:name=".MainScreen" />
         <activity android:name=".ProfileScreen" />
         <activity android:name=".TutorialScreen" />
@@ -23,7 +22,8 @@
         <activity android:name=".GenScoreScreen" />
         <activity android:name=".ImgScoreScreen" />
         <activity android:name=".SequenceGame" />
-        <activity android:name=".PairsGame"></activity>
+        <activity android:name=".PairsGame"/>
+        <activity android:name=".ProfileCreationScreen"/>
     </application>
 
 </manifest>
