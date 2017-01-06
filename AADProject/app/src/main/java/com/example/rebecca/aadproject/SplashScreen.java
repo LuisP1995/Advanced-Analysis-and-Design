@@ -1,27 +1,24 @@
 package com.example.rebecca.aadproject;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-public class SplashScreen extends AppCompatActivity implements View.OnClickListener {
+public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-//        Thread myThread = new Thread(); //for splash screen purposes
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(SplashScreen.this);
-    }
-
-    @Override
-    public void onClick(View v)
-    {
-        Intent newIntent = new Intent(SplashScreen.this, MainScreen.class); //Instead main to CreateProfile
-        startActivity(newIntent);
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+                Intent mainIntent = new Intent(SplashScreen.this,MainScreen.class);
+                SplashScreen.this.startActivity(mainIntent);
+                SplashScreen.this.finish();
+            }
+        }, 1000);
     }
 }
