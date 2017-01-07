@@ -22,9 +22,16 @@ public class ProfileCreateScreen extends AppCompatActivity {
 
         pcp = new ProfileCreationPresenter(this);
 
-        SetAvatarButtonListeners();
+        if(!pcp.profileExist()) {
+            SetAvatarButtonListeners();
 
-        SetSubmitButtonListener();
+            SetSubmitButtonListener();
+        }
+        else
+        {
+            Intent newIntent = new Intent(ProfileCreateScreen.this, MainScreen.class);
+            startActivity(newIntent);
+        }
     }
 
     private void SetSubmitButtonListener() {

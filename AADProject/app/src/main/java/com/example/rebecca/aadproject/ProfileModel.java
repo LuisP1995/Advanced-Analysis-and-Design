@@ -45,6 +45,12 @@ public class ProfileModel {
             pairsScores[i] = 0;
             sequenceScores[i] = 0;
         }
+        try
+        {
+            loadProfile();
+        }catch(Exception ex){
+
+        }
     }
 
     void clear() {

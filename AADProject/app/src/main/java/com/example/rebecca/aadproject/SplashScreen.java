@@ -15,7 +15,6 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                //Check if existing user
                 Intent mainIntent = new Intent(SplashScreen.this,ProfileCreateScreen.class);
                 SplashScreen.this.startActivity(mainIntent);
                 SplashScreen.this.finish();

@@ -3,6 +3,7 @@ package com.example.rebecca.aadproject;
 /**
  * Created by Adam on 29/12/2016.
  */
+//Test class to be removed
 
 public class ProfileCreationPresenter {
     private ProfileModel pm;
@@ -11,6 +12,10 @@ public class ProfileCreationPresenter {
     ProfileCreationPresenter(ProfileCreateScreen ps){
         this.ps = ps;
         pm = new ProfileModel(this.ps);
+    }
+
+    boolean profileExist(){
+        return pm.checkProfileExists();
     }
 
     void createNewProfile(String userName, int avatar) {
