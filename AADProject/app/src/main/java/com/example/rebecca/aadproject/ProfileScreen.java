@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
 import android.widget.TabWidget;
+import android.widget.TextView;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -21,6 +22,9 @@ public class ProfileScreen extends AppCompatActivity {
 
         TabSetup();
         GraphSetup();
+
+        TextView textview = (TextView)findViewById(R.id.username_text);
+        textview.setText(psp.getUserName());
         //ScoreSetup
     }
 

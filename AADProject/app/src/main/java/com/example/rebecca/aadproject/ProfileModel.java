@@ -38,13 +38,20 @@ public class ProfileModel {
 
     ProfileModel (Context mContext)
     {
-
         this.mContext = mContext;
 
         for(int i =0; i < HISTORY_AMOUNT; i++) {
             imageScores[i] = 0;
             pairsScores[i] = 0;
             sequenceScores[i] = 0;
+        }
+
+        //Only allowing profile create to happen once
+        try
+        {
+            loadProfile();
+        }catch(Exception ex){
+            clear();
         }
     }
 
