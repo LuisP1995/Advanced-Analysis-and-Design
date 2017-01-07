@@ -21,14 +21,10 @@ public class ProfileCreateScreen extends AppCompatActivity {
         setContentView(R.layout.activity_profile_create_screen);
 
         pcp = new ProfileCreationPresenter(this);
+        SetAvatarButtonListeners();
+        SetSubmitButtonListener();
 
-        if(!pcp.profileExist()) {
-            SetAvatarButtonListeners();
-
-            SetSubmitButtonListener();
-        }
-        else
-        {
+        if(pcp.profileExist()) {
             Intent newIntent = new Intent(ProfileCreateScreen.this, MainScreen.class);
             startActivity(newIntent);
         }

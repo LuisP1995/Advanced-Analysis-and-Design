@@ -29,6 +29,9 @@ public class ProfileScreenPresenter {
     }
     public int getImageGamesPlayed() {return pm.getImagePlays();}
 
+    public String getUserName(){
+        return pm.getUserName();
+    }
     private boolean loadProfile() {
         try {
             pm.loadProfile();

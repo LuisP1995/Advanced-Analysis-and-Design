@@ -45,11 +45,13 @@ public class ProfileModel {
             pairsScores[i] = 0;
             sequenceScores[i] = 0;
         }
+
+        //Only allowing profile create to happen once
         try
         {
             loadProfile();
         }catch(Exception ex){
-
+            clear();
         }
     }
 
