@@ -38,7 +38,6 @@ public class ProfileModel {
 
     ProfileModel (Context mContext)
     {
-
         this.mContext = mContext;
 
         for(int i =0; i < HISTORY_AMOUNT; i++) {

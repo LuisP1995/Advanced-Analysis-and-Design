@@ -1,7 +1,4 @@
 package com.example.rebecca.aadproject;
-import android.content.Intent;
-
-import java.io.IOException;
 
 /**
  * Created by Adam on 29/12/2016.
@@ -9,25 +6,11 @@ import java.io.IOException;
 
 public class ProfileCreationPresenter {
     private ProfileModel pm;
-    private ProfileCreationScreen ps;
+    private ProfileCreateScreen ps;
 
-    ProfileCreationPresenter(ProfileCreationScreen ps){
+    ProfileCreationPresenter(ProfileCreateScreen ps){
         this.ps = ps;
         pm = new ProfileModel(this.ps);
-        profileLoader();
-    }
-
-    void profileLoader() {
-        if(!loadProfile()) {
-            ps.showForm();
-        } else {
-            loadMainScreen();
-        }
-    }
-
-    private void loadMainScreen() {
-        Intent newIntent = new Intent(ps, MainScreen.class);
-        ps.startActivity(newIntent);
     }
 
     void createNewProfile(String userName, int avatar) {
@@ -41,16 +24,5 @@ public class ProfileCreationPresenter {
         pm.updatePairsScore(24);
         pm.updateImageScore(67);
         pm.saveProfile();
-        loadMainScreen();
     }
-
-    private boolean loadProfile() {
-        try {
-            pm.loadProfile();
-            return pm.checkProfileExists();
-        } catch (IOException e) {
-            return false;
-        }
-    }
-
 }
