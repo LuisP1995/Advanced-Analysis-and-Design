@@ -1,5 +1,6 @@
 package com.example.rebecca.aadproject;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
@@ -11,6 +12,9 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class ProfileScreen extends AppCompatActivity {
+
+    static final String GAMES_PLAYED_DEFAULT = "Games Played: ";
+    static final String AVERAGE_SCORE_DEFAULT = "Average Score: ";
 
     private ProfileScreenPresenter psp;
     @Override
@@ -28,9 +32,13 @@ public class ProfileScreen extends AppCompatActivity {
         //ScoreSetup
     }
 
-    private void GraphSetup() {
+    protected void GraphSetup() {
         GraphView graph = (GraphView) findViewById(R.id.pairsGraph);
-        float[] scores = psp.getPairsData();
+        TextView gamesPlayed = (TextView) findViewById(R.id.pairsGp);
+        TextView averageScore = (TextView) findViewById(R.id.pairsAvg);
+        String toDisplay = "";
+
+        float[] scores = psp.getPairsScoresData();
         LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
                 new DataPoint(0, scores[0]),
                 new DataPoint(1, scores[1]),
@@ -40,9 +48,16 @@ public class ProfileScreen extends AppCompatActivity {
         });
         graph.addSeries(series);
 
+        // toDisplay declared before concatenation while set texts is prone to break
+        toDisplay = GAMES_PLAYED_DEFAULT + psp.getPairsGamesPlayed();
+        gamesPlayed.setText(toDisplay);
+        toDisplay = AVERAGE_SCORE_DEFAULT + psp.getPairsAverage();
+        averageScore.setText(toDisplay);
 
         graph = (GraphView) findViewById(R.id.seqGraph);
-        scores = psp.getSequenceData();
+        gamesPlayed = (TextView) findViewById(R.id.seqGp);
+        averageScore = (TextView) findViewById(R.id.seqAvg);
+        scores = psp.getSequenceScoresData();
         series = new LineGraphSeries<DataPoint>(new DataPoint[] {
                 new DataPoint(0, scores[0]),
                 new DataPoint(1, scores[1]),
@@ -51,9 +66,16 @@ public class ProfileScreen extends AppCompatActivity {
                 new DataPoint(4, scores[4])
         });
         graph.addSeries(series);
+        // toDisplay declared before concatenation while set texts is prone to break
+        toDisplay = GAMES_PLAYED_DEFAULT + psp.getSequenceGamesPlayed();
+        gamesPlayed.setText(toDisplay);
+        toDisplay = AVERAGE_SCORE_DEFAULT + psp.getSequenceAverage();
+        averageScore.setText(toDisplay);
 
         graph = (GraphView) findViewById(R.id.imageGraph);
-        scores = psp.getImageData();
+        gamesPlayed = (TextView) findViewById(R.id.imgGp);
+        averageScore = (TextView) findViewById(R.id.imgAvg);
+        scores = psp.getImageScoresData();
         series = new LineGraphSeries<DataPoint>(new DataPoint[] {
                 new DataPoint(0, scores[0]),
                 new DataPoint(1, scores[1]),
@@ -62,7 +84,11 @@ public class ProfileScreen extends AppCompatActivity {
                 new DataPoint(4, scores[4])
         });
         graph.addSeries(series);
-
+        // toDisplay declared before concatenation while set texts is prone to break
+        toDisplay = GAMES_PLAYED_DEFAULT + psp.getImageGamesPlayed();
+        gamesPlayed.setText(toDisplay);
+        toDisplay = AVERAGE_SCORE_DEFAULT + psp.getImageAverage();
+        averageScore.setText(toDisplay);
     }
 
     private void TabSetup() {

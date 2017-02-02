@@ -2,8 +2,8 @@ package com.example.rebecca.aadproject;
 
 /**
  * Created by Adam on 29/12/2016.
+ * Profile creation presenter class.
  */
-//Test class to be removed
 
 public class ProfileCreationPresenter {
     private ProfileModel pm;
@@ -22,12 +22,6 @@ public class ProfileCreationPresenter {
         pm.clear();
         pm.setUserName(userName);
         pm.setAvatar(avatar);
-        pm.updateSequenceScore(45);
-        pm.updatePairsScore(22);
-        pm.updateImageScore(44);
-        pm.updateSequenceScore(43);
-        pm.updatePairsScore(24);
-        pm.updateImageScore(67);
         pm.saveProfile();
     }
 }
