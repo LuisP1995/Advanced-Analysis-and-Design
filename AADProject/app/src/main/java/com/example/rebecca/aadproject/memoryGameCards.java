@@ -6,6 +6,7 @@ import android.content.Context;
 /**
  * A custom button class in order to flip cards and compare values on the cards
  *
+ * http://opengameart.org/content/playing-cards-vector-png - deck of cards download link origin
  * Created by Luis Parcon on 03/02/2017.
  */
 
