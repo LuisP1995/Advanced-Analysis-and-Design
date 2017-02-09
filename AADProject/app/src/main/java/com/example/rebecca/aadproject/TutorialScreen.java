@@ -42,7 +42,7 @@ public class TutorialScreen extends AppCompatActivity {
     private void StartSeq() {
         //Set step texts
         //Set images
-        SetProceedButton(SplashScreen.class); //Change to gameClass
+        SetProceedButton(SequenceScreen.class); //Change to gameClass
     }
 
     private void StartPairs() {
