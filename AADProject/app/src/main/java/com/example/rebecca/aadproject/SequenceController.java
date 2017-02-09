@@ -68,7 +68,15 @@ public class SequenceController {
         View img = _screen.findViewById(R.id.starimage);
 
 //        Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
+        aniOriginal.setStartOffset(1000);
         img.startAnimation(aniOriginal);
+
+        View img2 = _screen.findViewById(R.id.imageView4);
+
+        final Animation aniOriginal2 =new AlphaAnimation(1, 0);
+        aniOriginal2.setDuration(1000);
+        aniOriginal2.setStartOffset(5000);
+        img2.startAnimation(aniOriginal2);
 
 
         //store user sequence
