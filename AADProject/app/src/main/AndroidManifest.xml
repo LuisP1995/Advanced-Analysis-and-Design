@@ -21,7 +21,7 @@
         <activity android:name=".SettingScreen" />
         <activity android:name=".GenScoreScreen" />
         <activity android:name=".ImgScoreScreen" />
-        <activity android:name=".SequenceGame" />
+        <activity android:name=".SequenceScreen" />
         <activity android:name=".PairsGame" />
         <activity android:name=".ProfileCreateScreen"></activity>
     </application>
