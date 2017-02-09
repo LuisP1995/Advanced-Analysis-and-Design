@@ -23,14 +23,11 @@ import java.util.List;
 public class SequenceController {
     private SequenceScreen _screen;
     private List<ImageButton> _buttonList;
-    private final Animation _animation;
     //private score
 
     public SequenceController(SequenceScreen sequenceScreen) {
         _screen = sequenceScreen;
-        _animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
-        _animation.setDuration(1000); // duration - half a second
-        _animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+
     }
 
     public void SetupGame() {
@@ -63,43 +60,18 @@ public class SequenceController {
     }
 
     public void PlaySequence() {
-        final Animation aniOriginal = _animation;
+        int count =1;
 
-        View img = _screen.findViewById(R.id.starimage);
+        for (ImageButton button: _buttonList) {
 
-//        Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
-        aniOriginal.setStartOffset(1000);
-        img.startAnimation(aniOriginal);
-
-        View img2 = _screen.findViewById(R.id.imageView4);
-
-        final Animation aniOriginal2 =new AlphaAnimation(1, 0);
-        aniOriginal2.setDuration(1000);
-        aniOriginal2.setStartOffset(5000);
-        img2.startAnimation(aniOriginal2);
-
+            Animation newAnimation = new AlphaAnimation(1,0);
+            newAnimation.setDuration(1000);
+            newAnimation.setStartOffset(2000 *count);
+            button.startAnimation(newAnimation);
+            count ++;
+        }
 
         //store user sequence
         //score calculate
-    }
-
-    @NonNull
-    private Animation.AnimationListener createAnimationListener(final Animation aniOriginal, final int buttonNo) {
-        return new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
-
-                }
-
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    _buttonList.get(buttonNo).startAnimation(aniOriginal);
-                }
-
-                @Override
-                public void onAnimationRepeat(Animation animation) {
-
-                }
-            };
     }
 }
