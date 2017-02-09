@@ -1,5 +1,7 @@
 package com.example.rebecca.aadproject;
 
+import android.content.Intent;
+
 /**
  * Created by Adam on 29/12/2016.
  * Profile creation presenter class.
@@ -22,6 +24,10 @@ public class ProfileCreationPresenter {
         pm.clear();
         pm.setUserName(userName);
         pm.setAvatar(avatar);
-        pm.saveProfile();
+        boolean successSave = pm.saveProfile(false);
+        if(!successSave) {
+            Intent newIntent = new Intent(ps, ProfileCreateScreen.class);
+            ps.startActivity(newIntent);
+        }
     }
 }
