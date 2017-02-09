@@ -63,5 +63,24 @@
         android:layout_marginTop="59dp"
         android:id="@+id/seqStartButton" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/blackstar"
+        android:layout_below="@+id/seqStartButton"
+        android:layout_alignLeft="@+id/seqImg3"
+        android:layout_alignStart="@+id/seqImg3"
+        android:layout_marginTop="25dp"
+        android:id="@+id/starimage" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/greensqr"
+        android:layout_alignTop="@+id/starimage"
+        android:layout_alignRight="@+id/seqImg3"
+        android:layout_alignEnd="@+id/seqImg3"
+        android:id="@+id/imageView4" />
+
 
 </RelativeLayout>

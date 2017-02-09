@@ -1,10 +1,12 @@
 package com.example.rebecca.aadproject;
 
-import android.animation.StateListAnimator;
-import android.os.Bundle;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,7 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Rebecca on 09/02/2017.
@@ -23,7 +24,6 @@ public class SequenceController {
     private SequenceScreen _screen;
     private List<ImageButton> _buttonList;
     private final Animation _animation;
-    private final Animation _animationOrg;
     //private score
 
     public SequenceController(SequenceScreen sequenceScreen) {
@@ -31,10 +31,6 @@ public class SequenceController {
         _animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
         _animation.setDuration(1000); // duration - half a second
         _animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
-
-        _animationOrg = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
-        _animationOrg.setDuration(1000); // duration - half a second
-        _animationOrg.setInterpolator(new LinearInterpolator()); // do not alter animation rate
     }
 
     public void SetupGame() {
@@ -61,38 +57,41 @@ public class SequenceController {
         but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                StartGame();
+                PlaySequence();
             }
         });
     }
 
-    public void StartGame() {
-        final ImageButton sb2 = (ImageButton) _screen.findViewById(R.id.seqImg2);
+    public void PlaySequence() {
+        final Animation aniOriginal = _animation;
 
-        Animation.AnimationListener anilistener = new Animation.AnimationListener(){
-            @Override
-            public void onAnimationStart(Animation animation) {
+        View img = _screen.findViewById(R.id.starimage);
 
-            }
+//        Animation myFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.fadein);
+        img.startAnimation(aniOriginal);
 
-            @Override
-                public void onAnimationEnd(Animation animation){
-                    sb2.startAnimation(_animationOrg);
-                }
 
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        };
-
-        ImageButton sb1 = (ImageButton) _screen.findViewById(R.id.seqImg1);
-
-        _animation.setAnimationListener(anilistener);
-
-        sb1.startAnimation(_animation);
-        //play sequence
         //store user sequence
         //score calculate
+    }
+
+    @NonNull
+    private Animation.AnimationListener createAnimationListener(final Animation aniOriginal, final int buttonNo) {
+        return new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    _buttonList.get(buttonNo).startAnimation(aniOriginal);
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            };
     }
 }
