@@ -1,15 +1,11 @@
 package com.example.rebecca.aadproject;
 
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,11 +19,12 @@ import java.util.List;
 public class SequenceController {
     private SequenceScreen _screen;
     private List<ImageButton> _buttonList;
+    private List<Integer> _userInput;
     //private score
 
     public SequenceController(SequenceScreen sequenceScreen) {
         _screen = sequenceScreen;
-
+        _userInput = new ArrayList<>();
     }
 
     public void SetupGame() {
@@ -57,6 +54,20 @@ public class SequenceController {
                 PlaySequence();
             }
         });
+
+        for(ImageButton button: _buttonList){
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //add id to buttons
+//                    _userInput.add(); // add to list
+                    Toast.makeText(_screen.getApplicationContext(),"Test", Toast.LENGTH_SHORT).show();
+                    CheckRoundEnd();
+                }
+            });
+        }
+
+        //set image button listeners
     }
 
     public void PlaySequence() {
@@ -66,12 +77,19 @@ public class SequenceController {
 
             Animation newAnimation = new AlphaAnimation(1,0);
             newAnimation.setDuration(1000);
-            newAnimation.setStartOffset(2000 *count);
+            newAnimation.setStartOffset(1000 *count);
             button.startAnimation(newAnimation);
             count ++;
         }
 
         //store user sequence
         //score calculate
+    }
+
+    public void CheckRoundEnd(){
+        if (_userInput.size() == _buttonList.size()){
+            //end round
+            //calc score
+        }
     }
 }
