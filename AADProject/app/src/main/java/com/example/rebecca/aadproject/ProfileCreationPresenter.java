@@ -1,5 +1,7 @@
 package com.example.rebecca.aadproject;
 
+import android.content.Intent;
+
 /**
  * Created by Adam on 29/12/2016.
  */
@@ -22,12 +24,10 @@ public class ProfileCreationPresenter {
         pm.clear();
         pm.setUserName(userName);
         pm.setAvatar(avatar);
-        pm.updateSequenceScore(45);
-        pm.updatePairsScore(22);
-        pm.updateImageScore(44);
-        pm.updateSequenceScore(43);
-        pm.updatePairsScore(24);
-        pm.updateImageScore(67);
-        pm.saveProfile();
+        boolean successSave = pm.saveProfile(false);
+        if(!successSave) {
+            Intent newIntent = new Intent(ps, ProfileCreateScreen.class);
+            ps.startActivity(newIntent);
+        }
     }
 }

@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
+
+import android.content.Intent;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Xml;
@@ -46,13 +48,7 @@ public class ProfileModel {
             sequenceScores[i] = 0;
         }
 
-        //Only allowing profile create to happen once
-        try
-        {
-            loadProfile();
-        }catch(Exception ex){
-            clear();
-        }
+        loadProfile();
     }
 
     void clear() {
@@ -157,11 +153,12 @@ public class ProfileModel {
         pairsPlays++;
     }
 
-    void loadProfile() throws IOException {
+    void loadProfile() {
         Pair<float [], Integer> data;
         XmlPullParser parser = Xml.newPullParser();
-        FileInputStream is = mContext.openFileInput(FILE_NAME);
+
         try {
+            FileInputStream is = mContext.openFileInput(FILE_NAME);
             parser.setInput(new InputStreamReader(is));
             while (parser.next() != XmlPullParser.END_TAG) {
                 if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -210,11 +207,11 @@ public class ProfileModel {
             is.close();
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
-            // Should force create new profile.
+            clear(); // forces create new profile
         }
     }
 
-    void saveProfile() {
+    boolean saveProfile(Boolean reWrite) {
 
         try {
             FileOutputStream os = mContext.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
@@ -271,10 +268,16 @@ public class ProfileModel {
             os.write(profileData.getBytes());
 
             os.close();
+
         } catch(Exception e) {
             Log.e("Error", e.getMessage());
-            // application should crash or attempt 1 rewrite.
+            if(!reWrite) {
+                saveProfile(true); // attempt another save
+            } else {
+                return false;
+            }
         }
+        return true;
     }
 
     private Pair<float[], Integer> extractScorePlays(XmlPullParser parser) throws Exception {

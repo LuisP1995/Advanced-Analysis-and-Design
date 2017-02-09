@@ -33,12 +33,8 @@ public class ProfileScreenPresenter {
         return pm.getUserName();
     }
     private boolean loadProfile() {
-        try {
-            pm.loadProfile();
-            return pm.checkProfileExists();
-        } catch (IOException e) {
-            return false;
-        }
+        pm.loadProfile();
+        return pm.checkProfileExists();
     }
 
 }

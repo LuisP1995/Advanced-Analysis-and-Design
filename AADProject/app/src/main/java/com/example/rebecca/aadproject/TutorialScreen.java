@@ -36,7 +36,7 @@ public class TutorialScreen extends AppCompatActivity {
     private void StartImg() {
         //Set step texts
         //Set images
-        SetProceedButton(SplashScreen.class); //Change to gameClass
+        SetProceedButton(ImageGameScreen.class);
     }
 
     private void StartSeq() {
