@@ -14,13 +14,54 @@
     <ImageButton
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@mipmap/blackstar"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="33dp"
         android:id="@+id/seqImg1"
         android:scaleType="centerCrop"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="37dp" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/seqImg2"
+        android:scaleType="centerCrop"
+        android:layout_alignTop="@+id/seqImg1"
+        android:layout_toRightOf="@+id/seqImg1"
+        android:layout_toEndOf="@+id/seqImg1"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/seqImg3"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/seqImg1"
+        android:layout_alignLeft="@+id/seqImg1"
+        android:layout_alignStart="@+id/seqImg1"
+        android:layout_marginTop="31dp" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/seqImg4"
+        android:scaleType="centerCrop"
+        android:layout_alignTop="@+id/seqImg3"
+        android:layout_alignLeft="@+id/seqImg2"
+        android:layout_alignStart="@+id/seqImg2" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seqImg4"
+        android:layout_alignLeft="@+id/seqImg4"
+        android:layout_alignStart="@+id/seqImg4"
+        android:layout_marginTop="59dp"
+        android:id="@+id/seqStartButton" />
+
+
 </RelativeLayout>

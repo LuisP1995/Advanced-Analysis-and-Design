@@ -13,7 +13,5 @@ public class SequenceScreen extends AppCompatActivity {
         SequenceController contr = new SequenceController(this);
         contr.SetupGame();
 
-        contr.StartGame();
-
     }
 }
