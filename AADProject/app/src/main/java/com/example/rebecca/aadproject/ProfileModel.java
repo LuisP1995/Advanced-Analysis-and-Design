@@ -23,7 +23,7 @@ import android.util.Xml;
  *
  */
 
-public class ProfileModel {
+class ProfileModel {
 
     private static final String FILE_NAME = "profile.xml";
     private Context mContext;

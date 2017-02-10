@@ -2,7 +2,6 @@ package com.example.rebecca.aadproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatDrawableManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,8 +16,7 @@ public class ImageGameScreen extends AppCompatActivity {
     }
 
     public void setScore(float score) {
-        score = ((int) score * 100) / 100;
-        String text = "Score: " + score;
+        String text = "Score: " + (int) score;
         TextView scoreText = (TextView) findViewById(R.id.imageScoreText);
         scoreText.setText(text);
     }
@@ -31,6 +29,8 @@ public class ImageGameScreen extends AppCompatActivity {
 
     public void setImage(String image) {
         ImageView gameImage = (ImageView) findViewById(R.id.imageGamePic);
+        int id = getResources().getIdentifier(image, "mipmap", getPackageName());
+        gameImage.setImageResource(id);
     }
 
     public void setButton1Text(String text) {

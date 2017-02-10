@@ -6,30 +6,32 @@ import android.content.res.XmlResourceParser;
 
 import org.xmlpull.v1.XmlPullParser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 
 /**
  * Created by Adam on 06/02/2017.
  */
 
-public class ImageGameModel {
+class ImageGameModel {
 
     private Context mContext;
-    private static int ROUNDS = 2;
-    private static int NUM_WORDS_ROUND = 5;
-    private Object [] [] gameData = new Object[ROUNDS][NUM_WORDS_ROUND];
+    private static int rounds = 0;
+    private static final int NUM_WORDS_ROUND = 5;
+    private ArrayList<String[]> gameData = new ArrayList<String[]>();
 
     ImageGameModel (Context context) {
         mContext = context;
+        rounds = 0;
         loadDataFromFile();
     }
 
-    void loadDataFromFile() {
+    private void loadDataFromFile() {
         try {
             Resources res = mContext.getResources();
             XmlResourceParser parser = res.getXml(R.xml.imagegamewords);
-            int i = 0;
             while (parser.next() != XmlPullParser.END_DOCUMENT) {
                 if (parser.getEventType() != XmlPullParser.START_TAG) {
                     continue;
@@ -37,16 +39,20 @@ public class ImageGameModel {
                 String name = parser.getName();
                 String data = "";
                 if (name.equals("round")) {
+                    String[] tempData = new String[NUM_WORDS_ROUND];
                     for(int j = 0; j < NUM_WORDS_ROUND; j++)
                     {
                         parser.nextTag();
                         data = parser.nextText();
-                        gameData[i][j] = data;
+                        tempData[j] = data;
                     }
-                    i++;
+                    gameData.add(tempData);
+                    rounds++;
                 }
             }
             parser.close();
+            //randomise rounds
+            Collections.shuffle(gameData);
 
         } catch (Exception e) {
             // TODO need to deal with this
@@ -55,6 +61,6 @@ public class ImageGameModel {
     }
 
     String[] getRound(int round) {
-        return Arrays.copyOf(gameData[round], gameData[round].length, String[].class);
+        return (round < rounds ? gameData.get(round) : null);
     }
 }

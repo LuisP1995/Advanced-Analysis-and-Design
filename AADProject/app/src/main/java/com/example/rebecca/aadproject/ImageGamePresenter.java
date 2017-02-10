@@ -1,59 +1,65 @@
 package com.example.rebecca.aadproject;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.util.Arrays;
 import java.util.Collections;
 
 /**
  * Created by Adam on 05/02/2017.
+ * Presenter controls the image game.
  */
 
-public class ImageGamePresenter {
+class ImageGamePresenter {
 
-    private static final int MAX_ROUNDS = 2;
-    private static final int MAX_TRYS = 3;
+    private static final int MAX_ROUNDS = 3;
+    private static final int MAX_TRIES = 3;
     private static final int ROUND_SCORE = 30;
 
     private String correctAnswer = "";
-    private int [] wrongAnswers = new int[MAX_ROUNDS];
-    private static int tryCount = 0;
-    private static int round = 0;
-    private static float score = 0;
-    ImageGameModel gm;
-    ImageGameScreen igs;
+    private String [][] wrongAnswers = new String[MAX_ROUNDS][2];
+    private int tryCount = 0;
+    private int round = 0;
+    private float score = 0;
+    private String[] roundData;
+    private int wrongIndex = 0;
+    private ImageGameModel gameModel;
+    private ImageGameScreen imageGameScreen;
 
 
-    ImageGamePresenter(ImageGameScreen igs) {
-        this.igs = igs;
-        for (int i = 0; i < MAX_ROUNDS; i++) {
-            wrongAnswers[i] = 0;
-        }
-        gm = new ImageGameModel(this.igs.getApplicationContext());
+    ImageGamePresenter(ImageGameScreen imageGameScreen) {
+        this.imageGameScreen = imageGameScreen;
+        round = 0;
+        score = 0;
+        wrongIndex = 0;
+        gameModel = new ImageGameModel(this.imageGameScreen.getApplicationContext());
         setButtonListeners();
         loadNextRound();
     }
 
-    void playedRound(String selectedW) {
+    private void playedRound(String selectedW) {
         if(checkCorrect(selectedW)) {
+            // valid choice update score then load next round
             round++;
             updateScore();
-            if(round == MAX_ROUNDS) {
-                displayComplitionScreen();
+            if(round >= MAX_ROUNDS) {
+                displayCompletionScreen();
             } else {
                 loadNextRound();
             }
         } else {
             tryCount++;
-            if (tryCount == MAX_TRYS) {
+            if (tryCount == MAX_TRIES) {
                 // max tries exceeded save wrong word and load next round
-                wrongAnswers[round] = 1;
+                wrongAnswers[wrongIndex][0] = roundData[0];
+                wrongAnswers[wrongIndex][1] = roundData[1];
+                wrongIndex++;
                 round++;
-                if(round == MAX_ROUNDS) {
-                    displayComplitionScreen();
+                if(round >= MAX_ROUNDS) {
+                    displayCompletionScreen();
                 } else {
                     loadNextRound();
                 }
@@ -61,93 +67,92 @@ public class ImageGamePresenter {
         }
     }
 
-    void displayComplitionScreen(){
+    private void displayCompletionScreen(){
 
-        /*GraphView graph = (GraphView) igs.findViewById(R.id.imageCompletionGraph);
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(new DataPoint[] {
-                new DataPoint(0, scores[0]),
-                new DataPoint(1, scores[1]),
-                new DataPoint(2, scores[2]),
-                new DataPoint(3, scores[3]),
-                new DataPoint(4, scores[4])
-        });
-        graph.addSeries(series);*/
+        Intent newIntent = new Intent(imageGameScreen, ImageGameCompletionScreen.class);
+        Bundle bundle = new Bundle();
+        bundle.putFloat("newScore", score);
+        bundle.putSerializable("wrongAnswers", wrongAnswers);
+        newIntent.putExtras(bundle);
+        imageGameScreen.startActivity(newIntent);
 
-        Intent newIntent = new Intent(igs, ImageGameComplitionScreen.class);
-        igs.startActivity(newIntent);
-        TextView newScore = (TextView) igs.findViewById(R.id.score);
-        newScore.setText("Aia");
     }
 
-    void loadNextRound() {
+    private void loadNextRound() {
         tryCount = 0;
-        igs.setRound(round);
-        igs.setScore(score);
 
-        String[] roundData = gm.getRound(round);
+        // update game screen text
+        imageGameScreen.setRound(round);
+        imageGameScreen.setScore(score);
+
+        //load in and set the new data
+        roundData = gameModel.getRound(round);
         correctAnswer = roundData[1];
+        imageGameScreen.setImage(roundData[0]);
+
+        //randomise the word positions
         String [] words = {roundData[1], roundData[2], roundData[3], roundData[4]};
         Collections.shuffle(Arrays.asList(words));
 
-        igs.setButton1Enabled(true);
-        igs.setButton2Enabled(true);
-        igs.setButton3Enabled(true);
-        igs.setButton4Enabled(true);
+        // setup all the buttons
+        imageGameScreen.setButton1Enabled(true);
+        imageGameScreen.setButton2Enabled(true);
+        imageGameScreen.setButton3Enabled(true);
+        imageGameScreen.setButton4Enabled(true);
 
-        // randomise below
-        igs.setButton1Text(words[0]);
-        igs.setButton2Text(words[1]);
-        igs.setButton3Text(words[2]);
-        igs.setButton4Text(words[3]);
+        imageGameScreen.setButton1Text(words[0]);
+        imageGameScreen.setButton2Text(words[1]);
+        imageGameScreen.setButton3Text(words[2]);
+        imageGameScreen.setButton4Text(words[3]);
     }
 
-    void setButtonListeners() {
-        final Button word1_button = (Button) igs.findViewById(R.id.wordBtn1);
+    private void setButtonListeners() {
+        final Button word1_button = (Button) imageGameScreen.findViewById(R.id.wordBtn1);
         word1_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                igs.setButton1Enabled(checkCorrect(word1_button.getText().toString()));
+                imageGameScreen.setButton1Enabled(checkCorrect(word1_button.getText().toString()));
                 playedRound(word1_button.getText().toString());
             }
 
         });
 
-        final Button word2_button = (Button) igs.findViewById(R.id.wordBtn2);
+        final Button word2_button = (Button) imageGameScreen.findViewById(R.id.wordBtn2);
         word2_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                igs.setButton2Enabled(checkCorrect(word2_button.getText().toString()));
+                imageGameScreen.setButton2Enabled(checkCorrect(word2_button.getText().toString()));
                 playedRound(word2_button.getText().toString());
             }
 
         });
 
-        final Button word3_button = (Button) igs.findViewById(R.id.wordBtn3);
+        final Button word3_button = (Button) imageGameScreen.findViewById(R.id.wordBtn3);
         word3_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                igs.setButton3Enabled(checkCorrect(word3_button.getText().toString()));
+                imageGameScreen.setButton3Enabled(checkCorrect(word3_button.getText().toString()));
                 playedRound(word3_button.getText().toString());
             }
 
         });
 
-        final Button word4_button = (Button) igs.findViewById(R.id.wordBtn4);
+        final Button word4_button = (Button) imageGameScreen.findViewById(R.id.wordBtn4);
         word4_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                igs.setButton4Enabled(checkCorrect(word4_button.getText().toString()));
+                imageGameScreen.setButton4Enabled(checkCorrect(word4_button.getText().toString()));
                 playedRound(word4_button.getText().toString());
             }
 
         });
     }
 
-    boolean checkCorrect(String selectedW) {
+    private boolean checkCorrect(String selectedW) {
         return correctAnswer == selectedW;
     }
 
-    void updateScore() {
+    private void updateScore() {
         score += ROUND_SCORE/(tryCount+1);
     }
 }
