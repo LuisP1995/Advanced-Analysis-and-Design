@@ -57,11 +57,38 @@
         android:text="Start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/seqImg4"
+        android:id="@+id/seqStartButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Round: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/seqRound" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/seqImg5"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/seqImg3"
+        android:layout_alignLeft="@+id/seqImg3"
+        android:layout_alignStart="@+id/seqImg3" />
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/seqImg6"
+        android:scaleType="centerCrop"
+        android:layout_alignTop="@+id/seqImg5"
         android:layout_alignLeft="@+id/seqImg4"
-        android:layout_alignStart="@+id/seqImg4"
-        android:layout_marginTop="59dp"
-        android:id="@+id/seqStartButton" />
+        android:layout_alignStart="@+id/seqImg4" />
 
 
 </RelativeLayout>

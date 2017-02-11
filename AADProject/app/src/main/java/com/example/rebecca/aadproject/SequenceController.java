@@ -20,9 +20,10 @@ public class SequenceController {
     private SequenceScreen _screen;
     private List<ImageButton> _buttonList;
     private List<Integer> _userInput;
-    //private score
+    private Integer _score;
 
     public SequenceController(SequenceScreen sequenceScreen) {
+        _score = 0;
         _screen = sequenceScreen;
         _userInput = new ArrayList<>();
     }
@@ -55,41 +56,42 @@ public class SequenceController {
             }
         });
 
-        for(ImageButton button: _buttonList){
+        for(final ImageButton button: _buttonList){
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //add id to buttons
-//                    _userInput.add(); // add to list
-                    Toast.makeText(_screen.getApplicationContext(),"Test", Toast.LENGTH_SHORT).show();
+                    _userInput.add(view.getId());
                     CheckRoundEnd();
                 }
             });
         }
-
-        //set image button listeners
     }
 
     public void PlaySequence() {
         int count =1;
 
         for (ImageButton button: _buttonList) {
-
             Animation newAnimation = new AlphaAnimation(1,0);
             newAnimation.setDuration(1000);
             newAnimation.setStartOffset(1000 *count);
             button.startAnimation(newAnimation);
             count ++;
         }
-
-        //store user sequence
-        //score calculate
     }
 
     public void CheckRoundEnd(){
         if (_userInput.size() == _buttonList.size()){
+        {
+            for (int i =0;i<_buttonList.size();i++){
+                ImageButton button = _buttonList.get(i);
+                Integer inputId = _userInput.get(i);
+                if (button.getId() == inputId){
+                    _score++;
+                }
+            }
+        }
+        Toast.makeText(_screen.getApplicationContext(), "Score: " + _score, Toast.LENGTH_SHORT).show();
             //end round
-            //calc score
         }
     }
 }
