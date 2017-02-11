@@ -9,11 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-<<<<<<< HEAD
     tools:context="com.example.rebecca.aadproject.ImageGameCompletionScreen">
-=======
-    tools:context="com.example.rebecca.aadproject.ImageGameComplitionScreen">
->>>>>>> 38118f372908f999fd30bb135bde316c5d7891fe
 
     <Button
         android:text="Play Again"

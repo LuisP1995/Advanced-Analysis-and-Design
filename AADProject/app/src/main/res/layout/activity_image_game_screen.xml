@@ -11,44 +11,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.rebecca.aadproject.ImageGameScreen">
 
-<<<<<<< HEAD
-=======
-    <Button
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageGamePic"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="62dp"
-        android:layout_marginStart="62dp"
-        android:layout_marginTop="269dp"
-        android:id="@+id/wordBtn1"
-        android:textSize="36sp" />
-
-    <Button
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/wordBtn1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="81dp"
-        android:layout_marginEnd="81dp"
-        android:id="@+id/wordBtn2"
-        android:textSize="36sp" />
-
-    <Button
-        android:text="Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/wordBtn3"
-        android:layout_alignRight="@+id/wordBtn2"
-        android:layout_alignEnd="@+id/wordBtn2"
-        android:id="@+id/wordBtn4"
-        android:textSize="36sp" />
-
->>>>>>> 38118f372908f999fd30bb135bde316c5d7891fe
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
@@ -77,7 +39,6 @@
         android:layout_alignEnd="@+id/imageRoundText"
         android:textSize="24sp" />
 
-<<<<<<< HEAD
     <Button
         android:text="Button"
         android:layout_width="wrap_content"
@@ -90,22 +51,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="208dp" />
-=======
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_marginTop="54dp"
-        android:id="@+id/imageGamePic"
-        android:layout_below="@+id/imageScoreText"
-        android:layout_centerHorizontal="true" />
->>>>>>> 38118f372908f999fd30bb135bde316c5d7891fe
 
     <Button
         android:text="Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:id="@+id/wordBtn3"
         android:textSize="24sp"
         android:layout_marginBottom="69dp"
@@ -145,12 +95,4 @@
         android:layout_alignBottom="@+id/wordBtn3"
         android:layout_alignLeft="@+id/wordBtn2"
         android:layout_alignStart="@+id/wordBtn2" />
-=======
-        android:layout_marginTop="96dp"
-        android:id="@+id/wordBtn3"
-        android:textSize="36sp"
-        android:layout_below="@+id/wordBtn1"
-        android:layout_alignLeft="@+id/wordBtn1"
-        android:layout_alignStart="@+id/wordBtn1" />
->>>>>>> 38118f372908f999fd30bb135bde316c5d7891fe
 </RelativeLayout>
