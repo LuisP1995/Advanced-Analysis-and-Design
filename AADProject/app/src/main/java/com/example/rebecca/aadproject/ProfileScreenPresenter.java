@@ -6,52 +6,47 @@ import java.io.IOException;
  * Created by Adam on 05/01/2017.
  */
 
-public class ProfileScreenPresenter {
-    private ProfileModel pm;
-    private ProfileScreen ps;
+class ProfileScreenPresenter {
+    private ProfileModel profileModel;
 
-    ProfileScreenPresenter(ProfileScreen ps){
-        this.ps = ps;
-        pm = new ProfileModel(this.ps);
+    ProfileScreenPresenter(ProfileScreen profileScreen){
+        profileModel = new ProfileModel(profileScreen.getApplicationContext());
         loadProfile();
 
     }
 
-    public float[] getPairsScoresData() {
-        return pm.getPairsScores();
+    float[] getPairsScoresData() {
+        return profileModel.getPairsScores();
     }
-    public int getPairsGamesPlayed() {return pm.getPairsPlays();}
-    public int getPairsAverage() {
-        return getAverageScore(pm.getPairsScores());
-    }
-
-
-    public float[] getSequenceScoresData() {
-        return pm.getSequenceScores();
-    }
-    public int getSequenceGamesPlayed() {return pm.getSequencePlays();}
-    public int getSequenceAverage() {
-        return getAverageScore(pm.getSequenceScores());
+    int getPairsGamesPlayed() {return profileModel.getPairsPlays();}
+    int getPairsAverage() {
+        return getAverageScore(profileModel.getPairsScores());
     }
 
-    public float[] getImageScoresData() {
-        return pm.getImageScores();
+
+    float[] getSequenceScoresData() {
+        return profileModel.getSequenceScores();
     }
-    public int getImageGamesPlayed() {return pm.getImagePlays();}
-    public int getImageAverage() {
-        return getAverageScore(pm.getImageScores());
+    int getSequenceGamesPlayed() {return profileModel.getSequencePlays();}
+    int getSequenceAverage() {
+        return getAverageScore(profileModel.getSequenceScores());
     }
 
-    public String getUserName(){
-        return pm.getUserName();
+    float[] getImageScoresData() {
+        return profileModel.getImageScores();
     }
+    int getImageGamesPlayed() {return profileModel.getImagePlays();}
+    int getImageAverage() {
+        return getAverageScore(profileModel.getImageScores());
+    }
+
+    String getUserName(){
+        return profileModel.getUserName();
+    }
+
     private boolean loadProfile() {
-        try {
-            pm.loadProfile();
-            return pm.checkProfileExists();
-        } catch (IOException e) {
-            return false;
-        }
+        profileModel.loadProfile();
+        return profileModel.checkProfileExists();
     }
 
     private int getAverageScore(float [] scores) {

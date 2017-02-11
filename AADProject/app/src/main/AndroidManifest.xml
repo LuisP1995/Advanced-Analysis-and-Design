@@ -23,7 +23,9 @@
         <activity android:name=".ImgScoreScreen" />
         <activity android:name=".SequenceScreen" />
         <activity android:name=".PairsGame" />
-        <activity android:name=".ProfileCreateScreen"></activity>
+        <activity android:name=".ProfileCreateScreen" />
+        <activity android:name=".ImageGameScreen" />
+        <activity android:name=".ImageGameCompletionScreen" />
     </application>
 
 </manifest>
