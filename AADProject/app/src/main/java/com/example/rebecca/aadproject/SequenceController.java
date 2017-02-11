@@ -42,6 +42,12 @@ public class SequenceController {
         ImageButton sb4 = (ImageButton) _screen.findViewById(R.id.seqImg4);
         sb4.setImageResource(R.mipmap.greensqr);
 
+        ImageButton sb5 = (ImageButton) _screen.findViewById(R.id.seqImg5);
+        sb5.setVisibility(View.INVISIBLE);
+        ImageButton sb6 = (ImageButton) _screen.findViewById(R.id.seqImg6);
+        sb6.setVisibility(View.INVISIBLE);
+
+
         List<ImageButton> buttonList = new ArrayList<>(Arrays.asList(sb1,sb2,sb3,sb4));
 
         Collections.shuffle(buttonList);
