@@ -6,6 +6,8 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.widget.AppCompatDrawableManager;
 import android.widget.Button;
 import android.content.Context;
+import android.widget.GridLayout;
+
 /**
  * A custom button class in order to flip cards and compare values on the cards
  *
@@ -15,10 +17,11 @@ import android.content.Context;
 
 public class MemoryGameCard extends Button //creation of custom button object inheriter
 {
+    private static final int gamePixelDensity = 100;
     //information obtained from the pairsGame activity
     private int row;
     private int column;
-    private int imageID;
+    private int imageID; //position in the grid
 
     //some game logic
     protected boolean isFlipped;
@@ -36,22 +39,32 @@ public class MemoryGameCard extends Button //creation of custom button object in
     param: imageID - the resource value for the image
     return: none
      */
-    public MemoryGameCard(Context context, int row, int column, int imageID)
+    public MemoryGameCard(Context gameScreen, int row, int column, int imageID)
     {
-        super(context);
+
+
+        super(gameScreen);
         this.row = row;
         this.column = column;
         this.imageID = imageID;
 
-        frontSide = AppCompatDrawableManager.get().getDrawable(context,imageID); //ensures compatible android type is used depending on the android version
-        backSide = AppCompatDrawableManager.get().getDrawable(context, R.drawable.unknown_back);
+        //AppCompatDrawableManager ensures compatible android type is used
+        frontSide = AppCompatDrawableManager.get().getDrawable(gameScreen,imageID); //image is generated and assigned in the game activity
+        backSide = AppCompatDrawableManager.get().getDrawable(gameScreen, R.drawable.unknown_back);
+        setBackground(backSide);
+
+        //generate the games layout in the game activity
+        GridLayout.LayoutParams gameLayout = new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
+        gameLayout.width = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
+        gameLayout.height = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
+
+        setLayoutParams(gameLayout);
     }
     /*
     flips a card object to either its back or front on call
     param: none
     return: none
      */
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void flipCard()
     {
         if (isFlipped) //case 1; the card has already been flipped
@@ -62,19 +75,28 @@ public class MemoryGameCard extends Button //creation of custom button object in
 
         else //case 2: the card has not been flipped
         {
-
+            setBackground(frontSide);
+            isFlipped = true;
         }
     }
 
-    public boolean isMatch() {
+    //Generated setters and getters
+    public boolean isMatch()
+    {
         return isMatch;
     }
 
-    public void setMatch(boolean match) {
+    public void setMatch(boolean match)
+    {
         isMatch = match;
     }
 
-    public int getImageID() {
+    public int getImageID()
+    {
         return imageID;
+    }
+
+    public Drawable getFrontSide() {
+        return frontSide;
     }
 }
