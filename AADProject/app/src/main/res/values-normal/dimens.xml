@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="Font">16sp</dimen>
+    <dimen name="imageSize">100dp</dimen>
+    <dimen name="graphHeight">150dp</dimen>
+
+</resources>

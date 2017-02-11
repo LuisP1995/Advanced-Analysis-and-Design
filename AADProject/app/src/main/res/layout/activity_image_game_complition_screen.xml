@@ -59,26 +59,6 @@
         android:id="@+id/textView"
         android:textSize="30sp"/>
 
-    <TextView
-        android:text="New Average"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView5"
-        android:textSize="24sp"
-        android:layout_below="@+id/imageCompletionScore"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <com.jjoe64.graphview.GraphView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/imageCompletionGraph"
-        android:layout_below="@+id/imageComplitionAverage"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="23dp"
-        android:layout_above="@+id/ImageComplitionPlayAgain" />
-
     <Button
         android:text="View Wrong Answers"
         android:layout_width="wrap_content"
@@ -86,5 +66,25 @@
         android:id="@+id/imageComplitionWrong"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/graphHeight"
+        android:id="@+id/imageCompletionGraph"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/imageComplitionAverage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="New Average"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:textSize="24sp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/imageCompletionScore"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
