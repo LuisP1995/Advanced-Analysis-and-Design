@@ -124,12 +124,6 @@ public class SequenceController {
                     _score++;
                 }
             }
-            //some pause between rounds
-//            try {
-//                Thread.sleep(500);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
             Toast.makeText(_screen.getApplicationContext(), "Score: " + _score, Toast.LENGTH_SHORT).show(); // To be deleted
             //bonus if round 5 and score 24
             if (_round != 5) {
