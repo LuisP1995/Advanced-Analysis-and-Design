@@ -67,7 +67,6 @@ public class TutorialScreen extends AppCompatActivity {
         tutImage.setVisibility(View.INVISIBLE);
 
         SetProceedButton(ImageGameScreen.class);
-
     }
 
     private void StartSeq() {

@@ -3,11 +3,8 @@ package com.example.rebecca.aadproject;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
-
 import org.xmlpull.v1.XmlPullParser;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 

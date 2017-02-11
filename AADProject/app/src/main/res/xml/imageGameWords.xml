@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <imageGame>
     <round>
+<<<<<<< HEAD
         <imageName>bus</imageName>
         <correctWord>bus</correctWord>
+=======
+        <imageName>house.jpeg</imageName>
+        <correctWord>house</correctWord>
+>>>>>>> 38118f372908f999fd30bb135bde316c5d7891fe
         <word>fence</word>
         <word>wall</word>
         <word>sign</word>
     </round>
     <round>
+<<<<<<< HEAD
         <imageName>hotel</imageName>
         <correctWord>hotel</correctWord>
+=======
+        <imageName>pole.jpeg</imageName>
+        <correctWord>pole</correctWord>
+>>>>>>> 38118f372908f999fd30bb135bde316c5d7891fe
         <word>bag</word>
         <word>socks</word>
         <word>towel</word>
     </round>
+<<<<<<< HEAD
     <round>
         <imageName>ambulance</imageName>
         <correctWord>ambulance</correctWord>
@@ -21,4 +32,6 @@
         <word>helicopter</word>
         <word>boat</word>
     </round>
+=======
+>>>>>>> 38118f372908f999fd30bb135bde316c5d7891fe
 </imageGame>
