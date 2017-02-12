@@ -2,6 +2,7 @@ package com.example.rebecca.aadproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,7 +19,9 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
-            ImageGameCompletionPresenter imageCompPres = new ImageGameCompletionPresenter(this, extras.getFloat("newScore"), (String[][])extras.getSerializable("wrongAnswers"));
+            ScorePresenter imageCompPres = new ImageGameCompletionPresenter(this,
+                    extras.getFloat("newScore"),"Image",
+                    (String[][])extras.getSerializable("wrongAnswers"));
         }
 
     }
@@ -43,11 +46,6 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
         graph.addSeries(series);
     }
 
-    void disableWrongWords() {
-        Button wrongWords_button = (Button) findViewById(R.id.imageComplitionWrong);
-        wrongWords_button.setEnabled(false);
-    }
-
     void alterNextState(boolean enable) {
         Button next_button = (Button) findViewById(R.id.imageNextBtn);
         next_button.setEnabled(enable);
@@ -59,11 +57,14 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
     }
 
     private int getNewAverageScore(float[] data) {
-        for(int i = 0; i <data.length; i++) {
-            if(data[i] == 0) {
-                return i == 0 ? 0 : Math.round(data[i-1]);
+        if (data != null) {
+            for (int i = 0; i < data.length; i++) {
+                if (data[i] == 0) {
+                    return i == 0 ? 0 : Math.round(data[i - 1]);
+                }
             }
+            return Math.round(data[data.length - 1]);
         }
-        return Math.round(data[data.length-1]);
+        return 0;
     }
 }
