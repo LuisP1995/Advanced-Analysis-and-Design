@@ -26,6 +26,7 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
     static final int correct =  5;
     static final int gameRows = 4;
     static final int gameColumns = 4;
+    static final int totalPairs = 8;
     static final int cardsInPlay = (gameColumns * gameRows)/2; //need half of the numbers as we need two of each card image
     private int cardsInGrid = gameRows * gameColumns; //the number of cards in the 4x4 game space
 
@@ -39,6 +40,7 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
     private int[] cardLocations; //The locations of the cards in the 4x4 grid
 
     protected int score = 0;
+    protected int pairsFound = 0;
     private boolean isBusy = false; //checks if the app is already doing something
 
     @Override
@@ -73,12 +75,10 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
 
         shuffleCards();
         generateCards(pairsGameLayout);
-
-
     }
     /*
     generates cards which are then placed onto the game grid
-    param: gameSpace -
+    param: gameSpace - the gridlayout for which the cards will occupy when generated
     return: none
      */
     protected void generateCards(GridLayout gameSpace)
@@ -120,7 +120,6 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
 
     /*
     updates the score field in the corner of the game screen
-    param: correct - the value in which the user matches a pair
     param:none
     return: none
      */
@@ -147,6 +146,23 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
         cardGraphics[5] = R.drawable.hearts4;
         cardGraphics[6] = R.drawable.diamond10;
         cardGraphics[7] = R.drawable.spades_ace;
+    }
+
+    /*
+    checks if all pairs have been found and exits the activity;
+    if all pairs haven't been found increment the counter
+     */
+    protected void allPairsFound(int found)
+    {
+        if (found == totalPairs)
+        {
+            //Exit condition here
+        }
+
+        else
+        {
+            found ++;
+        }
     }
 
     @Override
@@ -184,6 +200,7 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
             gameCard.setEnabled(false);
             updateScore();
             firstSelection = null; //resets the selection, so the user can make another selction again
+            allPairsFound(pairsFound);
             return;
         }
 

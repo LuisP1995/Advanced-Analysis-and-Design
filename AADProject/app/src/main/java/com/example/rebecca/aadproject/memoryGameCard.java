@@ -17,7 +17,7 @@ import android.widget.GridLayout;
 
 public class MemoryGameCard extends Button //creation of custom button object inheriter
 {
-    private static final int gamePixelDensity = 150;
+    private static final int gamePixelDensity = 175;
     //information obtained from the pairsGame activity
     private int row;
     private int column;
