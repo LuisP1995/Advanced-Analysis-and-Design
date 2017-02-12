@@ -18,13 +18,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/ImageComplitionPlayAgain" />
+        android:id="@+id/ImageComplitionPlayAgain"
+        android:textSize="@dimen/fontGeneral"
+        android:textAllCaps="false"/>
 
     <TextView
         android:text="45"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="45sp"
+        android:textSize="@dimen/fontScore"
         android:textColor="@android:color/background_dark"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/textView5"
@@ -37,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageCompletionScore"
-        android:textSize="45sp"
+        android:textSize="@dimen/fontScore"
         android:textColor="@android:color/background_dark"
         android:layout_marginTop="7dp"
         android:layout_below="@+id/textView"
@@ -50,41 +52,47 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/imageComplitionQuit" />
+        android:id="@+id/imageComplitionQuit"
+        android:textSize="@dimen/fontGeneral"
+        android:textAllCaps="false"/>
 
     <TextView
         android:text="Score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="30sp"/>
+        android:textSize="@dimen/fontGeneral"
+        />
+
+    <com.jjoe64.graphview.GraphView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/graphHeight"
+        android:id="@+id/imageCompletionGraph"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/imageComplitionAverage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:text="New Average"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView5"
-        android:textSize="24sp"
+        android:textSize="@dimen/fontGeneral"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/imageCompletionScore"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <com.jjoe64.graphview.GraphView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:id="@+id/imageCompletionGraph"
-        android:layout_below="@+id/imageComplitionAverage"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="23dp"
-        android:layout_above="@+id/ImageComplitionPlayAgain" />
 
     <Button
         android:text="View Wrong Answers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageComplitionWrong"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="@dimen/fontGeneral"
+        android:textAllCaps="false"
+        android:layout_below="@+id/imageCompletionGraph"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

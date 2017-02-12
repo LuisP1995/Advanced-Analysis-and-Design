@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="30sp"
+        android:textSize="@dimen/fontGeneral"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -31,7 +31,7 @@
         android:layout_marginStart="19dp"
         android:layout_marginTop="28dp"
         android:id="@+id/step1"
-        android:textSize="24sp"
+        android:textSize="@dimen/fontSmall"
         android:layout_alignRight="@+id/textView"
         android:layout_alignEnd="@+id/textView" />
 
@@ -42,7 +42,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:id="@+id/proceed" />
+        android:id="@+id/proceed"
+        android:textSize="@dimen/fontGeneral"
+        android:textAllCaps="false"/>
 
     <TextView
         android:text="4."
@@ -50,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:id="@+id/step4"
-        android:textSize="24sp"
+        android:textSize="@dimen/fontSmall"
         android:layout_below="@+id/TutImg3"
         android:layout_alignLeft="@+id/step3"
         android:layout_alignStart="@+id/step3"
@@ -62,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/step3"
-        android:textSize="24sp"
+        android:textSize="@dimen/fontSmall"
         android:layout_alignTop="@+id/TutImg3"
         android:layout_alignLeft="@+id/step2"
         android:layout_alignStart="@+id/step2"
@@ -85,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="46dp"
         android:id="@+id/step2"
-        android:textSize="24sp"
+        android:textSize="@dimen/fontSmall"
         android:layout_below="@+id/step1"
         android:layout_alignLeft="@+id/step1"
         android:layout_alignStart="@+id/step1"

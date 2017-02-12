@@ -65,7 +65,6 @@ public class SequenceController {
         Collections.shuffle(buttonList);
 
         _buttonList = buttonList;
-
         SetRound();
 
         Button but = (Button) _screen.findViewById(R.id.seqStartButton);
@@ -105,7 +104,6 @@ public class SequenceController {
 
     public void PlaySequence() {
         int count =1;
-
         for (ImageButton button: _buttonList) {
             Animation newAnimation = new AlphaAnimation(1,0);
             newAnimation.setDuration(1500);

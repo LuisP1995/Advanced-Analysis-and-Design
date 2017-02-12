@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="30sp"
+        android:textSize="@dimen/fontGeneral"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -41,7 +41,7 @@
         android:layout_marginLeft="23dp"
         android:layout_marginStart="23dp"
         android:id="@+id/textView2"
-        android:textSize="18sp"
+        android:textSize="@dimen/fontGeneral"
         android:textColor="@android:color/black" />
 
 </RelativeLayout>
