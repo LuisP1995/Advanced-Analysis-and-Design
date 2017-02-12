@@ -40,25 +40,13 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
     private int[] cardLocations; //The locations of the cards in the 4x4 grid
 
     protected int score = 0;
-    protected int pairsFound = 0;
+    private int _pairsFound;
     private boolean isBusy = false; //checks if the app is already doing something
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pairs_game);
-
-        Button exitBtn = (Button)findViewById(R.id.pairsExit);
-
-        exitBtn.setOnClickListener(new View.OnClickListener() //navigate back to the main screen
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent newIntent = new Intent(PairsGame.this, GenScoreScreen.class);
-                startActivity(newIntent);
-            }
-        });
 
         GridLayout pairsGameLayout = (GridLayout) findViewById(R.id.activity_pairs_game);
 
@@ -75,6 +63,7 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
 
         shuffleCards();
         generateCards(pairsGameLayout);
+        _pairsFound = 1;
     }
     /*
     generates cards which are then placed onto the game grid
@@ -152,16 +141,20 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
     checks if all pairs have been found and exits the activity;
     if all pairs haven't been found increment the counter
      */
-    protected void allPairsFound(int found)
+    protected void allPairsFound()
     {
-        if (found == totalPairs)
+        if (_pairsFound == totalPairs)
         {
-            //Exit condition here
+            Intent newIntent = new Intent(PairsGame.this, ImageGameCompletionScreen.class);
+            Bundle bundle = new Bundle();
+            bundle.putFloat("newScore", score);
+            bundle.putString("game", "Pairs");
+            newIntent.putExtras(bundle);
+            this.startActivity(newIntent);
         }
-
         else
         {
-            found ++;
+            _pairsFound ++;
         }
     }
 
@@ -200,7 +193,7 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
             gameCard.setEnabled(false);
             updateScore();
             firstSelection = null; //resets the selection, so the user can make another selction again
-            allPairsFound(pairsFound);
+            allPairsFound();
             return;
         }
 
