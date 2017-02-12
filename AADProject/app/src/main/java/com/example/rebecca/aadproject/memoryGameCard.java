@@ -53,8 +53,11 @@ public class MemoryGameCard extends Button //creation of custom button object in
 
         //generate the games layout in the game activity
         GridLayout.LayoutParams gameLayout = new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
-        gameLayout.width = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
-        gameLayout.height = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
+//        gameLayout.width = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
+//        gameLayout.height = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
+
+        gameLayout.width = (getResources().getDisplayMetrics().widthPixels -200) /4;
+        gameLayout.height = (getResources().getDisplayMetrics().heightPixels -400) /4 ;
 
         setLayoutParams(gameLayout);
     }

@@ -18,6 +18,7 @@
         android:id="@+id/textView6"
         android:textSize="@dimen/fontGeneral"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"/>
 
 </RelativeLayout>

@@ -52,7 +52,8 @@
         android:textSize="@dimen/fontGeneral"
         android:layout_marginTop="@dimen/buttonGap"
         android:layout_below="@+id/wrongWordImage"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"/>
 
     <ImageView
         android:layout_width="@dimen/imageSize"

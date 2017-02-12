@@ -22,7 +22,8 @@
         android:layout_marginTop="35dp"
         android:layout_alignRight="@+id/imageRoundText"
         android:layout_alignEnd="@+id/imageRoundText"
-        android:textSize="@dimen/fontGeneral" />
+        android:textSize="@dimen/fontGeneral"
+        android:textColor="@android:color/black"/>
 
     <Button
         android:text="Button"
@@ -44,7 +45,8 @@
         android:textSize="@dimen/fontGeneral"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textColor="@android:color/black"/>
 
     <ImageView
         app:srcCompat="@mipmap/ic_launcher"
