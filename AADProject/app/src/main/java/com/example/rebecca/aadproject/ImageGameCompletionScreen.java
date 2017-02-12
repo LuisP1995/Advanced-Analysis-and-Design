@@ -20,7 +20,7 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             String game = extras.getString("game");
-            if (game == "Image") {
+            if (game.equals("Image")) {
                 ScorePresenter imageCompPres = new ImageGameCompletionPresenter(this,
                         extras.getFloat("newScore"), game,
                         (String[][]) extras.getSerializable("wrongAnswers"));

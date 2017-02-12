@@ -151,6 +151,7 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
             bundle.putString("game", "Pairs");
             newIntent.putExtras(bundle);
             this.startActivity(newIntent);
+            this.finish();
         }
         else
         {

@@ -48,7 +48,7 @@ class ImageGameModel {
                 }
             }
             parser.close();
-            //randomise rounds
+
             Collections.shuffle(gameData);
 
         } catch (Exception e) {

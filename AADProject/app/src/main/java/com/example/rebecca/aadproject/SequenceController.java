@@ -139,6 +139,7 @@ public class SequenceController {
                 bundle.putString("game", "Sequence");
                 newIntent.putExtras(bundle);
                 _screen.startActivity(newIntent);
+                _screen.finish();
             }
         }
     }

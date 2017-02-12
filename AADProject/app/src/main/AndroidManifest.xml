@@ -19,7 +19,6 @@
         <activity android:name=".ProfileScreen" />
         <activity android:name=".TutorialScreen" />
         <activity android:name=".SettingScreen" />
-        <activity android:name=".GenScoreScreen" />
         <activity android:name=".ImgScoreScreen" />
         <activity android:name=".SequenceScreen" />
         <activity android:name=".PairsGame" />

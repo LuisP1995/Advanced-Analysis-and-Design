@@ -76,7 +76,7 @@ class ImageGamePresenter {
         bundle.putString("game", "Image");
         newIntent.putExtras(bundle);
         imageGameScreen.startActivity(newIntent);
-
+        imageGameScreen.finish();
     }
 
     private void loadNextRound() {
