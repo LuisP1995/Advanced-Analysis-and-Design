@@ -2,5 +2,8 @@
 <resources>
     <dimen name="Font">36sp</dimen>
     <dimen name="imageSize">200dp</dimen>
-    <dimen name="graphHeight">200dp</dimen>
+    <dimen name="graphHeight">250dp</dimen>
+    <dimen name="fontScore">50sp</dimen>
+    <dimen name="buttonGap">144dp</dimen>
+
 </resources>

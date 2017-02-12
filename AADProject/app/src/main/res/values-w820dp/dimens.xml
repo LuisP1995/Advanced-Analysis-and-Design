@@ -5,6 +5,7 @@
     <dimen name="activity_horizontal_margin">64dp</dimen>
     <dimen name="Font">36sp</dimen>
     <dimen name="imageSize">150dp</dimen>
-    <dimen name="graphHeight">150dp</dimen>
-
+    <dimen name="graphHeight">200dp</dimen>
+    <dimen name="fontScore">36sp</dimen>
+    <dimen name="buttonGap">64dp</dimen>
 </resources>

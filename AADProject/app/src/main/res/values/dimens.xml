@@ -4,4 +4,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="Font">16sp</dimen>
     <dimen name="imageSize">100dp</dimen>
+    <dimen name="buttonGap">64dp</dimen>
 </resources>

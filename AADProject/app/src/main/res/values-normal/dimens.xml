@@ -3,5 +3,6 @@
     <dimen name="Font">16sp</dimen>
     <dimen name="imageSize">100dp</dimen>
     <dimen name="graphHeight">150dp</dimen>
-
+    <dimen name="fontScore">26sp</dimen>
+    <dimen name="buttonGap">64dp</dimen>
 </resources>
