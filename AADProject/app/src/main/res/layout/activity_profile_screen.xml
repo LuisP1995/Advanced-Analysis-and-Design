@@ -141,7 +141,8 @@
         android:textSize="@dimen/fontGeneral"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -151,6 +152,7 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/username_text"
         android:text="Name"
-        android:textSize="@dimen/fontGeneral"/>
+        android:textSize="@dimen/fontGeneral"
+        android:textColor="@android:color/black"/>
 
 </RelativeLayout>

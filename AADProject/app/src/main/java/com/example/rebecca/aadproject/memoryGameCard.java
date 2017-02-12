@@ -19,9 +19,9 @@ public class MemoryGameCard extends Button //creation of custom button object in
 {
     private static final int gamePixelDensity = 175;
     //information obtained from the pairsGame activity
-    private int row;
-    private int column;
-    private int imageID;
+    private int _row;
+    private int _column;
+    private int _imageID;
 
     //some game logic
     protected boolean isFlipped = false;
@@ -41,12 +41,10 @@ public class MemoryGameCard extends Button //creation of custom button object in
      */
     public MemoryGameCard(Context gameScreen, int row, int column, int imageID)
     {
-
-
         super(gameScreen);
-        this.row = row;
-        this.column = column;
-        this.imageID = imageID;
+        _row = row;
+        _column = column;
+        _imageID = imageID;
 
         //AppCompatDrawableManager ensures compatible android type is used
         frontSide = AppCompatDrawableManager.get().getDrawable(gameScreen,imageID); //image is generated and assigned in the game activity
@@ -55,8 +53,11 @@ public class MemoryGameCard extends Button //creation of custom button object in
 
         //generate the games layout in the game activity
         GridLayout.LayoutParams gameLayout = new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
-        gameLayout.width = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
-        gameLayout.height = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
+//        gameLayout.width = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
+//        gameLayout.height = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
+
+        gameLayout.width = (getResources().getDisplayMetrics().widthPixels -200) /4;
+        gameLayout.height = (getResources().getDisplayMetrics().heightPixels -400) /4 ;
 
         setLayoutParams(gameLayout);
     }
@@ -98,7 +99,7 @@ public class MemoryGameCard extends Button //creation of custom button object in
 
     public int getImageID()
     {
-        return imageID;
+        return _imageID;
     }
 
     public Drawable getFrontSide() {

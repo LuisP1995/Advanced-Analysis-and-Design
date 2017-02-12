@@ -1,6 +1,7 @@
 package com.example.rebecca.aadproject;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -21,7 +22,6 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
  */
 
 public class SequenceController {
-    private ProfileModel _profModel;
     private int _round;
     private SequenceScreen _screen;
     private List<ImageButton> _buttonList;
@@ -34,7 +34,7 @@ public class SequenceController {
         _screen = sequenceScreen;
         _userInput = new ArrayList<>();
         _round = 1;
-        _profModel = new ProfileModel(_screen);
+        ProfileModel profileModel= new ProfileModel(_screen);
     }
 
     public void SetupGame() {
@@ -121,25 +121,35 @@ public class SequenceController {
                 ImageButton button = _buttonList.get(i);
                 Integer inputId = _userInput.get(i);
                 if (button.getId() == inputId){
-                    _score++;
+                    _score+= 5;
                 }
             }
-            Toast.makeText(_screen.getApplicationContext(), "Score: " + _score, Toast.LENGTH_SHORT).show(); // To be deleted
-            //bonus if round 5 and score 24
+            SetScoreOnScreen();
             if (_round != 5) {
                 _round++;
                 nextRound();
             }
             else
             {
-                _profModel.updateSequenceScore(_score);
-                _profModel.saveProfile(false);
+                if(_score == 120){
+                    Toast.makeText(_screen.getApplicationContext(), "Bonus Points Rewarded", Toast.LENGTH_SHORT).show();
+                    _score += 20;
+                }
 
-                Intent newIntent = new Intent(_screen, GenScoreScreen.class);
-                newIntent.putExtra(EXTRA_MESSAGE, Integer.toString(_score));
+                Intent newIntent = new Intent(_screen, ImageGameCompletionScreen.class);
+                Bundle bundle = new Bundle();
+                bundle.putFloat("newScore", _score);
+                bundle.putString("game", "Sequence");
+                newIntent.putExtras(bundle);
                 _screen.startActivity(newIntent);
+                _screen.finish();
             }
         }
+    }
+
+    private void SetScoreOnScreen() {
+        TextView scoreButton = (TextView) _screen.findViewById(R.id.seqScore);
+        scoreButton.setText("Score: " + _score);
     }
 
     private void nextRound() {
