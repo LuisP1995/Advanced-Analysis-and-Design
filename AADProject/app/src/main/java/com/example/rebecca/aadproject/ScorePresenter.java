@@ -15,10 +15,6 @@ public class ScorePresenter {
     protected float[] _graphData;
     protected String _game;
 
-    public ScorePresenter(){
-
-    }
-
     public ScorePresenter(ImageGameCompletionScreen compScreen, float newScore, String game){
         _score = newScore;
         _compScreen = compScreen;

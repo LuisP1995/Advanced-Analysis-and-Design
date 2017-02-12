@@ -11,20 +11,20 @@ import android.widget.Toast;
 
 public class ProfileCreateScreen extends AppCompatActivity {
 
-    private ProfileCreationPresenter pcp;
-    private int avatar = -1;
-    private String userName = "";
+    private ProfileCreationPresenter _pcp;
+    private int _avatar = -1;
+    private String _userName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_create_screen);
 
-        pcp = new ProfileCreationPresenter(this);
+        _pcp = new ProfileCreationPresenter(this);
         SetAvatarButtonListeners();
         SetSubmitButtonListener();
 
-        if(pcp.profileExist()) {
+        if(_pcp.profileExist()) {
             Intent newIntent = new Intent(ProfileCreateScreen.this, MainScreen.class);
             startActivity(newIntent);
         }
@@ -38,7 +38,7 @@ public class ProfileCreateScreen extends AppCompatActivity {
             public void onClick(View v) {
 
                 EditText textField = (EditText)findViewById(R.id.username);
-                userName = textField.getText().toString();
+                _userName = textField.getText().toString();
 
                 if(profileValid()) {
                     createNewProfile();
@@ -57,7 +57,7 @@ public class ProfileCreateScreen extends AppCompatActivity {
         avt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatar = 1;
+                _avatar = 1;
             }
         });
 
@@ -65,7 +65,7 @@ public class ProfileCreateScreen extends AppCompatActivity {
         avt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatar = 2;
+                _avatar = 2;
             }
         });
 
@@ -73,7 +73,7 @@ public class ProfileCreateScreen extends AppCompatActivity {
         avt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatar = 3;
+                _avatar = 3;
             }
         });
 
@@ -81,16 +81,16 @@ public class ProfileCreateScreen extends AppCompatActivity {
         avt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatar = 4;
+                _avatar = 4;
             }
         });
     }
 
     protected boolean profileValid() {
-        return (userName != "" && avatar != -1);
+        return (_userName != "" && _avatar != -1);
     }
 
     protected void createNewProfile() {
-        pcp.createNewProfile(userName, avatar);
+        _pcp.createNewProfile(_userName, _avatar);
     }
 }

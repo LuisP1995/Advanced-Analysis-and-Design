@@ -14,20 +14,20 @@ import java.util.Collections;
 
 class ImageGameModel {
 
-    private Context mContext;
-    private static int rounds = 0;
+    private Context _mContext;
+    private static int ROUNDS = 0;
     private static final int NUM_WORDS_ROUND = 5;
-    private ArrayList<String[]> gameData = new ArrayList<String[]>();
+    private ArrayList<String[]> _gameData = new ArrayList<String[]>();
 
     ImageGameModel (Context context) {
-        mContext = context;
-        rounds = 0;
+        _mContext = context;
+        ROUNDS = 0;
         loadDataFromFile();
     }
 
     private void loadDataFromFile() {
         try {
-            Resources res = mContext.getResources();
+            Resources res = _mContext.getResources();
             XmlResourceParser parser = res.getXml(R.xml.imagegamewords);
             while (parser.next() != XmlPullParser.END_DOCUMENT) {
                 if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -43,13 +43,13 @@ class ImageGameModel {
                         data = parser.nextText();
                         tempData[j] = data;
                     }
-                    gameData.add(tempData);
-                    rounds++;
+                    _gameData.add(tempData);
+                    ROUNDS++;
                 }
             }
             parser.close();
 
-            Collections.shuffle(gameData);
+            Collections.shuffle(_gameData);
 
         } catch (Exception e) {
             // TODO need to deal with this
@@ -58,6 +58,6 @@ class ImageGameModel {
     }
 
     String[] getRound(int round) {
-        return (round < rounds ? gameData.get(round) : null);
+        return (round < ROUNDS ? _gameData.get(round) : null);
     }
 }

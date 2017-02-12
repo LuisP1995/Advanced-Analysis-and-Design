@@ -2,7 +2,6 @@ package com.example.rebecca.aadproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -15,13 +14,13 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_game_complition_screen);
+        setContentView(R.layout.activity_game_complition_screen);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
             String game = extras.getString("game");
             if (game.equals("Image")) {
-                ScorePresenter imageCompPres = new ImageGameCompletionPresenter(this,
+                ScorePresenter imageCompPres = new GameCompletionPresenter(this,
                         extras.getFloat("newScore"), game,
                         (String[][]) extras.getSerializable("wrongAnswers"));
             }
@@ -29,7 +28,6 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
                 ScorePresenter compPres = new ScorePresenter(this,extras.getFloat("newScore"), game);
             }
         }
-
     }
 
     void setScore(float newScore) {

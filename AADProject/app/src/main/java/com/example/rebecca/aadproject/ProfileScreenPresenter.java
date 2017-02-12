@@ -1,52 +1,49 @@
 package com.example.rebecca.aadproject;
 
-import java.io.IOException;
-
 /**
  * Created by Adam on 05/01/2017.
  */
 
 class ProfileScreenPresenter {
-    private ProfileModel profileModel;
+    private ProfileModel _profileModel;
 
     ProfileScreenPresenter(ProfileScreen profileScreen){
-        profileModel = new ProfileModel(profileScreen.getApplicationContext());
+        _profileModel = new ProfileModel(profileScreen.getApplicationContext());
         loadProfile();
-
     }
 
     float[] getPairsScoresData() {
-        return profileModel.getPairsScores();
+        return _profileModel.getPairsScores();
     }
-    int getPairsGamesPlayed() {return profileModel.getPairsPlays();}
+    int getPairsGamesPlayed() {return _profileModel.getPairsPlays();}
     int getPairsAverage() {
-        return getAverageScore(profileModel.getPairsScores());
+        return getAverageScore(_profileModel.getPairsScores());
     }
 
 
     float[] getSequenceScoresData() {
-        return profileModel.getSequenceScores();
+        return _profileModel.getSequenceScores();
     }
-    int getSequenceGamesPlayed() {return profileModel.getSequencePlays();}
+    int getSequenceGamesPlayed() {return _profileModel.getSequencePlays();}
     int getSequenceAverage() {
-        return getAverageScore(profileModel.getSequenceScores());
+        return getAverageScore(_profileModel.getSequenceScores());
     }
 
     float[] getImageScoresData() {
-        return profileModel.getImageScores();
+        return _profileModel.getImageScores();
     }
-    int getImageGamesPlayed() {return profileModel.getImagePlays();}
+    int getImageGamesPlayed() {return _profileModel.getImagePlays();}
     int getImageAverage() {
-        return getAverageScore(profileModel.getImageScores());
+        return getAverageScore(_profileModel.getImageScores());
     }
 
     String getUserName(){
-        return profileModel.getUserName();
+        return _profileModel.getUserName();
     }
 
     private boolean loadProfile() {
-        profileModel.loadProfile();
-        return profileModel.checkProfileExists();
+        _profileModel.loadProfile();
+        return _profileModel.checkProfileExists();
     }
 
     private int getAverageScore(float [] scores) {
@@ -57,7 +54,4 @@ class ProfileScreenPresenter {
         }
         return Math.round(scores[scores.length-1]);
     }
-
-
-
 }

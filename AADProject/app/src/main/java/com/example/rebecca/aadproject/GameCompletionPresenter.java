@@ -1,6 +1,5 @@
 package com.example.rebecca.aadproject;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,13 +10,13 @@ import android.widget.TextView;
  * Controls what the completion screen looks like and handles button events.
  */
 
-class ImageGameCompletionPresenter extends ScorePresenter {
+class GameCompletionPresenter extends ScorePresenter {
 
     private String[][] _wrongAnswers;
     private int _wrongWordIndex = 0;
 
-    public ImageGameCompletionPresenter(ImageGameCompletionScreen compScreen, float newScore,
-                          String game, String[][] wrongAnswers) {
+    public GameCompletionPresenter(ImageGameCompletionScreen compScreen, float newScore,
+                                   String game, String[][] wrongAnswers) {
         super(compScreen, newScore, game);
         _wrongAnswers = wrongAnswers;
         _wrongWordIndex = 0;
@@ -51,7 +50,7 @@ class ImageGameCompletionPresenter extends ScorePresenter {
         done_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _compScreen.setContentView(R.layout.activity_image_game_complition_screen); //should close activity
+                _compScreen.setContentView(R.layout.activity_game_complition_screen); //should close activity
                 SetupCompletionScreen();
                 UpdateScore();
                 GeneralButtonListeners();

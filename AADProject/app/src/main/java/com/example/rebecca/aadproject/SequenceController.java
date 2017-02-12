@@ -22,7 +22,6 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
  */
 
 public class SequenceController {
-    private ProfileModel _profModel;
     private int _round;
     private SequenceScreen _screen;
     private List<ImageButton> _buttonList;
@@ -35,7 +34,7 @@ public class SequenceController {
         _screen = sequenceScreen;
         _userInput = new ArrayList<>();
         _round = 1;
-        _profModel = new ProfileModel(_screen);
+        ProfileModel profileModel= new ProfileModel(_screen);
     }
 
     public void SetupGame() {
