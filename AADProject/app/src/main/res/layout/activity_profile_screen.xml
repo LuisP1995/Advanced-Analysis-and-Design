@@ -53,7 +53,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/pairsGp"
-                        android:textSize="@dimen/Font"
+                        android:textSize="@dimen/fontGeneral"
                         android:textColor="@android:color/black" />
 
                     <TextView
@@ -61,7 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/pairsAvg"
-                        android:textSize="@dimen/Font"
+                        android:textSize="@dimen/fontGeneral"
                         android:textColor="@android:color/black" />
 
                     <com.jjoe64.graphview.GraphView
@@ -83,7 +83,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/seqGp"
-                        android:textSize="@dimen/Font"
+                        android:textSize="@dimen/fontGeneral"
                         android:textColor="@android:color/black" />
 
                     <TextView
@@ -91,7 +91,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/seqAvg"
-                        android:textSize="@dimen/Font"
+                        android:textSize="@dimen/fontGeneral"
                         android:textColor="@android:color/black" />
 
                     <com.jjoe64.graphview.GraphView
@@ -112,7 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/imgGp"
-                        android:textSize="@dimen/Font"
+                        android:textSize="@dimen/fontGeneral"
                         android:textColor="@android:color/black" />
 
                     <TextView
@@ -120,7 +120,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/imgAvg"
-                        android:textSize="@dimen/Font"
+                        android:textSize="@dimen/fontGeneral"
                         android:textColor="@android:color/black" />
 
                     <com.jjoe64.graphview.GraphView
@@ -138,7 +138,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="30sp"
+        android:textSize="@dimen/fontGeneral"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -150,6 +150,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/username_text"
-        android:text="name" />
+        android:text="Name"
+        android:textSize="@dimen/fontGeneral"/>
 
 </RelativeLayout>

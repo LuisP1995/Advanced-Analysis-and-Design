@@ -19,7 +19,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/ImageComplitionPlayAgain"
-        android:textSize="@dimen/Font"
+        android:textSize="@dimen/fontGeneral"
         android:textAllCaps="false"/>
 
     <TextView
@@ -53,7 +53,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/imageComplitionQuit"
-        android:textSize="@dimen/Font"
+        android:textSize="@dimen/fontGeneral"
         android:textAllCaps="false"/>
 
     <TextView
@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="@dimen/Font"
+        android:textSize="@dimen/fontGeneral"
         />
 
     <com.jjoe64.graphview.GraphView
@@ -78,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView5"
-        android:textSize="@dimen/Font"
+        android:textSize="@dimen/fontGeneral"
         android:layout_marginTop="50dp"
         android:layout_below="@+id/imageCompletionScore"
         android:layout_alignParentLeft="true"
@@ -89,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageComplitionWrong"
-        android:textSize="@dimen/Font"
+        android:textSize="@dimen/fontGeneral"
         android:textAllCaps="false"
         android:layout_below="@+id/imageCompletionGraph"
         android:layout_alignParentLeft="true"

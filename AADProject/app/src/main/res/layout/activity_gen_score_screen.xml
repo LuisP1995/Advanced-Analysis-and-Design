@@ -20,7 +20,7 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/play"
         android:textAllCaps="false"
-        android:textSize="@dimen/Font"/>
+        android:textSize="@dimen/fontGeneral"/>
 
     <Button
         android:text="Quit"
@@ -31,14 +31,14 @@
         android:layout_alignParentStart="true"
         android:id="@+id/quit"
         android:textAllCaps="false"
-        android:textSize="@dimen/Font"/>
+        android:textSize="@dimen/fontGeneral"/>
 
     <TextView
         android:text="Score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="@dimen/Font"/>
+        android:textSize="@dimen/fontGeneral"/>
 
     <TextView
         android:text="50"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView5"
-        android:textSize="@dimen/Font"
+        android:textSize="@dimen/fontGeneral"
         android:layout_marginTop="59dp"
         android:layout_below="@+id/score"
         android:layout_alignParentLeft="true"
