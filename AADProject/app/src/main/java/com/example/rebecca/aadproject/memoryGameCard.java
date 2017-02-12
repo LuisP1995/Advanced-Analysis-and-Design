@@ -17,15 +17,15 @@ import android.widget.GridLayout;
 
 public class MemoryGameCard extends Button //creation of custom button object inheriter
 {
-    private static final int gamePixelDensity = 100;
+    private static final int gamePixelDensity = 150;
     //information obtained from the pairsGame activity
     private int row;
     private int column;
-    private int imageID; //position in the grid
+    private int imageID;
 
     //some game logic
-    protected boolean isFlipped;
-    protected boolean isMatch;
+    protected boolean isFlipped = false;
+    protected boolean isMatch = false;
 
     //the storage for our images
     protected Drawable frontSide;
@@ -67,13 +67,18 @@ public class MemoryGameCard extends Button //creation of custom button object in
      */
     public void flipCard()
     {
-        if (isFlipped) //case 1; the card has already been flipped
+        if (isMatch) //case 1; the card has already been flipped
         {
             setBackground(backSide);
             isFlipped = false;
         }
 
-        else //case 2: the card has not been flipped
+        if(isFlipped) //case 2: the front image is showing
+        {
+            setBackground(backSide);
+            isFlipped = false;
+        }
+        else //case 3: the card has not been flipped
         {
             setBackground(frontSide);
             isFlipped = true;
