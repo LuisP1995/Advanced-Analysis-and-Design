@@ -26,15 +26,15 @@ class ImageGameCompletionPresenter extends ScorePresenter {
     }
 
     private void SetButtonListeners() {
-        Button replay_button = (Button) _compScreen.findViewById(R.id.ImageComplitionPlayAgain);
-        replay_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newIntent = new Intent(_compScreen, ImageGameScreen.class);
-                _compScreen.startActivity(newIntent);
-            }
-
-        });
+//        Button replay_button = (Button) _compScreen.findViewById(R.id.ImageComplitionPlayAgain);
+//        replay_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent newIntent = new Intent(_compScreen, ImageGameScreen.class);
+//                _compScreen.startActivity(newIntent);
+//            }
+//
+//        });
 
         if (_wrongAnswers[_wrongWordIndex][0] != null) {
             Button wrongWords_button = (Button) _compScreen.findViewById(R.id.imageComplitionWrong);

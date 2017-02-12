@@ -41,18 +41,32 @@ public class ScorePresenter {
 
         });
 
-//        Button replay_button = (Button) _compScreen.findViewById(R.id.ImageComplitionPlayAgain);
-//        replay_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent newIntent = new Intent(_compScreen, SequenceScreen.class);
-//                _compScreen.startActivity(newIntent);
-//            }
-//
-//        });
-
         Button wrongWords_button = (Button) _compScreen.findViewById(R.id.imageComplitionWrong);
         wrongWords_button.setVisibility(View.INVISIBLE);
+
+        if(_game.equals("Sequence")) {
+            SetReplayButton(SequenceScreen.class);
+        }
+        else if(_game.equals("Pairs"))
+        {
+            SetReplayButton(PairsGame.class);
+        }
+        else if (_game.equals("Image"))
+        {
+            SetReplayButton(ImageGameScreen.class);
+        }
+    }
+
+    private void SetReplayButton(final Class newScreen) {
+        Button replay_button = (Button) _compScreen.findViewById(R.id.ImageComplitionPlayAgain);
+        replay_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newIntent = new Intent(_compScreen,  newScreen);
+                _compScreen.startActivity(newIntent);
+            }
+
+        });
     }
 
     protected void SetupCompletionScreen() {

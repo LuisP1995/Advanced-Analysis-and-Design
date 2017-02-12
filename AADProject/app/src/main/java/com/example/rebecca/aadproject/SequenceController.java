@@ -1,6 +1,7 @@
 package com.example.rebecca.aadproject;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -132,11 +133,11 @@ public class SequenceController {
             }
             else
             {
-                _profModel.updateSequenceScore(_score);
-                _profModel.saveProfile(false);
-
-                Intent newIntent = new Intent(_screen, GenScoreScreen.class);
-                newIntent.putExtra(EXTRA_MESSAGE, Integer.toString(_score));
+                Intent newIntent = new Intent(_screen, ImageGameCompletionScreen.class);
+                Bundle bundle = new Bundle();
+                bundle.putFloat("newScore", _score);
+                bundle.putString("game", "Sequence");
+                newIntent.putExtras(bundle);
                 _screen.startActivity(newIntent);
             }
         }

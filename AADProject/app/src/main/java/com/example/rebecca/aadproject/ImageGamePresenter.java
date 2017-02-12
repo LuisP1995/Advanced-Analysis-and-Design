@@ -73,6 +73,7 @@ class ImageGamePresenter {
         Bundle bundle = new Bundle();
         bundle.putFloat("newScore", score);
         bundle.putSerializable("wrongAnswers", wrongAnswers);
+        bundle.putString("game", "Image");
         newIntent.putExtras(bundle);
         imageGameScreen.startActivity(newIntent);
 
