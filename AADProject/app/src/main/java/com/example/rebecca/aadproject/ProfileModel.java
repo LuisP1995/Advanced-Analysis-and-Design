@@ -25,7 +25,7 @@ class ProfileModel {
 
     private static final String FILE_NAME = "profile.xml";
     private Context _mContext;
-    private static int HISTORY_AMOUNT = 5;
+    private static final int HISTORY_AMOUNT = 5;
 
     private String _userName;
     private int _avatar;

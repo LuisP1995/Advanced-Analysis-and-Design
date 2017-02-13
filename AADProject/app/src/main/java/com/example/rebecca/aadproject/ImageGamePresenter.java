@@ -15,7 +15,7 @@ import java.util.Collections;
 
 class ImageGamePresenter {
 
-    private static final int MAX_ROUNDS = 3;
+    private static final int MAX_ROUNDS = 5;
     private static final int MAX_TRIES = 3;
     private static final int ROUND_SCORE = 30;
 

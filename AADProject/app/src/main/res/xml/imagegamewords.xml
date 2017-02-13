@@ -21,4 +21,18 @@
         <word>helicopter</word>
         <word>boat</word>
     </round>
+    <round>
+        <imageName>stop</imageName>
+        <correctWord>stop</correctWord>
+        <word>services</word>
+        <word>parking</word>
+        <word>road works</word>
+    </round>
+    <round>
+        <imageName>giveway</imageName>
+        <correctWord>give way</correctWord>
+        <word>crossing</word>
+        <word>toilet</word>
+        <word>stop</word>
+    </round>
 </imageGame>
