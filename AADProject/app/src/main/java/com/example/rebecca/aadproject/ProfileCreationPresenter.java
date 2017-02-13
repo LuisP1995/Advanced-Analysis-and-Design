@@ -8,26 +8,26 @@ import android.content.Intent;
  */
 
 class ProfileCreationPresenter {
-    private ProfileModel profileModel;
-    private ProfileCreateScreen profileScreen;
+    private ProfileModel _profileModel;
+    private ProfileCreateScreen _profileScreen;
 
     ProfileCreationPresenter(ProfileCreateScreen profileScreen){
-        this.profileScreen = profileScreen;
-        profileModel = new ProfileModel(this.profileScreen);
+        _profileScreen = profileScreen;
+        _profileModel = new ProfileModel(_profileScreen);
     }
 
     boolean profileExist(){
-        return profileModel.checkProfileExists();
+        return _profileModel.checkProfileExists();
     }
 
     void createNewProfile(String userName, int avatar) {
-        profileModel.clear();
-        profileModel.setUserName(userName);
-        profileModel.setAvatar(avatar);
-        boolean successSave = profileModel.saveProfile(false);
+        _profileModel.clear();
+        _profileModel.setUserName(userName);
+        _profileModel.setAvatar(avatar);
+        boolean successSave = _profileModel.saveProfile(false);
         if(!successSave) {
-            Intent newIntent = new Intent(profileScreen, ProfileCreateScreen.class);
-            profileScreen.startActivity(newIntent);
+            Intent newIntent = new Intent(_profileScreen, ProfileCreateScreen.class);
+            _profileScreen.startActivity(newIntent);
         }
     }
 }

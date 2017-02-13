@@ -60,7 +60,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/seqRound"
-        android:textSize="@dimen/fontGeneral"/>
+        android:textSize="@dimen/fontGeneral"
+        android:textColor="@android:color/black"/>
 
     <ImageButton
         android:layout_width="@dimen/imageSize"
@@ -92,6 +93,17 @@
         android:layout_below="@+id/seqRound"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Score: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/seqImg5"
+        android:layout_alignStart="@+id/seqImg5"
+        android:id="@+id/seqScore"
+        android:textSize="@dimen/fontGeneral"
+        android:textColor="@android:color/black"/>
 
 
 </RelativeLayout>

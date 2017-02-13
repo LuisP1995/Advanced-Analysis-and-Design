@@ -27,7 +27,7 @@ class MainPresenter {
 
     private void lockGames() {
         mainScreen.setSequenceGameState(validateGameUnlock(profileModel.getPairsScores(), profileModel.getPairsPlays()));
-        mainScreen.setImageGameState(validateGameUnlock(profileModel.getSequenceScores(), profileModel.getSequencePlays()));
+        //mainScreen.setImageGameState(validateGameUnlock(profileModel.getSequenceScores(), profileModel.getSequencePlays()));
     }
 
     private boolean validateGameUnlock(float[] scores, int plays) {
@@ -41,7 +41,7 @@ class MainPresenter {
             }
         }
 
-        return plays >= REQUIRED_PLAYS || totalScore/scoreCount >= REQUIRED_SCORE;
+        return plays >= REQUIRED_PLAYS || (scoreCount > 0 && totalScore/scoreCount >= REQUIRED_SCORE);
     }
 
     private void setButtonListeners() {

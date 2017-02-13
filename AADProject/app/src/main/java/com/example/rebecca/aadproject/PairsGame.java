@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
@@ -26,59 +25,48 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
     static final int correct =  5;
     static final int gameRows = 4;
     static final int gameColumns = 4;
+    static final int totalPairs = 8;
     static final int cardsInPlay = (gameColumns * gameRows)/2; //need half of the numbers as we need two of each card image
-    private int cardsInGrid = gameRows * gameColumns; //the number of cards in the 4x4 game space
+    private int _cardsInGrid = gameRows * gameColumns; //the number of cards in the 4x4 game space
 
     //Stores the selections made by the user to compare
-    protected MemoryGameCard firstSelection;
-    protected MemoryGameCard secondSelection;
+    protected MemoryGameCard _firstSelection;
+    protected MemoryGameCard _secondSelection;
 
 
-    private MemoryGameCard[] cardsInGame;
-    private int[] cardGraphics; //takes an ID from the drawable folder
-    private int[] cardLocations; //The locations of the cards in the 4x4 grid
+    private MemoryGameCard[] _cardsInGame;
+    private int[] _cardGraphics; //takes an ID from the drawable folder
+    private int[] _cardLocations; //The locations of the cards in the 4x4 grid
 
-    protected int score = 0;
-    private boolean isBusy = false; //checks if the app is already doing something
+    protected int _score = 0;
+    private int _pairsFound;
+    private boolean _isBusy = false; //checks if the app is already doing something
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pairs_game);
 
-        Button exitBtn = (Button)findViewById(R.id.pairsExit);
-
-        exitBtn.setOnClickListener(new View.OnClickListener() //navigate back to the main screen
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent newIntent = new Intent(PairsGame.this, GenScoreScreen.class);
-                startActivity(newIntent);
-            }
-        });
-
         GridLayout pairsGameLayout = (GridLayout) findViewById(R.id.activity_pairs_game);
 
-        cardsInGame = new MemoryGameCard[cardsInGrid];
-        cardGraphics = new int[cardsInPlay];
-        cardLocations = new int[cardsInGrid];
+        _cardsInGame = new MemoryGameCard[_cardsInGrid];
+        _cardGraphics = new int[cardsInPlay];
+        _cardLocations = new int[_cardsInGrid];
 
         loadGraphics();
 
-        for (int i =0; i < cardsInGrid; i++)//loop to fill the 4x4 grid space
+        for (int i = 0; i < _cardsInGrid; i++)//loop to fill the 4x4 grid space
         {
-            cardLocations[i] = i % cardsInPlay; //duplicates the card across the grid
+            _cardLocations[i] = i % cardsInPlay; //duplicates the card across the grid
         }
 
         shuffleCards();
         generateCards(pairsGameLayout);
-
-
+        _pairsFound = 1;
     }
     /*
     generates cards which are then placed onto the game grid
-    param: gameSpace -
+    param: gameSpace - the gridlayout for which the cards will occupy when generated
     return: none
      */
     protected void generateCards(GridLayout gameSpace)
@@ -88,9 +76,9 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
             for (int j = 0; j < gameColumns; j++)
             {
                 int currentPosition = (i*gameColumns)+j;
-                MemoryGameCard newCard = new MemoryGameCard(this, i, j, cardGraphics[cardLocations[currentPosition]]);// translate this two dimensional array into a one dimensional object
+                MemoryGameCard newCard = new MemoryGameCard(this, i, j, _cardGraphics[_cardLocations[currentPosition]]);// translate this two dimensional array into a one dimensional object
                 gameSpace.setId(View.generateViewId()); //let android generate the IDs, could remove/lessen naming conflicts
-                cardsInGame[currentPosition] = newCard; //save the card, just in case
+                _cardsInGame[currentPosition] = newCard; //save the card, just in case
                 newCard.setOnClickListener(this);
                 gameSpace.addView(newCard);
             }
@@ -106,30 +94,29 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
     {
         Random rand = new Random();
 
-        for (int i =0; i < cardsInGrid; i++)//shuffles the cards into
+        for (int i = 0; i < _cardsInGrid; i++)//shuffles the cards into
         {
-            int target = cardLocations[i];//card to swap
+            int target = _cardLocations[i];//card to swap
 
-            int swapZone = rand.nextInt(cardsInGrid);//the range of where the value can go
+            int swapZone = rand.nextInt(_cardsInGrid);//the range of where the value can go
 
-            cardLocations[i] = cardLocations[swapZone];
-            cardLocations[swapZone] = target;
+            _cardLocations[i] = _cardLocations[swapZone];
+            _cardLocations[swapZone] = target;
         }
     }
 
 
     /*
     updates the score field in the corner of the game screen
-    param: correct - the value in which the user matches a pair
     param:none
     return: none
      */
     public void updateScore()
     {
         TextView scoreDisplay = (TextView) findViewById(R.id.pairsScore);
-        score += correct;
+        _score += correct;
         scoreDisplay.setText(" ");
-        scoreDisplay.setText(Integer.toString(score));
+        scoreDisplay.setText(Integer.toString(_score));
     }
 
     /*
@@ -139,21 +126,43 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
      */
     protected void loadGraphics()
     {
-        cardGraphics[0] = R.drawable.clubs2;
-        cardGraphics[1] = R.drawable.hearts_ace;
-        cardGraphics[2] = R.drawable.diamond6;
-        cardGraphics[3] = R.drawable.king_of_spades2;
-        cardGraphics[4] = R.drawable.clubs8;
-        cardGraphics[5] = R.drawable.hearts4;
-        cardGraphics[6] = R.drawable.diamond10;
-        cardGraphics[7] = R.drawable.spades_ace;
+        _cardGraphics[0] = R.drawable.clubs2;
+        _cardGraphics[1] = R.drawable.hearts_ace;
+        _cardGraphics[2] = R.drawable.diamond6;
+        _cardGraphics[3] = R.drawable.king_of_spades2;
+        _cardGraphics[4] = R.drawable.clubs8;
+        _cardGraphics[5] = R.drawable.hearts4;
+        _cardGraphics[6] = R.drawable.diamond10;
+        _cardGraphics[7] = R.drawable.spades_ace;
+    }
+
+    /*
+    checks if all pairs have been found and exits the activity;
+    if all pairs haven't been found increment the counter
+     */
+    protected void allPairsFound()
+    {
+        if (_pairsFound == totalPairs)
+        {
+            Intent newIntent = new Intent(PairsGame.this, ImageGameCompletionScreen.class);
+            Bundle bundle = new Bundle();
+            bundle.putFloat("newScore", _score);
+            bundle.putString("game", "Pairs");
+            newIntent.putExtras(bundle);
+            this.startActivity(newIntent);
+            this.finish();
+        }
+        else
+        {
+            _pairsFound ++;
+        }
     }
 
     @Override
     public void onClick(View view)
     {
 
-        if(isBusy)
+        if(_isBusy)
         {
             return; //the main thread is doing something
         }
@@ -165,33 +174,34 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
             return;
         }
 
-        if(firstSelection == null) //case: Selection hasn't been matched and the user has made no selections
+        if(_firstSelection == null) //case: Selection hasn't been matched and the user has made no selections
         {
-            firstSelection = gameCard;
-            firstSelection.flipCard();
+            _firstSelection = gameCard;
+            _firstSelection.flipCard();
             return;
         }
 
-        if(gameCard.getImageID() == firstSelection.getImageID()) //case: a match has been found
+        if(gameCard.getImageID() == _firstSelection.getImageID()) //case: a match has been found
         {
             gameCard.flipCard();
 
             //A match has been found so change their boolean values
             gameCard.setMatch(true);
-            firstSelection.setMatch(true);
+            _firstSelection.setMatch(true);
             //disabling the cards, so they cannot be used again
-            firstSelection.setEnabled(false);
+            _firstSelection.setEnabled(false);
             gameCard.setEnabled(false);
             updateScore();
-            firstSelection = null; //resets the selection, so the user can make another selction again
+            _firstSelection = null; //resets the selection, so the user can make another selction again
+            allPairsFound();
             return;
         }
 
         else //case: The selections by the user do not match
         {
-            secondSelection = gameCard;
-            secondSelection.flipCard();
-            isBusy = true; //prevents the user from crashing the program
+            _secondSelection = gameCard;
+            _secondSelection.flipCard();
+            _isBusy = true; //prevents the user from crashing the program
 
             /*
             this section is when both selections by the user are not a pair
@@ -205,12 +215,12 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
                 @Override
                 public void run()
                 {
-                    firstSelection.flipCard();
-                    secondSelection.flipCard();
-                    firstSelection = null;
-                    secondSelection = null;
+                    _firstSelection.flipCard();
+                    _secondSelection.flipCard();
+                    _firstSelection = null;
+                    _secondSelection = null;
 
-                    isBusy = false;
+                    _isBusy = false;
                 }
             }, 1000);
         }

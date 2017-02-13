@@ -27,17 +27,15 @@ public class TutorialScreen extends AppCompatActivity {
         if (message.equals("Pairs")){
             StartPairs();
         }
-        if (message.equals("Seq")){
+        else if (message.equals("Seq")){
             StartSeq();
         }
-        if (message.equals("Image")){
+        else if (message.equals("Image")){
             StartImg();
         }
     }
 
     private void StartImg() {
-        //Set step texts
-        //Set images
         String instruction = "1. Select the word that most accurately matches the picture.";
         TextView textview = (TextView)findViewById(R.id.step1);
         textview.setText(instruction);
@@ -88,6 +86,7 @@ public class TutorialScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent newIntent = new Intent(TutorialScreen.this, Screen);
                 startActivity(newIntent);
+                TutorialScreen.this.finish();
             }
         });
     }

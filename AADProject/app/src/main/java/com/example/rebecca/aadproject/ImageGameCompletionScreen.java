@@ -14,13 +14,20 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_game_complition_screen);
+        setContentView(R.layout.activity_game_complition_screen);
 
         Bundle extras = getIntent().getExtras();
         if(extras != null) {
-            ImageGameCompletionPresenter imageCompPres = new ImageGameCompletionPresenter(this, extras.getFloat("newScore"), (String[][])extras.getSerializable("wrongAnswers"));
+            String game = extras.getString("game");
+            if (game.equals("Image")) {
+                ScorePresenter imageCompPres = new GameCompletionPresenter(this,
+                        extras.getFloat("newScore"), game,
+                        (String[][]) extras.getSerializable("wrongAnswers"));
+            }
+            else{
+                ScorePresenter compPres = new ScorePresenter(this,extras.getFloat("newScore"), game);
+            }
         }
-
     }
 
     void setScore(float newScore) {
@@ -43,11 +50,6 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
         graph.addSeries(series);
     }
 
-    void disableWrongWords() {
-        Button wrongWords_button = (Button) findViewById(R.id.imageComplitionWrong);
-        wrongWords_button.setEnabled(false);
-    }
-
     void alterNextState(boolean enable) {
         Button next_button = (Button) findViewById(R.id.imageNextBtn);
         next_button.setEnabled(enable);
@@ -59,11 +61,14 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
     }
 
     private int getNewAverageScore(float[] data) {
-        for(int i = 0; i <data.length; i++) {
-            if(data[i] == 0) {
-                return i == 0 ? 0 : Math.round(data[i-1]);
+        if (data != null) {
+            for (int i = 0; i < data.length; i++) {
+                if (data[i] == 0) {
+                    return i == 0 ? 0 : Math.round(data[i - 1]);
+                }
             }
+            return Math.round(data[data.length - 1]);
         }
-        return Math.round(data[data.length-1]);
+        return 0;
     }
 }
