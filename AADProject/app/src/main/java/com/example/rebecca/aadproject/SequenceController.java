@@ -1,6 +1,11 @@
 package com.example.rebecca.aadproject;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,12 +34,15 @@ public class SequenceController {
     private List<Integer> _userInput;
     private Integer _score;
     private ArrayList<ImageButton> _unusedButton;
+    private boolean _sequenceFinished;
+    private Animation _animation;
 
     public SequenceController(SequenceScreen sequenceScreen) {
         _score = 0;
         _screen = sequenceScreen;
         _userInput = new ArrayList<>();
         _round = 1;
+        _sequenceFinished=false;
         ProfileModel profileModel= new ProfileModel(_screen);
     }
 
@@ -70,21 +78,17 @@ public class SequenceController {
         _buttonList = buttonList;
         SetRound();
 
-        Button but = (Button) _screen.findViewById(R.id.seqStartButton);
-        but.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PlaySequence();
-                view.setVisibility(View.INVISIBLE);
-            }
-        });
 
         for(final ImageButton button: _buttonList){
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    _userInput.add(view.getId());
-                    CheckRoundEnd();
+                    if(_animation.hasEnded()) {
+                        _userInput.add(view.getId());
+                        view.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.ADD);
+                        view.setEnabled(false);
+                        CheckRoundEnd();
+                    }
                 }
             });
         }
@@ -93,8 +97,12 @@ public class SequenceController {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    _userInput.add(view.getId());
-                    CheckRoundEnd();
+                    if(_animation.hasEnded()) {
+                        _userInput.add(view.getId());
+                        view.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.ADD);
+                        view.setEnabled(false);
+                        CheckRoundEnd();
+                    }
                 }
             });
         }
@@ -107,13 +115,17 @@ public class SequenceController {
 
     public void PlaySequence() {
         int count =1;
+
+        Animation newAnimation = null;
         for (ImageButton button: _buttonList) {
-            Animation newAnimation = new AlphaAnimation(1,0);
+            newAnimation = new AlphaAnimation(1,0);
             newAnimation.setDuration(1500);
             newAnimation.setStartOffset(1500 *count);
             button.startAnimation(newAnimation);
             count ++;
         }
+        _animation = newAnimation;
+
     }
 
     public void CheckRoundEnd(){
@@ -148,7 +160,7 @@ public class SequenceController {
         }
     }
 
-    private void SetScoreOnScreen() {
+    protected void SetScoreOnScreen() {
         TextView scoreButton = (TextView) _screen.findViewById(R.id.seqScore);
         scoreButton.setText("Score: " + _score);
     }
@@ -162,8 +174,16 @@ public class SequenceController {
             _buttonList.add(button);
             _unusedButton.remove(button);
         }
+        ResetButtons();
         Collections.shuffle(_buttonList);
         PlaySequence();
+    }
+
+    private void ResetButtons() {
+        for(ImageButton button: _buttonList){
+            button.getBackground().clearColorFilter();
+            button.setEnabled(true);
+        }
     }
 
     protected List<ImageButton> getButtonList(){return _buttonList;}

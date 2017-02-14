@@ -17,6 +17,8 @@ import org.mockito.stubbing.OngoingStubbing;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -36,6 +38,9 @@ public class SequenceControllerTests {
     @Mock
     Button button;
 
+    @Mock
+    SequenceController scmock;
+
     @Before
     public void setup(){
         when(sequenceScreen.findViewById(R.id.seqRound)).thenReturn(textView);
@@ -45,15 +50,28 @@ public class SequenceControllerTests {
         when(sequenceScreen.findViewById(R.id.seqImg4)).thenReturn(imagebutton);
         when(sequenceScreen.findViewById(R.id.seqImg5)).thenReturn(imagebutton);
         when(sequenceScreen.findViewById(R.id.seqImg6)).thenReturn(imagebutton);
-        when(sequenceScreen.findViewById(R.id.seqStartButton)).thenReturn(button);
     }
 
     @Test
-    public void genericTest()throws Exception{
+    public void CorrectButtonSetup()throws Exception{
 //        when(sequenceScreen.findViewById(Mockito.anyInt())).thenReturn(imagebutton);
 
         SequenceController sc = new SequenceController(sequenceScreen);
         sc.SetupGame();
+
+
         assertThat(sc.getButtonList().size(),is(3));
+    }
+
+    @Test
+    public void RoundUpdates()throws Exception{
+
+        SequenceController sc = new SequenceController(sequenceScreen);
+
+//        imagebutton.callOnClick();
+//        sc.CheckRoundEnd();
+
+        sc.SetupGame();
+
     }
 }

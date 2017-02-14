@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 
+import android.os.Debug;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Xml;

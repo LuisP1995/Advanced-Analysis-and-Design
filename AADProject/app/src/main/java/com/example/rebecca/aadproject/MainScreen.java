@@ -28,6 +28,4 @@ public class MainScreen extends AppCompatActivity {
         Button img_button = (Button) findViewById(R.id.img_button);
         img_button.setEnabled(state);
     }
-
-
 }
