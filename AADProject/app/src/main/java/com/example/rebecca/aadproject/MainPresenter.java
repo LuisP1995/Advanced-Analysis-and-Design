@@ -13,12 +13,12 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 class MainPresenter {
     private ProfileModel profileModel;
-    private MainScreen mainScreen;
+    private MainScreen _mainScreen;
     private static final int REQUIRED_PLAYS = 10;
     private static final int REQUIRED_SCORE = 50;
 
     MainPresenter(MainScreen mainScreen) {
-        this.mainScreen = mainScreen;
+        _mainScreen = mainScreen;
         setButtonListeners();
         profileModel = new ProfileModel(mainScreen.getApplicationContext());
         lockGames();
@@ -26,8 +26,8 @@ class MainPresenter {
     }
 
     private void lockGames() {
-        mainScreen.setSequenceGameState(validateGameUnlock(profileModel.getPairsScores(), profileModel.getPairsPlays()));
-        mainScreen.setImageGameState(validateGameUnlock(profileModel.getSequenceScores(), profileModel.getSequencePlays()));
+        _mainScreen.setSequenceGameState(validateGameUnlock(profileModel.getPairsScores(), profileModel.getPairsPlays()));
+        _mainScreen.setImageGameState(validateGameUnlock(profileModel.getSequenceScores(), profileModel.getSequencePlays()));
     }
 
     private boolean validateGameUnlock(float[] scores, int plays) {
@@ -45,59 +45,59 @@ class MainPresenter {
     }
 
     private void setButtonListeners() {
-        Button settings_button = (Button) mainScreen.findViewById(R.id.settings_button);
+        Button settings_button = (Button) _mainScreen.findViewById(R.id.settings_button);
         settings_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newIntent = new Intent(mainScreen, SettingScreen.class);
-                mainScreen.startActivity(newIntent);
+                Intent newIntent = new Intent(_mainScreen, SettingScreen.class);
+                _mainScreen.startActivity(newIntent);
             }
         });
 
-        Button profile_button = (Button) mainScreen.findViewById(R.id.profile_button);
+        Button profile_button = (Button) _mainScreen.findViewById(R.id.profile_button);
         profile_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newIntent = new Intent(mainScreen, ProfileScreen.class);
-                mainScreen.startActivity(newIntent);
+                Intent newIntent = new Intent(_mainScreen, ProfileScreen.class);
+                _mainScreen.startActivity(newIntent);
             }
         });
 
-        Button info_button = (Button) mainScreen.findViewById(R.id.info_button);
+        Button info_button = (Button) _mainScreen.findViewById(R.id.info_button);
         info_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mainScreen.getApplicationContext(), "Information Here", Toast.LENGTH_LONG).show();
+                Toast.makeText(_mainScreen.getApplicationContext(), "Information Here", Toast.LENGTH_LONG).show();
             }
         });
 
-        Button pairs_button = (Button) mainScreen.findViewById(R.id.pairs_button);
+        Button pairs_button = (Button) _mainScreen.findViewById(R.id.pairs_button);
         pairs_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newIntent = new Intent(mainScreen, TutorialScreen.class);
+                Intent newIntent = new Intent(_mainScreen, TutorialScreen.class);
                 newIntent.putExtra(EXTRA_MESSAGE, "Pairs");
-                mainScreen.startActivity(newIntent);
+                _mainScreen.startActivity(newIntent);
             }
         });
 
-        Button seq_button = (Button) mainScreen.findViewById(R.id.seq_button);
+        Button seq_button = (Button) _mainScreen.findViewById(R.id.seq_button);
         seq_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newIntent = new Intent(mainScreen, TutorialScreen.class);
-                newIntent.putExtra(EXTRA_MESSAGE, "Seq");
-                mainScreen.startActivity(newIntent);
+                Intent newIntent = new Intent(_mainScreen, TutorialScreen.class);
+                newIntent.putExtra(EXTRA_MESSAGE, "Sequence");
+                _mainScreen.startActivity(newIntent);
             }
         });
 
-        Button img_button = (Button) mainScreen.findViewById(R.id.img_button);
+        Button img_button = (Button) _mainScreen.findViewById(R.id.img_button);
         img_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newIntent = new Intent(mainScreen, TutorialScreen.class);
+                Intent newIntent = new Intent(_mainScreen, TutorialScreen.class);
                 newIntent.putExtra(EXTRA_MESSAGE, "Image");
-                mainScreen.startActivity(newIntent);
+                _mainScreen.startActivity(newIntent);
             }
         });
     }
