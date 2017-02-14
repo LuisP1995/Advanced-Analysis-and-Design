@@ -54,24 +54,19 @@ public class SequenceControllerTests {
 
     @Test
     public void CorrectButtonSetup()throws Exception{
-//        when(sequenceScreen.findViewById(Mockito.anyInt())).thenReturn(imagebutton);
-
         SequenceController sc = new SequenceController(sequenceScreen);
         sc.SetupGame();
-
 
         assertThat(sc.getButtonList().size(),is(3));
     }
 
     @Test
-    public void RoundUpdates()throws Exception{
-
+    public void AllButtonsUpdated()throws Exception{
         SequenceController sc = new SequenceController(sequenceScreen);
 
-//        imagebutton.callOnClick();
-//        sc.CheckRoundEnd();
-
         sc.SetupGame();
+
+        verify(sequenceScreen, times(7)).findViewById(Mockito.anyInt());
 
     }
 }
