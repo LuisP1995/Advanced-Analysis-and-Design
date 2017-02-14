@@ -2,6 +2,7 @@ package com.example.rebecca.aadproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -164,4 +165,6 @@ public class SequenceController {
         Collections.shuffle(_buttonList);
         PlaySequence();
     }
+
+    protected List<ImageButton> getButtonList(){return _buttonList;}
 }
