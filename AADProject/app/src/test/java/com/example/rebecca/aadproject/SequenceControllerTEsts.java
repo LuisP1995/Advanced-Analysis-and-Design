@@ -38,9 +38,6 @@ public class SequenceControllerTests {
     @Mock
     Button button;
 
-    @Mock
-    SequenceController scmock;
-
     @Before
     public void setup(){
         when(sequenceScreen.findViewById(R.id.seqRound)).thenReturn(textView);

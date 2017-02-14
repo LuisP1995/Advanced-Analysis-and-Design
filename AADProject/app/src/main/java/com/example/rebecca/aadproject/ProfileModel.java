@@ -269,7 +269,7 @@ class ProfileModel {
             os.close();
 
         } catch(Exception e) {
-            Log.e("Error", e.getMessage());
+//            Log.e("Error", e.getMessage());
             if(!reWrite) {
                 saveProfile(true); // attempt another save
             } else {
