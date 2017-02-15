@@ -15,7 +15,6 @@ import android.widget.ImageButton;
 
 public class MemoryGameCard extends ImageButton //creation of custom button object inheriter
 {
-    private static final int gamePixelDensity = 175;
     //information obtained from the pairsGame activity
     private int _row;
     private int _column;
@@ -51,8 +50,6 @@ public class MemoryGameCard extends ImageButton //creation of custom button obje
 
         //generate the games layout in the game activity
         GridLayout.LayoutParams gameLayout = new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
-//        gameLayout.width = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
-//        gameLayout.height = (int) getResources().getDisplayMetrics().density * gamePixelDensity;
 
         gameLayout.width = (getResources().getDisplayMetrics().widthPixels -200) /4;
         gameLayout.height = (getResources().getDisplayMetrics().heightPixels -400) /4 ;
