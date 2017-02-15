@@ -204,7 +204,7 @@ class ProfileModel {
             }
             is.close();
         } catch (Exception e) {
-            Log.e("Error", e.getMessage());
+            //Log.e("Error", e.getMessage());
             clear(); // forces create new profile
         }
     }
