@@ -24,7 +24,7 @@ public class PairsController
     private static final int CORRECT =  5;
     private static final int GAME_ROWS = 4;
     private static final int GAME_COLUMNS = 4;
-    private static final int TOTAL_PAIRS = 8;
+    private int totalPairs = (GAME_COLUMNS * GAME_ROWS)/2;
     private static final int CARDS_IN_PLAY = (GAME_COLUMNS * GAME_ROWS)/2; //need half of the numbers as we need two of each card image
     private int _cardsInGrid = GAME_ROWS * GAME_COLUMNS; //the number of cards in the 4x4 game space
 
@@ -33,7 +33,6 @@ public class PairsController
     protected MemoryGameCard _secondSelection;
 
 
-    private MemoryGameCard[] _cardsInGame;
     private int[] _cardGraphics; //takes an ID from the drawable folder
     private int[] _cardLocations; //The locations of the cards in the 4x4 grid
 
@@ -54,7 +53,6 @@ public class PairsController
         _secondSelection = null;
         _pairsFound = 1;
         _screen = pairsGame;
-        _cardsInGame = new MemoryGameCard[_cardsInGrid];
         _cardGraphics = new int[CARDS_IN_PLAY];
         _cardLocations = new int[_cardsInGrid];
     }
@@ -76,7 +74,9 @@ public class PairsController
         shuffleCards();
         generateCards(pairsGameLayout);
     }
+    /*
 
+     */
     protected void loadGraphics()
     {
         _cardGraphics[0] = R.drawable.clubs2;
@@ -110,8 +110,8 @@ public class PairsController
     }
 
     /*
-    updates the score field in the corner of the game screen
-    param:none
+    updates the score field in the game screen
+    param: none
     return: none
     */
     private void updateScore()
@@ -123,7 +123,7 @@ public class PairsController
     }
 
     /*
-    generates cards which are then placed onto the game grid
+    generates cards which are then placed onto the game grid during runtime
     param: gameSpace - the gridlayout for which the cards will occupy when generated
     return: none
     */
@@ -136,7 +136,6 @@ public class PairsController
                 int currentPosition = (i* GAME_COLUMNS)+j;
                 MemoryGameCard newCard = new MemoryGameCard(_screen, i, j, _cardGraphics[_cardLocations[currentPosition]]);// translate this two dimensional array into a one dimensional object
                 gameSpace.setId(View.generateViewId()); //let android generate the IDs, could remove/lessen naming conflicts
-                _cardsInGame[currentPosition] = newCard; //save the card, just in case
                 newCard.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -175,7 +174,6 @@ public class PairsController
                                 updateScore();
                                 _firstSelection = null; //resets the selection, so the user can make another selction again
                                 allPairsFound();
-                                return;
                             }
 
                             else //case: The selections by the user do not match
@@ -187,7 +185,7 @@ public class PairsController
                             /*
                             this section is when both selections by the user are not a pair
                             we store the second in the secondSelection field and then set the card back to the back
-                            and reset their values so the user can continue to play the game, a delay is incorperated so the user
+                            and reset their values so the user can continue to play the game, a delay is incorporated so the user
                             can see their selections for 1 second before disappearing
                              */
                                 final Handler handler = new Handler();
@@ -222,7 +220,7 @@ public class PairsController
  */
     protected void allPairsFound()
     {
-        if (_pairsFound == TOTAL_PAIRS)
+        if (_pairsFound == totalPairs)
         {
             Intent newIntent = new Intent(_screen, ImageGameCompletionScreen.class);
             Bundle bundle = new Bundle();
