@@ -10,13 +10,13 @@ import android.widget.TextView;
  * Controls what the completion screen looks like and handles button events.
  */
 
-class GameCompletionPresenter extends ScorePresenter {
+class GameCompletionController extends ScorePresenter {
 
     private String[][] _wrongAnswers;
     private int _wrongWordIndex = 0;
 
-    public GameCompletionPresenter(ImageGameCompletionScreen compScreen, float newScore,
-                                   String game, String[][] wrongAnswers) {
+    public GameCompletionController(GameCompletionScreen compScreen, float newScore,
+                                    String game, String[][] wrongAnswers) {
         super(compScreen, newScore, game);
         _wrongAnswers = wrongAnswers;
         _wrongWordIndex = 0;

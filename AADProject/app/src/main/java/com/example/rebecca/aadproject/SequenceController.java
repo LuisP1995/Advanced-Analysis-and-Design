@@ -2,16 +2,11 @@ package com.example.rebecca.aadproject;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +15,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 /**
  * Created by Rebecca on 09/02/2017.
@@ -34,7 +27,6 @@ public class SequenceController {
     private List<Integer> _userInput;
     private Integer _score;
     private ArrayList<ImageButton> _unusedButton;
-    private boolean _sequenceFinished;
     private Animation _animation;
 
     public SequenceController(SequenceScreen sequenceScreen) {
@@ -42,7 +34,6 @@ public class SequenceController {
         _screen = sequenceScreen;
         _userInput = new ArrayList<>();
         _round = 1;
-        _sequenceFinished=false;
         ProfileModel profileModel= new ProfileModel(_screen);
     }
 
@@ -149,7 +140,7 @@ public class SequenceController {
                     _score += 20;
                 }
 
-                Intent newIntent = new Intent(_screen, ImageGameCompletionScreen.class);
+                Intent newIntent = new Intent(_screen, GameCompletionScreen.class);
                 Bundle bundle = new Bundle();
                 bundle.putFloat("newScore", _score);
                 bundle.putString("game", "Sequence");

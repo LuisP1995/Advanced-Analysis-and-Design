@@ -15,7 +15,7 @@ public class TutorialScreen extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String message = bundle.getString(EXTRA_MESSAGE);
 
-        TutorialPresenter tutorialPresenter = new TutorialPresenter(this);
-        tutorialPresenter.showTutorial(message);
+        TutorialController tutorialController = new TutorialController(this);
+        tutorialController.showTutorial(message);
     }
 }

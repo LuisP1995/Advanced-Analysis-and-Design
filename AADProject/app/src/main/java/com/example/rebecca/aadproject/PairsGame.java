@@ -144,7 +144,7 @@ public class PairsGame extends AppCompatActivity implements View.OnClickListener
     {
         if (_pairsFound == totalPairs)
         {
-            Intent newIntent = new Intent(PairsGame.this, ImageGameCompletionScreen.class);
+            Intent newIntent = new Intent(PairsGame.this, GameCompletionScreen.class);
             Bundle bundle = new Bundle();
             bundle.putFloat("newScore", _score);
             bundle.putString("game", "Pairs");

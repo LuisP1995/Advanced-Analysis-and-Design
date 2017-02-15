@@ -69,7 +69,7 @@ class ImageGamePresenter {
 
     private void displayCompletionScreen(){
 
-        Intent newIntent = new Intent(_imageGameScreen, ImageGameCompletionScreen.class);
+        Intent newIntent = new Intent(_imageGameScreen, GameCompletionScreen.class);
         Bundle bundle = new Bundle();
         bundle.putFloat("newScore", score);
         bundle.putSerializable("wrongAnswers", wrongAnswers);

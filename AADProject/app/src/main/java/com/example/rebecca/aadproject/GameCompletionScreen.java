@@ -9,7 +9,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-public class ImageGameCompletionScreen extends AppCompatActivity {
+public class GameCompletionScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class ImageGameCompletionScreen extends AppCompatActivity {
         if(extras != null) {
             String game = extras.getString("game");
             if (game.equals("Image")) {
-                ScorePresenter imageCompPres = new GameCompletionPresenter(this,
+                ScorePresenter imageCompPres = new GameCompletionController(this,
                         extras.getFloat("newScore"), game,
                         (String[][]) extras.getSerializable("wrongAnswers"));
             }

@@ -10,12 +10,12 @@ import android.widget.Button;
 
 public class ScorePresenter {
     protected float _score;
-    protected ImageGameCompletionScreen _compScreen;
+    protected GameCompletionScreen _compScreen;
     protected ProfileModel _profModel;
     protected float[] _graphData;
     protected String _game;
 
-    public ScorePresenter(ImageGameCompletionScreen compScreen, float newScore, String game){
+    public ScorePresenter(GameCompletionScreen compScreen, float newScore, String game){
         _score = newScore;
         _compScreen = compScreen;
         _profModel = new ProfileModel(compScreen.getApplicationContext());

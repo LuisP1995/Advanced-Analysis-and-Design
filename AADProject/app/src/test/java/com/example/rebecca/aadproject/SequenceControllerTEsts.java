@@ -66,4 +66,8 @@ public class SequenceControllerTests {
         verify(sequenceScreen, times(7)).findViewById(Mockito.anyInt());
 
     }
+
+    //check if has border
+
+    //check the round updates
 }
