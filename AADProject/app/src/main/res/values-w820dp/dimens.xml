@@ -1,7 +1,7 @@
 <resources>
     <dimen name="activity_horizontal_margin">64dp</dimen>
     <dimen name="fontGeneral">36sp</dimen>
-    <dimen name="imageSize">150dp</dimen>
+    <dimen name="imageSize">125dp</dimen>
     <dimen name="graphHeight">200dp</dimen>
     <dimen name="fontScore">36sp</dimen>
     <dimen name="buttonGap">64dp</dimen>
