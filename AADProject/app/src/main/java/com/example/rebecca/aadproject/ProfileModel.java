@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 
+import android.os.Debug;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Xml;
@@ -25,7 +26,7 @@ class ProfileModel {
 
     private static final String FILE_NAME = "profile.xml";
     private Context _mContext;
-    private static int HISTORY_AMOUNT = 5;
+    private static final int HISTORY_AMOUNT = 5;
 
     private String _userName;
     private int _avatar;
@@ -153,9 +154,9 @@ class ProfileModel {
 
     void loadProfile() {
         Pair<float [], Integer> data;
-        XmlPullParser parser = Xml.newPullParser();
 
         try {
+            XmlPullParser parser = Xml.newPullParser();
             FileInputStream is = _mContext.openFileInput(FILE_NAME);
             parser.setInput(new InputStreamReader(is));
             while (parser.next() != XmlPullParser.END_TAG) {
@@ -204,7 +205,7 @@ class ProfileModel {
             }
             is.close();
         } catch (Exception e) {
-            Log.e("Error", e.getMessage());
+//            Log.e("Error", e.getMessage());
             clear(); // forces create new profile
         }
     }
@@ -268,7 +269,7 @@ class ProfileModel {
             os.close();
 
         } catch(Exception e) {
-            Log.e("Error", e.getMessage());
+//            Log.e("Error", e.getMessage());
             if(!reWrite) {
                 saveProfile(true); // attempt another save
             } else {

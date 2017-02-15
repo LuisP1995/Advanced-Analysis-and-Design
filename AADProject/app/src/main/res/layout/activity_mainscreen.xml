@@ -39,12 +39,12 @@
         android:layout_below="@+id/profile_button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="@dimen/marginGapTop"
         android:id="@+id/pairs_button"
-        android:layout_toLeftOf="@+id/profile_button"
-        android:layout_toStartOf="@+id/profile_button"
         android:textSize="@dimen/fontGeneral"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="Sequence"
@@ -53,7 +53,7 @@
         android:layout_below="@+id/pairs_button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp"
+        android:layout_marginTop="@dimen/marginGapTop"
         android:id="@+id/seq_button"
         android:layout_alignRight="@+id/pairs_button"
         android:layout_alignEnd="@+id/pairs_button"
@@ -67,7 +67,7 @@
         android:layout_below="@+id/seq_button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="@dimen/marginGapTop"
         android:id="@+id/img_button"
         android:layout_alignRight="@+id/seq_button"
         android:layout_alignEnd="@+id/seq_button"

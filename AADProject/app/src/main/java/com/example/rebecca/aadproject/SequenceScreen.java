@@ -2,6 +2,8 @@ package com.example.rebecca.aadproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 public class SequenceScreen extends AppCompatActivity {
 
@@ -12,5 +14,6 @@ public class SequenceScreen extends AppCompatActivity {
 
         SequenceController contr = new SequenceController(this);
         contr.SetupGame();
+        contr.PlaySequence();
     }
 }

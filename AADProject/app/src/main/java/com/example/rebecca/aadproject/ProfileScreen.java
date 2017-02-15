@@ -1,7 +1,10 @@
 package com.example.rebecca.aadproject;
 
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -27,7 +30,26 @@ public class ProfileScreen extends AppCompatActivity {
 
         TextView textview = (TextView)findViewById(R.id.username_text);
         textview.setText(_psp.getUserName());
+        setAvatar();
         //ScoreSetup
+    }
+
+    private void setAvatar() {
+        ImageView imageButton = (ImageView)findViewById(R.id.avatarImage);
+        int avatar = _psp.getAvatar();
+
+        if(avatar == 1){
+            imageButton.setImageResource(R.mipmap.purplediamond);
+        }
+        if(avatar == 2){
+            imageButton.setImageResource(R.mipmap.bluetriangle);
+        }
+        if(avatar == 3){
+            imageButton.setImageResource(R.mipmap.greensqr);
+        }
+        if(avatar == 4){
+            imageButton.setImageResource(R.mipmap.orangecircle);
+        }
     }
 
     protected void GraphSetup() {

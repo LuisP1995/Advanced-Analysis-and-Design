@@ -54,4 +54,8 @@ class ProfileScreenPresenter {
         }
         return Math.round(scores[scores.length-1]);
     }
+
+    int getAvatar(){
+        return _profileModel.getAvatar();
+    }
 }
