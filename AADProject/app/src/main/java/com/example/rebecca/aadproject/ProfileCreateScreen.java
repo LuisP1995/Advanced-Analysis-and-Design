@@ -52,6 +52,7 @@ public class ProfileCreateScreen extends AppCompatActivity {
                     createNewProfile();
                     Intent newIntent = new Intent(ProfileCreateScreen.this, MainScreen.class);
                     startActivity(newIntent);
+                    ProfileCreateScreen.this.finish();
                 }else
                 {
                     Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();

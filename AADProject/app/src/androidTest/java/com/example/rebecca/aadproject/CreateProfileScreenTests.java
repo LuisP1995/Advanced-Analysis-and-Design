@@ -58,6 +58,12 @@ public class CreateProfileScreenTests {
             }
         });
 
-        assertFalse("Submit closes profile create screen.", profileCreateScreen.hasWindowFocus());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        assertTrue("Submit closes profile create screen.", profileCreateScreen.isDestroyed());
     }
 }
