@@ -52,7 +52,6 @@ class ImageGameModel {
             Collections.shuffle(_gameData);
 
         } catch (Exception e) {
-            // TODO need to deal with this
             System.err.println(e.getMessage());
         }
     }

@@ -21,12 +21,12 @@ public class ScoreController {
         _profModel = new ProfileModel(compScreen.getApplicationContext());
         _game = game;
 
-        SetupCompletionScreen();
-        UpdateScore();
-        GeneralButtonListeners();
+        setupCompletionScreen();
+        updateScore();
+        generalButtonListeners();
     }
 
-    protected void GeneralButtonListeners() {
+    protected void generalButtonListeners() {
         Button quit_button = (Button) _compScreen.findViewById(R.id.imageComplitionQuit);
         quit_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,19 +42,19 @@ public class ScoreController {
         wrongWords_button.setVisibility(View.INVISIBLE);
 
         if(_game.equals("Sequence")) {
-            SetReplayButton(SequenceScreen.class);
+            setReplayButton(SequenceScreen.class);
         }
         else if(_game.equals("Pairs"))
         {
-            SetReplayButton(PairsGame.class);
+            setReplayButton(PairsGame.class);
         }
         else if (_game.equals("Image"))
         {
-            SetReplayButton(ImageGameScreen.class);
+            setReplayButton(ImageGameScreen.class);
         }
     }
 
-    private void SetReplayButton(final Class newScreen) {
+    private void setReplayButton(final Class newScreen) {
         Button replay_button = (Button) _compScreen.findViewById(R.id.ImageComplitionPlayAgain);
         replay_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,16 +67,16 @@ public class ScoreController {
         });
     }
 
-    protected void SetupCompletionScreen() {
-        LoadImageScores();
+    protected void setupCompletionScreen() {
+        loadImageScores();
     }
 
-    protected void LoadImageScores() {
-        _graphData = _profModel.GetScores(_game);
+    protected void loadImageScores() {
+        _graphData = _profModel.getScores(_game);
     }
 
-    protected void UpdateScore() {
-        _profModel.UpdateScore(_game, (int)_score);
+    protected void updateScore() {
+        _profModel.updateScore(_game, (int)_score);
         _profModel.saveProfile(false);
         _compScreen.setScore(_score);
         _compScreen.setGraph(_graphData);

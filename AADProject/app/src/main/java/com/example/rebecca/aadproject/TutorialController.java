@@ -3,7 +3,6 @@ package com.example.rebecca.aadproject;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -19,42 +18,42 @@ public class TutorialController {
 
     public void showTutorial(String message) {
         if (message.equals("Pairs")){
-            StartPairs();
+            startPairs();
         }
         else if (message.equals("Sequence")){
-            StartSeq();
+            startSeq();
         }
         else if (message.equals("Image")){
-            StartImg();
+            startImg();
         }
     }
 
-    private void StartImg() {
+    private void startImg() {
         instructFirst("Select the word that most accurately matches the picture.");
         instructSecond("If you get the wrong word, then that word will be disabled. Select another.");
         instructThird("You will have a total of 3 tries per round.");
         instructFourth("Hit \"Proceed\" to play!");
 
-        SetProceedButton(ImageGameScreen.class);
+        setProceedButton(ImageGameScreen.class);
     }
 
-    private void StartSeq() {
+    private void startSeq() {
         instructFirst("Watch the sequence play");
         instructSecond("Wait for the sequence to finish");
         instructThird("Press the buttons in the same order of the sequence shown");
         instructFourth("Hit \"Proceed\" to play!");
 
-        SetProceedButton(SequenceScreen.class);
+        setProceedButton(SequenceScreen.class);
     }
 
-    private void StartPairs() {
+    private void startPairs() {
         instructFirst("Click on a tile");
         instructSecond("Match the tiles with the same image");
         instructThird("Take as few turns as possible");
         instructFourth("Hit \"Proceed\" to play!");
 
         instructFirst("Pairs Instructions");
-        SetProceedButton(PairsGame.class);
+        setProceedButton(PairsGame.class);
     }
 
     private void instructFourth(String instruction) {
@@ -77,7 +76,7 @@ public class TutorialController {
         textview.setText("1. " +instruction);
     }
 
-    private void SetProceedButton(final Class Screen) {
+    private void setProceedButton(final Class Screen) {
         Button button = (Button)_screen.findViewById(R.id.proceed);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

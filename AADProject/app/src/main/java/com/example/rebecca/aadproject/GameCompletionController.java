@@ -21,10 +21,10 @@ class GameCompletionController extends ScoreController {
         _wrongAnswers = wrongAnswers;
         _wrongWordIndex = 0;
 
-        SetButtonListeners();
+        setButtonListeners();
     }
 
-    private void SetButtonListeners() {
+    private void setButtonListeners() {
 
         if (_wrongAnswers[_wrongWordIndex][0] != null) {
             Button wrongWords_button = (Button) _compScreen.findViewById(R.id.imageComplitionWrong);
@@ -51,10 +51,10 @@ class GameCompletionController extends ScoreController {
             @Override
             public void onClick(View v) {
                 _compScreen.setContentView(R.layout.activity_game_complition_screen); //should close activity
-                SetupCompletionScreen();
-                UpdateScore();
-                GeneralButtonListeners();
-                SetButtonListeners();
+                setupCompletionScreen();
+                updateScore();
+                generalButtonListeners();
+                setButtonListeners();
             }
         });
 

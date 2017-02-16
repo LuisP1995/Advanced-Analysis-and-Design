@@ -23,8 +23,8 @@ public class ProfileScreen extends AppCompatActivity {
 
         _psp = new ProfileScreenController(this);
 
-        TabSetup();
-        GraphSetup();
+        tabSetup();
+        graphSetup();
 
         TextView textview = (TextView)findViewById(R.id.username_text);
         textview.setText(_psp.getUserName());
@@ -50,7 +50,7 @@ public class ProfileScreen extends AppCompatActivity {
         }
     }
 
-    protected void GraphSetup() {
+    protected void graphSetup() {
         GraphView graph = (GraphView) findViewById(R.id.pairsGraph);
         TextView gamesPlayed = (TextView) findViewById(R.id.pairsGp);
         TextView averageScore = (TextView) findViewById(R.id.pairsAvg);
@@ -109,7 +109,7 @@ public class ProfileScreen extends AppCompatActivity {
         averageScore.setText(toDisplay);
     }
 
-    private void TabSetup() {
+    private void tabSetup() {
         TabHost host = (TabHost)findViewById(R.id.tabHost);
         host.setup();
 

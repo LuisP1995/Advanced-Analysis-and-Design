@@ -302,7 +302,7 @@ class ProfileModel {
         return new Pair<>(scores, plays);
     }
 
-    public float[] GetScores(String game) {
+    public float[] getScores(String game) {
         switch(game){
             case "Sequence": return getSequenceScores();
             case "Pairs": return getPairsScores();
@@ -311,7 +311,7 @@ class ProfileModel {
         return new float[]{};
      }
 
-    public void UpdateScore(String game, int score) {
+    public void updateScore(String game, int score) {
         switch(game){
             case "Sequence": updateSequenceScore(score);
                 break;

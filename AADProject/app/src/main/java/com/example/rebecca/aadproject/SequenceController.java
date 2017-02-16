@@ -44,7 +44,7 @@ public class SequenceController {
         _sequenceModel = new SequenceModel(_screen);
     }
 
-    public void SetupGame() {
+    public void setupGame() {
 
         _sequenceModel.setButtons();
 
@@ -53,7 +53,7 @@ public class SequenceController {
         Collections.shuffle(buttonList);
 
         _buttonList = buttonList;
-        SetRound();
+        setRound();
 
         setButtonListeners();
     }
@@ -67,7 +67,7 @@ public class SequenceController {
                         _userInput.add(view.getId());
                         view.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.ADD);
                         view.setEnabled(false);
-                        CheckRoundEnd();
+                        checkRoundEnd();
                     }
                 }
             });
@@ -81,19 +81,19 @@ public class SequenceController {
                         _userInput.add(view.getId());
                         view.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.ADD);
                         view.setEnabled(false);
-                        CheckRoundEnd();
+                        checkRoundEnd();
                     }
                 }
             });
         }
     }
 
-    private void SetRound() {
+    private void setRound() {
         TextView text = (TextView) _screen.findViewById(R.id.seqRound);
         text.setText("Round: " + Integer.toString(_round));
     }
 
-    public void PlaySequence() {
+    public void playSequence() {
         int count =1;
 
         Animation newAnimation = null;
@@ -108,7 +108,7 @@ public class SequenceController {
 
     }
 
-    public void CheckRoundEnd(){
+    public void checkRoundEnd(){
         if (_userInput.size() == _buttonList.size()){
             for (int i =0;i<_buttonList.size();i++){
                 ImageButton button = _buttonList.get(i);
@@ -117,7 +117,7 @@ public class SequenceController {
                     _score+= POINT;
                 }
             }
-            SetScoreOnScreen();
+            setScoreOnScreen();
             if (_round != MAX_ROUNDS) {
                 _round++;
                 nextRound();
@@ -140,26 +140,26 @@ public class SequenceController {
         }
     }
 
-    protected void SetScoreOnScreen() {
+    protected void setScoreOnScreen() {
         TextView scoreButton = (TextView) _screen.findViewById(R.id.seqScore);
         scoreButton.setText("Score: " + _score);
     }
 
     private void nextRound() {
         _userInput = new ArrayList<>();
-        SetRound();
+        setRound();
         if (_unusedButton.size() != 0) {
             ImageButton button = _unusedButton.get(0);
             button.setVisibility(View.VISIBLE);
             _buttonList.add(button);
             _unusedButton.remove(button);
         }
-        ResetButtons();
+        resetButtons();
         Collections.shuffle(_buttonList);
-        PlaySequence();
+        playSequence();
     }
 
-    private void ResetButtons() {
+    private void resetButtons() {
         for(ImageButton button: _buttonList){
             button.getBackground().clearColorFilter();
             button.setEnabled(true);
