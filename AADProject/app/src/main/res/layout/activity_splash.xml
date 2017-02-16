@@ -11,14 +11,4 @@
     tools:context="com.example.rebecca.aadproject.SplashScreen"
     android:background="@color/colorPrimary">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Splash Screen"
-        android:id="@+id/textView6"
-        android:textSize="@dimen/fontGeneral"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="@android:color/black"/>
-
 </RelativeLayout>

@@ -20,7 +20,6 @@ public class PairsController
     private PairsGame _screen;
 
     //just some static values
-    private static final int CORRECT =  10;
     private static final int GAME_ROWS = 4;
     private static final int GAME_COLUMNS = 4;
     private int totalPairs = (GAME_COLUMNS * GAME_ROWS)/2;
