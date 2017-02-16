@@ -35,7 +35,6 @@ public class TutorialController {
         instructThird("You will have a total of 3 tries per round.");
         instructFourth("Hit \"Proceed\" to play!");
 
-        SetImages();
         SetProceedButton(ImageGameScreen.class);
     }
 
@@ -45,7 +44,6 @@ public class TutorialController {
         instructThird("Press the buttons in the same order of the sequence shown");
         instructFourth("Hit \"Proceed\" to play!");
 
-        SetImages();
         SetProceedButton(SequenceScreen.class);
     }
 
@@ -55,14 +53,13 @@ public class TutorialController {
         instructThird("Take as few turns as possible");
         instructFourth("Hit \"Proceed\" to play!");
 
-        SetImages();
         instructFirst("Pairs Instructions");
         SetProceedButton(PairsGame.class);
     }
 
     private void instructFourth(String instruction) {
         TextView textview = (TextView)_screen.findViewById(R.id.step4);
-        textview.setText("4." + instruction);
+        textview.setText("4. " + instruction);
     }
 
     private void instructThird(String instruction) {
@@ -72,26 +69,12 @@ public class TutorialController {
 
     private void instructSecond(String instruction) {
         TextView textview = (TextView)_screen.findViewById(R.id.step2);
-        textview.setText("2." + instruction);
+        textview.setText("2. " + instruction);
     }
 
     private void instructFirst(String instruction) {
         TextView textview = (TextView)_screen.findViewById(R.id.step1);
         textview.setText("1. " +instruction);
-    }
-
-    private void SetImages() {
-        ImageView tutImage = (ImageView) _screen.findViewById(R.id.TutImg1);
-        tutImage.setVisibility(View.INVISIBLE);
-
-        tutImage = (ImageView) _screen.findViewById(R.id.TutImg2);
-        tutImage.setVisibility(View.INVISIBLE);
-
-        tutImage = (ImageView) _screen.findViewById(R.id.TutImg3);
-        tutImage.setVisibility(View.INVISIBLE);
-
-        tutImage = (ImageView) _screen.findViewById(R.id.TutImg4);
-        tutImage.setVisibility(View.INVISIBLE);
     }
 
     private void SetProceedButton(final Class Screen) {

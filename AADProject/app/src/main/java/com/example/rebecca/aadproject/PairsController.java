@@ -17,7 +17,6 @@ import java.util.Random;
 
 public class PairsController
 {
-    //
     private PairsGame _screen;
 
     //just some static values
@@ -246,6 +245,4 @@ public class PairsController
         }
         return 20;
     }
-
-
 }
