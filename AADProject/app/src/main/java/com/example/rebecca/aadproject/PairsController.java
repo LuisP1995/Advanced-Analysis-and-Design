@@ -222,7 +222,7 @@ public class PairsController
     {
         if (_pairsFound == totalPairs)
         {
-            Intent newIntent = new Intent(_screen, ImageGameCompletionScreen.class);
+            Intent newIntent = new Intent(_screen, GameCompletionScreen.class);
             Bundle bundle = new Bundle();
             bundle.putFloat("newScore", _score);
             bundle.putString("game", "Pairs");

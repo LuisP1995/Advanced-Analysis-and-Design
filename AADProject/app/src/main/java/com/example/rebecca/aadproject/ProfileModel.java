@@ -64,7 +64,7 @@ class ProfileModel {
     }
 
     boolean checkProfileExists() {
-        return (!_userName.isEmpty() && _avatar >= 0);
+        return (_userName != null && _userName != "" && _avatar >= 0);
     }
 
     void setUserName(String userName) {
