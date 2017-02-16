@@ -21,7 +21,7 @@ public class PairsController
     private PairsGame _screen;
 
     //just some static values
-    private static final int CORRECT =  5;
+    private static final int CORRECT =  10;
     private static final int GAME_ROWS = 4;
     private static final int GAME_COLUMNS = 4;
     private int totalPairs = (GAME_COLUMNS * GAME_ROWS)/2;
@@ -36,7 +36,7 @@ public class PairsController
     private int[] _cardGraphics; //takes an ID from the drawable folder
     private int[] _cardLocations; //The locations of the cards in the 4x4 grid
 
-    protected int _score;
+    protected int _turns;
     private int _pairsFound;
     private boolean _isBusy; //checks if the app is already doing something
 
@@ -47,7 +47,7 @@ public class PairsController
      */
     public PairsController(PairsGame pairsGame)
     {
-        _score = 0;
+        _turns = 0;
         _isBusy = false;
         _firstSelection = null;
         _secondSelection = null;
@@ -114,12 +114,12 @@ public class PairsController
     param: none
     return: none
     */
-    private void updateScore()
+    private void updateTurns()
     {
+        _turns++;
+
         TextView scoreDisplay = (TextView) _screen.findViewById(R.id.pairsScore);
-        _score += CORRECT;
-        scoreDisplay.setText(" ");
-        scoreDisplay.setText(Integer.toString(_score));
+        scoreDisplay.setText(Integer.toString(_turns));
     }
 
     /*
@@ -171,7 +171,7 @@ public class PairsController
                                 //disabling the cards, so they cannot be used again
                                 _firstSelection.setEnabled(false);
                                 gameCard.setEnabled(false);
-                                updateScore();
+                                updateTurns();
                                 _firstSelection = null; //resets the selection, so the user can make another selction again
                                 allPairsFound();
                             }
@@ -180,8 +180,8 @@ public class PairsController
                             {
                                 _secondSelection = gameCard;
                                 _secondSelection.flipCard();
+                                updateTurns();
                                 _isBusy = true; //prevents the user from crashing the program
-
                             /*
                             this section is when both selections by the user are not a pair
                             we store the second in the secondSelection field and then set the card back to the back
@@ -222,9 +222,10 @@ public class PairsController
     {
         if (_pairsFound == totalPairs)
         {
+            Integer score = calculateScore();
             Intent newIntent = new Intent(_screen, GameCompletionScreen.class);
             Bundle bundle = new Bundle();
-            bundle.putFloat("newScore", _score);
+            bundle.putFloat("newScore", score);
             bundle.putString("game", "Pairs");
             newIntent.putExtras(bundle);
             _screen.startActivity(newIntent);
@@ -234,6 +235,16 @@ public class PairsController
         {
             _pairsFound ++;
         }
+    }
+
+    private Integer calculateScore() {
+        if (_turns <= 15) {
+            return 60;
+        }
+        else if (_turns >= 16 && _turns <= 30){
+            return 40;
+        }
+        return 20;
     }
 
 

@@ -35,7 +35,7 @@
         android:id="@+id/scoreLabel"
         android:layout_row="8"
         android:layout_column="2"
-        android:text="Score: "
+        android:text="Turns: "
         android:textSize="@dimen/fontGeneral"
         android:textColor="@android:color/black"/>
 </GridLayout>
