@@ -13,7 +13,7 @@ import android.widget.ImageButton;
  * Created by Luis Parcon on 03/02/2017.
  */
 
-public class MemoryGameCard extends ImageButton //creation of custom imagebutton object
+public class PairsModel extends ImageButton //creation of custom imagebutton object
 {
     //information obtained from the pairsGame activity
     private int _row;
@@ -36,7 +36,7 @@ public class MemoryGameCard extends ImageButton //creation of custom imagebutton
     param: imageID - the resource value for the image
     return: none
      */
-    public MemoryGameCard(Context gameScreen, int row, int column, int imageID)
+    public PairsModel(Context gameScreen, int row, int column, int imageID)
     {
         super(gameScreen);
         _row = row;

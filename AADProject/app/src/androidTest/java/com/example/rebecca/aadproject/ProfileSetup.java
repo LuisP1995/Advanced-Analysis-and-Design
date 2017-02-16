@@ -8,7 +8,7 @@ import android.content.Context;
 
 public class ProfileSetup {
 
-    final static int NUMBER_GAMES = 5;
+    final static int NUMBER_GAMES = 10;
     final static int DEFAULT_SCORE = 10;
 
     ProfileModel profileModel;

@@ -29,8 +29,8 @@ public class PairsController
     private int _cardsInGrid = GAME_ROWS * GAME_COLUMNS; //the number of cards in the 4x4 game space
 
     //Stores the selections made by the user to compare
-    protected MemoryGameCard _firstSelection;
-    protected MemoryGameCard _secondSelection;
+    protected PairsModel _firstSelection;
+    protected PairsModel _secondSelection;
 
 
     private int[] _cardGraphics; //takes an ID from the drawable folder
@@ -134,7 +134,7 @@ public class PairsController
             for (int j = 0; j < GAME_COLUMNS; j++)
             {
                 int currentPosition = (i* GAME_COLUMNS)+j;
-                MemoryGameCard newCard = new MemoryGameCard(_screen, i, j, _cardGraphics[_cardLocations[currentPosition]]);// translate this two dimensional array into a one dimensional object
+                PairsModel newCard = new PairsModel(_screen, i, j, _cardGraphics[_cardLocations[currentPosition]]);// translate this two dimensional array into a one dimensional object
                 gameSpace.setId(View.generateViewId()); //let android generate the IDs, could remove/lessen naming conflicts
                 newCard.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -146,7 +146,7 @@ public class PairsController
                                 return; //the main thread is doing something
                             }
 
-                            MemoryGameCard gameCard = (MemoryGameCard) view; //create subclass to access the extended class, also acts as second selection
+                            PairsModel gameCard = (PairsModel) view; //create subclass to access the extended class, also acts as second selection
 
                             if(gameCard.isMatch()) //case: has the selection already been matched?
                             {

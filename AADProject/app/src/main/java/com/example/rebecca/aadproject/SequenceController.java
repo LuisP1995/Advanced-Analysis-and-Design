@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,6 +20,7 @@ import java.util.List;
  */
 
 public class SequenceController {
+    private SequenceModel _sequenceModel;
     private int _round;
     private SequenceScreen _screen;
     private List<ImageButton> _buttonList;
@@ -29,47 +29,36 @@ public class SequenceController {
     private ArrayList<ImageButton> _unusedButton;
     private Animation _animation;
 
+    private static int HIGH_SCORE = 120;
+    private static int POINT = 5;
+    private static int DURATION = 1500;
+    private static int MAX_ROUNDS = 5;
+    private static int BONUS_POINTS = 20;
+
     public SequenceController(SequenceScreen sequenceScreen) {
         _score = 0;
         _screen = sequenceScreen;
         _userInput = new ArrayList<>();
         _round = 1;
         ProfileModel profileModel= new ProfileModel(_screen);
+        _sequenceModel = new SequenceModel(_screen);
     }
 
     public void SetupGame() {
 
-        ImageButton sb1 = (ImageButton) _screen.findViewById(R.id.seqImg1);
-        sb1.setImageResource(R.mipmap.blackstar);
+        _sequenceModel.setButtons();
 
-        ImageButton sb2 = (ImageButton) _screen.findViewById(R.id.seqImg2);
-        sb2.setImageResource(R.mipmap.purplediamond);
-
-        ImageButton sb3 = (ImageButton) _screen.findViewById(R.id.seqImg3);
-        sb3.setImageResource(R.mipmap.orangecircle);
-
-        ImageButton sb4 = (ImageButton) _screen.findViewById(R.id.seqImg4);
-        sb4.setImageResource(R.mipmap.greensqr);
-        sb4.setVisibility(View.INVISIBLE);
-
-        ImageButton sb5 = (ImageButton) _screen.findViewById(R.id.seqImg5);
-        sb5.setImageResource(R.mipmap.bluetriangle);
-        sb5.setVisibility(View.INVISIBLE);
-
-        ImageButton sb6 = (ImageButton) _screen.findViewById(R.id.seqImg6);
-        sb6.setImageResource(R.mipmap.yellowhexagon);
-        sb6.setVisibility(View.INVISIBLE);
-
-        _unusedButton = new ArrayList<>(Arrays.asList(sb4,sb5,sb6));
-
-        List<ImageButton> buttonList = new ArrayList<>(Arrays.asList(sb1,sb2,sb3));
-
+        _unusedButton = _sequenceModel.getUnusedButtons();
+        List<ImageButton> buttonList = _sequenceModel.getActiveButtons();
         Collections.shuffle(buttonList);
 
         _buttonList = buttonList;
         SetRound();
 
+        setButtonListeners();
+    }
 
+    private void setButtonListeners() {
         for(final ImageButton button: _buttonList){
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -110,8 +99,8 @@ public class SequenceController {
         Animation newAnimation = null;
         for (ImageButton button: _buttonList) {
             newAnimation = new AlphaAnimation(1,0);
-            newAnimation.setDuration(1500);
-            newAnimation.setStartOffset(1500 *count);
+            newAnimation.setDuration(DURATION);
+            newAnimation.setStartOffset(DURATION *count);
             button.startAnimation(newAnimation);
             count ++;
         }
@@ -125,19 +114,19 @@ public class SequenceController {
                 ImageButton button = _buttonList.get(i);
                 Integer inputId = _userInput.get(i);
                 if (button.getId() == inputId){
-                    _score+= 5;
+                    _score+= POINT;
                 }
             }
             SetScoreOnScreen();
-            if (_round != 5) {
+            if (_round != MAX_ROUNDS) {
                 _round++;
                 nextRound();
             }
             else
             {
-                if(_score == 120){
+                if(_score == HIGH_SCORE){
                     Toast.makeText(_screen.getApplicationContext(), "Bonus Points Rewarded", Toast.LENGTH_SHORT).show();
-                    _score += 20;
+                    _score += BONUS_POINTS;
                 }
 
                 Intent newIntent = new Intent(_screen, GameCompletionScreen.class);
