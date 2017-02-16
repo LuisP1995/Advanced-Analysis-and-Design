@@ -20,12 +20,12 @@ public class GameCompletionScreen extends AppCompatActivity {
         if(extras != null) {
             String game = extras.getString("game");
             if (game.equals("Image")) {
-                ScorePresenter imageCompPres = new GameCompletionController(this,
+                ScoreController imageCompPres = new GameCompletionController(this,
                         extras.getFloat("newScore"), game,
                         (String[][]) extras.getSerializable("wrongAnswers"));
             }
             else{
-                ScorePresenter compPres = new ScorePresenter(this,extras.getFloat("newScore"), game);
+                ScoreController compPres = new ScoreController(this,extras.getFloat("newScore"), game);
             }
         }
     }

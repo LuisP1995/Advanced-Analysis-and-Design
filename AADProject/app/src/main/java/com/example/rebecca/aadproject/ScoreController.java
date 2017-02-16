@@ -8,14 +8,14 @@ import android.widget.Button;
  * Created by Rebecca on 12/02/2017.
  */
 
-public class ScorePresenter {
+public class ScoreController {
     protected float _score;
     protected GameCompletionScreen _compScreen;
     protected ProfileModel _profModel;
     protected float[] _graphData;
     protected String _game;
 
-    public ScorePresenter(GameCompletionScreen compScreen, float newScore, String game){
+    public ScoreController(GameCompletionScreen compScreen, float newScore, String game){
         _score = newScore;
         _compScreen = compScreen;
         _profModel = new ProfileModel(compScreen.getApplicationContext());

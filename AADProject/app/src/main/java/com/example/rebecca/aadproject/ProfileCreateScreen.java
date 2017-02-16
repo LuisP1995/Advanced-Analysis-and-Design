@@ -3,7 +3,6 @@ package com.example.rebecca.aadproject;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +17,7 @@ import java.util.List;
 
 public class ProfileCreateScreen extends AppCompatActivity {
 
-    private ProfileCreationPresenter _pcp;
+    private ProfileCreationController _pcp;
     private int _avatar = -1;
     private String _userName = "";
 
@@ -27,7 +26,7 @@ public class ProfileCreateScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_create_screen);
 
-        _pcp = new ProfileCreationPresenter(this);
+        _pcp = new ProfileCreationController(this);
         SetAvatarButtonListeners();
         SetSubmitButtonListener();
 

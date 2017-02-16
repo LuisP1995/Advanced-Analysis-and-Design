@@ -13,7 +13,7 @@ import java.util.Collections;
  * Presenter controls the image game.
  */
 
-class ImageGamePresenter {
+class ImageGameController {
 
     private static final int MAX_ROUNDS = 5;
     private static final int MAX_TRIES = 3;
@@ -30,7 +30,7 @@ class ImageGamePresenter {
     private ImageGameScreen _imageGameScreen;
 
 
-    ImageGamePresenter(ImageGameScreen imageGameScreen) {
+    ImageGameController(ImageGameScreen imageGameScreen) {
         _imageGameScreen = imageGameScreen;
         round = 0;
         score = 0;

@@ -4,10 +4,10 @@ package com.example.rebecca.aadproject;
  * Created by Adam on 05/01/2017.
  */
 
-class ProfileScreenPresenter {
+class ProfileScreenController {
     private ProfileModel _profileModel;
 
-    ProfileScreenPresenter(ProfileScreen profileScreen){
+    ProfileScreenController(ProfileScreen profileScreen){
         _profileModel = new ProfileModel(profileScreen.getApplicationContext());
         loadProfile();
     }

@@ -1,9 +1,7 @@
 package com.example.rebecca.aadproject;
 
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -17,13 +15,13 @@ public class ProfileScreen extends AppCompatActivity {
     static final String GAMES_PLAYED_DEFAULT = "Games Played: ";
     static final String AVERAGE_SCORE_DEFAULT = "Average Score: ";
 
-    private ProfileScreenPresenter _psp;
+    private ProfileScreenController _psp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_screen);
 
-        _psp = new ProfileScreenPresenter(this);
+        _psp = new ProfileScreenController(this);
 
         TabSetup();
         GraphSetup();

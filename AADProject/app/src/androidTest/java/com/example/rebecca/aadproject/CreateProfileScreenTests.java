@@ -27,7 +27,7 @@ public class CreateProfileScreenTests {
     public ActivityTestRule<ProfileCreateScreen> mActivityRule = new ActivityTestRule<>(ProfileCreateScreen.class);
 
     @Test
-    public void toastNoUsernameAvatar() throws Exception {
+    public void CheckProfileDataEntered() throws Exception {
         Context appContext = InstrumentationRegistry.getTargetContext();
         Intent intent = new Intent(appContext, ProfileCreateScreen.class);
 

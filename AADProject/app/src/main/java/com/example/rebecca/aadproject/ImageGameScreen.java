@@ -14,7 +14,7 @@ public class ImageGameScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_game_screen);
         super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
-        ImageGamePresenter igp = new ImageGamePresenter(this);
+        ImageGameController igp = new ImageGameController(this);
     }
 
     public void setScore(float score) {

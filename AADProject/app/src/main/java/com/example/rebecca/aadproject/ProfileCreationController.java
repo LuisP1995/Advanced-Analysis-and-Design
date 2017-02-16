@@ -8,11 +8,11 @@ import android.widget.ImageButton;
  * Profile creation presenter class.
  */
 
-class ProfileCreationPresenter {
+class ProfileCreationController {
     private ProfileModel _profileModel;
     private ProfileCreateScreen _profileScreen;
 
-    ProfileCreationPresenter(ProfileCreateScreen profileScreen){
+    ProfileCreationController(ProfileCreateScreen profileScreen){
         _profileScreen = profileScreen;
         _profileModel = new ProfileModel(_profileScreen);
 
