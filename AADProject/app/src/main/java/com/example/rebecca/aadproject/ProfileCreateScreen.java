@@ -27,6 +27,7 @@ public class ProfileCreateScreen extends AppCompatActivity {
         if(_pcp.profileExist()) {
             Intent newIntent = new Intent(ProfileCreateScreen.this, MainScreen.class);
             startActivity(newIntent);
+            ProfileCreateScreen.this.finish();
         }
     }
 

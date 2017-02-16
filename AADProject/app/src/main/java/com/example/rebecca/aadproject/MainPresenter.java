@@ -14,8 +14,8 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
 class MainPresenter {
     private ProfileModel profileModel;
     private MainScreen _mainScreen;
-    private static final int REQUIRED_PLAYS = 10;
-    private static final int REQUIRED_SCORE = 50;
+    private static final int REQUIRED_PLAYS = 0;
+    private static final int REQUIRED_SCORE = 0;
 
     MainPresenter(MainScreen mainScreen) {
         _mainScreen = mainScreen;
