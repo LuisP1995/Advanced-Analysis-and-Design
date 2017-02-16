@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:text="Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:id="@+id/doneButton"
+        android:textSize="@dimen/fontGeneral"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="27dp"
+        android:layout_marginEnd="27dp"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:text="Previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:id="@+id/imagePreviousBtn"
+        android:textSize="@dimen/fontGeneral"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:text="Next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageNextBtn"
+        android:textSize="@dimen/fontGeneral"
+        android:layout_alignBaseline="@+id/imagePreviousBtn"
+        android:layout_alignBottom="@+id/imagePreviousBtn"
+        android:layout_alignLeft="@+id/doneButton"
+        android:layout_alignStart="@+id/doneButton"
+        android:textAllCaps="false"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wrongWord"
+        android:textSize="@dimen/fontGeneral"
+        android:layout_marginTop="@dimen/buttonGap"
+        android:layout_below="@+id/wrongWordImage"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"/>
+
+    <ImageView
+        android:layout_width="@dimen/imageSize"
+        android:layout_height="@dimen/imageSize"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/wrongWordImage"
+        android:layout_below="@+id/doneButton"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>

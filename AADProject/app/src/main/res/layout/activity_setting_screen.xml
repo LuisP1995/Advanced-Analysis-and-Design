@@ -15,9 +15,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="30sp"
+        android:textSize="@dimen/fontGeneral"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/black"/>
 
     <Spinner
         android:layout_width="150dp"
@@ -29,7 +30,8 @@
         android:layout_alignStart="@+id/textView"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
-        android:entries="@array/font_values"/>
+        android:entries="@array/font_values"
+        />
 
     <TextView
         android:text="Font"
@@ -41,7 +43,7 @@
         android:layout_marginLeft="23dp"
         android:layout_marginStart="23dp"
         android:id="@+id/textView2"
-        android:textSize="18sp"
+        android:textSize="@dimen/fontGeneral"
         android:textColor="@android:color/black" />
 
 </RelativeLayout>

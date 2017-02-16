@@ -4,9 +4,10 @@ import org.xmlpull.v1.*;
 import android.content.Context;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
+
+import android.os.Debug;
 import android.util.Log;
 import android.util.Pair;
 import android.util.Xml;
@@ -21,147 +22,142 @@ import android.util.Xml;
  *
  */
 
-public class ProfileModel {
+class ProfileModel {
 
     private static final String FILE_NAME = "profile.xml";
-    private Context mContext;
-    private static int HISTORY_AMOUNT = 5;
+    private Context _mContext;
+    private static final int HISTORY_AMOUNT = 5;
 
-    private String userName;
-    private int avatar;
-    private float[] pairsScores = new float[HISTORY_AMOUNT];
-    private int pairsPlays;
-    private float[] sequenceScores = new float[HISTORY_AMOUNT];
-    private int sequencePlays;
-    private float[] imageScores = new float[HISTORY_AMOUNT];
-    private int imagePlays;
+    private String _userName;
+    private int _avatar;
+    private float[] _pairsScores = new float[HISTORY_AMOUNT];
+    private int _pairsPlays;
+    private float[] _sequenceScores = new float[HISTORY_AMOUNT];
+    private int _sequencePlays;
+    private float[] _imageScores = new float[HISTORY_AMOUNT];
+    private int _imagePlays;
 
     ProfileModel (Context mContext)
     {
-        this.mContext = mContext;
+        _mContext = mContext;
 
         for(int i =0; i < HISTORY_AMOUNT; i++) {
-            imageScores[i] = 0;
-            pairsScores[i] = 0;
-            sequenceScores[i] = 0;
+            _imageScores[i] = 0;
+            _pairsScores[i] = 0;
+            _sequenceScores[i] = 0;
         }
 
-        //Only allowing profile create to happen once
-        try
-        {
-            loadProfile();
-        }catch(Exception ex){
-            clear();
-        }
+        loadProfile();
     }
 
     void clear() {
-        userName = "";
-        avatar = -1;
-        pairsPlays = 0;
-        sequencePlays = 0;
-        imagePlays = 0;
+        _userName = "";
+        _avatar = -1;
+        _pairsPlays = 0;
+        _sequencePlays = 0;
+        _imagePlays = 0;
         for(int i =0; i < HISTORY_AMOUNT; i++) {
-            imageScores[i] = 0;
-            pairsScores[i] = 0;
-            sequenceScores[i] = 0;
+            _imageScores[i] = 0;
+            _pairsScores[i] = 0;
+            _sequenceScores[i] = 0;
         }
     }
 
     boolean checkProfileExists() {
-        return (!userName.isEmpty() && avatar >= 0);
+        return (!_userName.isEmpty() && _avatar >= 0);
     }
 
     void setUserName(String userName) {
-        this.userName = userName;
+        _userName = userName;
     }
 
     String getUserName() {
-        return userName;
+        return _userName;
     }
 
     void setAvatar(int avatar) {
-        this.avatar = avatar;
+        _avatar = avatar;
     }
 
     int getAvatar() {
-        return avatar;
+        return _avatar;
     }
 
     float[] getImageScores() {
-        return imageScores;
+        return _imageScores;
     }
 
     int getImagePlays() {
-        return imagePlays;
+        return _imagePlays;
     }
 
     void updateImageScore(int newScore) {
-        if(imagePlays == 0) {
-            imageScores[imagePlays] = newScore;
+        if(_imagePlays == 0) {
+            _imageScores[_imagePlays] = newScore;
         }
-        else if(imagePlays >= HISTORY_AMOUNT) {
+        else if(_imagePlays >= HISTORY_AMOUNT) {
             for(int i = 1; i < HISTORY_AMOUNT; i++) {
-                imageScores[i-1] = imageScores[i];
+                _imageScores[i-1] = _imageScores[i];
             }
-            imageScores[HISTORY_AMOUNT-1] = ((imageScores[HISTORY_AMOUNT-2]) + newScore) / 2;
+            _imageScores[HISTORY_AMOUNT-1] = ((_imageScores[HISTORY_AMOUNT-2]) + newScore) / 2;
         } else {
-            imageScores[imagePlays] = (imageScores[imagePlays-1] + newScore) / 2;
+            _imageScores[_imagePlays] = (_imageScores[_imagePlays -1] + newScore) / 2;
         }
-        imagePlays++;
+        _imagePlays++;
     }
 
     float[] getSequenceScores() {
-        return sequenceScores;
+        return _sequenceScores;
     }
 
     int getSequencePlays() {
-        return sequencePlays;
+        return _sequencePlays;
     }
 
     void updateSequenceScore(int newScore) {
-        if(sequencePlays == 0) {
-            sequenceScores[sequencePlays] = newScore;
+        if(_sequencePlays == 0) {
+            _sequenceScores[_sequencePlays] = newScore;
         }
-        else if(sequencePlays >= HISTORY_AMOUNT) {
+        else if(_sequencePlays >= HISTORY_AMOUNT) {
             for(int i = 1; i < HISTORY_AMOUNT; i++) {
-                sequenceScores[i-1] = sequenceScores[i];
+                _sequenceScores[i-1] = _sequenceScores[i];
             }
-            sequenceScores[HISTORY_AMOUNT-1] = ((sequenceScores[HISTORY_AMOUNT-2]) + newScore) / 2;
+            _sequenceScores[HISTORY_AMOUNT-1] = ((_sequenceScores[HISTORY_AMOUNT-2]) + newScore) / 2;
         } else {
-            sequenceScores[sequencePlays] = (sequenceScores[sequencePlays-1] + newScore) / 2;
+            _sequenceScores[_sequencePlays] = (_sequenceScores[_sequencePlays -1] + newScore) / 2;
         }
-        sequencePlays++;
+        _sequencePlays++;
     }
 
     float[] getPairsScores() {
-        return pairsScores;
+        return _pairsScores;
     }
 
     int getPairsPlays() {
-        return pairsPlays;
+        return _pairsPlays;
     }
 
     void updatePairsScore(int newScore) {
-        if(pairsPlays == 0) {
-            pairsScores[pairsPlays] = newScore;
+        if(_pairsPlays == 0) {
+            _pairsScores[_pairsPlays] = newScore;
         }
-        else if(pairsPlays >= HISTORY_AMOUNT) {
+        else if(_pairsPlays >= HISTORY_AMOUNT) {
             for(int i = 1; i < HISTORY_AMOUNT; i++) {
-                pairsScores[i-1] = pairsScores[i];
+                _pairsScores[i-1] = _pairsScores[i];
             }
-            pairsScores[HISTORY_AMOUNT-1] = ((pairsScores[HISTORY_AMOUNT-2]) + newScore) / 2;
+            _pairsScores[HISTORY_AMOUNT-1] = ((_pairsScores[HISTORY_AMOUNT-2]) + newScore) / 2;
         } else {
-            pairsScores[pairsPlays] = (pairsScores[pairsPlays-1] + newScore) / 2;
+            _pairsScores[_pairsPlays] = (_pairsScores[_pairsPlays -1] + newScore) / 2;
         }
-        pairsPlays++;
+        _pairsPlays++;
     }
 
-    void loadProfile() throws IOException {
+    void loadProfile() {
         Pair<float [], Integer> data;
-        XmlPullParser parser = Xml.newPullParser();
-        FileInputStream is = mContext.openFileInput(FILE_NAME);
+
         try {
+            XmlPullParser parser = Xml.newPullParser();
+            FileInputStream is = _mContext.openFileInput(FILE_NAME);
             parser.setInput(new InputStreamReader(is));
             while (parser.next() != XmlPullParser.END_TAG) {
                 if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -172,36 +168,36 @@ public class ProfileModel {
                 {
                     case "username":
                         if (parser.next() == XmlPullParser.TEXT) {
-                            userName = parser.getText();
+                            _userName = parser.getText();
                             parser.nextTag();
                         }
                         break;
                     case "avatar":
                         if (parser.next() == XmlPullParser.TEXT) {
-                            avatar = Integer.parseInt(parser.getText());
+                            _avatar = Integer.parseInt(parser.getText());
                             parser.nextTag();
                         }
                         break;
                     case "pairs":
                         data = extractScorePlays(parser);
                         for(int i = 0; i < HISTORY_AMOUNT; i++) {
-                            pairsScores[i] = data.first[i];
+                            _pairsScores[i] = data.first[i];
                         }
-                        pairsPlays = data.second;
+                        _pairsPlays = data.second;
                         break;
                     case "sequence":
                         data = extractScorePlays(parser);
                         for(int i = 0; i < HISTORY_AMOUNT; i++) {
-                            sequenceScores[i] = data.first[i];
+                            _sequenceScores[i] = data.first[i];
                         }
-                        sequencePlays = data.second;
+                        _sequencePlays = data.second;
                         break;
                     case "image":
                         data = extractScorePlays(parser);
                         for(int i = 0; i < HISTORY_AMOUNT; i++) {
-                            imageScores[i] = data.first[i];
+                            _imageScores[i] = data.first[i];
                         }
-                        imagePlays = data.second;
+                        _imagePlays = data.second;
                         break;
                     default:
                         break;
@@ -209,15 +205,16 @@ public class ProfileModel {
             }
             is.close();
         } catch (Exception e) {
-            Log.e("Error", e.getMessage());
-            // Should force create new profile.
+            //Log.e("Error", e.getMessage());
+
+            clear(); // forces create new profile
         }
     }
 
-    void saveProfile() {
+    boolean saveProfile(Boolean reWrite) {
 
         try {
-            FileOutputStream os = mContext.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
+            FileOutputStream os = _mContext.openFileOutput(FILE_NAME, Context.MODE_PRIVATE);
             String profileData;
             XmlSerializer xmlSerializer = Xml.newSerializer();
             StringWriter writer = new StringWriter();
@@ -225,39 +222,39 @@ public class ProfileModel {
             xmlSerializer.startDocument("UTF-8", true);
             xmlSerializer.startTag(null, "profile");
             xmlSerializer.startTag(null, "username");
-            xmlSerializer.text(userName);
+            xmlSerializer.text(_userName);
             xmlSerializer.endTag(null, "username");
             xmlSerializer.startTag(null, "avatar");
-            xmlSerializer.text(Integer.toString(avatar));
+            xmlSerializer.text(Integer.toString(_avatar));
             xmlSerializer.endTag(null, "avatar");
             xmlSerializer.startTag(null, "pairs");
             for(int i = 0; i < HISTORY_AMOUNT; i++){
                 xmlSerializer.startTag(null, "score"+i);
-                xmlSerializer.text(Float.toString(pairsScores[i]));
+                xmlSerializer.text(Float.toString(_pairsScores[i]));
                 xmlSerializer.endTag(null, "score"+i);
             }
             xmlSerializer.startTag(null, "plays");
-            xmlSerializer.text(Integer.toString(pairsPlays));
+            xmlSerializer.text(Integer.toString(_pairsPlays));
             xmlSerializer.endTag(null, "plays");
             xmlSerializer.endTag(null, "pairs");
             xmlSerializer.startTag(null, "sequence");
             for(int i = 0; i < HISTORY_AMOUNT; i++){
                 xmlSerializer.startTag(null, "score"+i);
-                xmlSerializer.text(Float.toString(sequenceScores[i]));
+                xmlSerializer.text(Float.toString(_sequenceScores[i]));
                 xmlSerializer.endTag(null, "score"+i);
             }
             xmlSerializer.startTag(null, "plays");
-            xmlSerializer.text(Integer.toString(sequencePlays));
+            xmlSerializer.text(Integer.toString(_sequencePlays));
             xmlSerializer.endTag(null, "plays");
             xmlSerializer.endTag(null, "sequence");
             xmlSerializer.startTag(null, "image");
             for(int i = 0; i < HISTORY_AMOUNT; i++){
                 xmlSerializer.startTag(null, "score"+i);
-                xmlSerializer.text(Float.toString(imageScores[i]));
+                xmlSerializer.text(Float.toString(_imageScores[i]));
                 xmlSerializer.endTag(null, "score"+i);
             }
             xmlSerializer.startTag(null, "plays");
-            xmlSerializer.text(Integer.toString(imagePlays));
+            xmlSerializer.text(Integer.toString(_imagePlays));
             xmlSerializer.endTag(null, "plays");
             xmlSerializer.endTag(null, "image");
             xmlSerializer.endTag(null, "profile");
@@ -271,10 +268,16 @@ public class ProfileModel {
             os.write(profileData.getBytes());
 
             os.close();
+
         } catch(Exception e) {
-            Log.e("Error", e.getMessage());
-            // application should crash or attempt 1 rewrite.
+//            Log.e("Error", e.getMessage());
+            if(!reWrite) {
+                saveProfile(true); // attempt another save
+            } else {
+                return false;
+            }
         }
+        return true;
     }
 
     private Pair<float[], Integer> extractScorePlays(XmlPullParser parser) throws Exception {
@@ -297,5 +300,25 @@ public class ProfileModel {
             }
         }
         return new Pair<>(scores, plays);
+    }
+
+    public float[] GetScores(String game) {
+        switch(game){
+            case "Sequence": return getSequenceScores();
+            case "Pairs": return getPairsScores();
+            case "Image": return getImageScores();
+        }
+        return new float[]{};
+     }
+
+    public void UpdateScore(String game, int score) {
+        switch(game){
+            case "Sequence": updateSequenceScore(score);
+                break;
+            case "Pairs": updatePairsScore(score);
+                break;
+            case "Image": updateImageScore(score);
+                break;
+        }
     }
 }

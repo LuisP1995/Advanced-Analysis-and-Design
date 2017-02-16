@@ -1,28 +1,30 @@
 package com.example.rebecca.aadproject;
 
-import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-public class PairsGame extends AppCompatActivity {
 
+import java.util.Random;
+
+/*
+* Author: Luis Parcon - N0499977
+* Pairs game activity, this activity will be the game screen used to play
+* the pairs games, which will be a 4x4 grid
+* http://opengameart.org/content/playing-cards-vector-png - deck of cards download link origin - for frontside
+*b
+*/
+
+
+public class PairsGame extends AppCompatActivity
+{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pairs_game);
 
-        Button exitBtn = (Button)findViewById(R.id.pairsExit);
+        PairsController pairsController = new PairsController(this);
+        pairsController.setupGame();
 
-        exitBtn.setOnClickListener(new View.OnClickListener() //navigate back to the main screen
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Intent newIntent = new Intent(PairsGame.this, GenScoreScreen.class);
-                startActivity(newIntent);
-            }
-        });
     }
 }
