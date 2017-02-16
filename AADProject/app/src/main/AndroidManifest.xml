@@ -19,12 +19,11 @@
         <activity android:name=".ProfileScreen" />
         <activity android:name=".TutorialScreen" />
         <activity android:name=".SettingScreen" />
-        <activity android:name=".ImgScoreScreen" />
         <activity android:name=".SequenceScreen" />
         <activity android:name=".PairsGame" />
         <activity android:name=".ProfileCreateScreen" />
         <activity android:name=".ImageGameScreen" />
-        <activity android:name=".ImageGameCompletionScreen" />
+        <activity android:name=".GameCompletionScreen" />
     </application>
 
 </manifest>

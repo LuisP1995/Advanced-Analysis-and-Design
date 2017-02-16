@@ -6,5 +6,5 @@
     <dimen name="fontScore">26sp</dimen>
     <dimen name="buttonGap">64dp</dimen>
     <dimen name="fontSmall">16sp</dimen>
-
+    <dimen name="marginGapTop">15dp</dimen>
 </resources>
