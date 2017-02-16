@@ -1,9 +1,6 @@
 package com.example.rebecca.aadproject;
 
-import android.app.Instrumentation;
-import android.content.Intent;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +20,7 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ScorePresenterTests {
     @Mock
-    ImageGameCompletionScreen screenMock;
+    GameCompletionScreen screenMock;
 
     @Mock
     Button button;

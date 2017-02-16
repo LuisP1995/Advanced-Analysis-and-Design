@@ -27,5 +27,4 @@ public class PairsGame extends AppCompatActivity
         pairsController.setupGame();
 
     }
-
 }

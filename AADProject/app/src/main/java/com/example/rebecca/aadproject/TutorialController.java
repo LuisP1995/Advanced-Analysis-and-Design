@@ -10,10 +10,10 @@ import android.widget.TextView;
  * Created by Rebecca on 14/02/2017.
  */
 
-public class TutorialPresenter {
+public class TutorialController {
     private TutorialScreen _screen;
 
-    public TutorialPresenter(TutorialScreen tutorialScreen) {
+    public TutorialController(TutorialScreen tutorialScreen) {
         _screen = tutorialScreen;
     }
 

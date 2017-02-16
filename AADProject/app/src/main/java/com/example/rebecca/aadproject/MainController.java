@@ -11,18 +11,17 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
  * Created by Adam on 12/02/2017.
  */
 
-class MainPresenter {
+class MainController {
     private ProfileModel profileModel;
     private MainScreen _mainScreen;
     private static final int REQUIRED_PLAYS = 10;
     private static final int REQUIRED_SCORE = 50;
 
-    MainPresenter(MainScreen mainScreen) {
+    MainController(MainScreen mainScreen) {
         _mainScreen = mainScreen;
         setButtonListeners();
         profileModel = new ProfileModel(mainScreen.getApplicationContext());
         lockGames();
-
     }
 
     private void lockGames() {

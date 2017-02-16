@@ -1,13 +1,8 @@
 package com.example.rebecca.aadproject;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 
 public class MainScreen extends AppCompatActivity {
@@ -16,16 +11,16 @@ public class MainScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainscreen);
-        MainPresenter mainPresenter = new MainPresenter(this);
+        MainController mainController = new MainController(this);
     }
 
     void setSequenceGameState(boolean state) {
-        Button seq_button = (Button) findViewById(R.id.seq_button);
-        seq_button.setEnabled(state);
+        Button seqButton = (Button) findViewById(R.id.seq_button);
+        seqButton.setEnabled(state);
     }
 
     void setImageGameState(boolean state) {
-        Button img_button = (Button) findViewById(R.id.img_button);
-        img_button.setEnabled(state);
+        Button imgButton = (Button) findViewById(R.id.img_button);
+        imgButton.setEnabled(state);
     }
 }

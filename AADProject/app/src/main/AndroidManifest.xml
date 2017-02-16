@@ -23,7 +23,7 @@
         <activity android:name=".PairsGame" />
         <activity android:name=".ProfileCreateScreen" />
         <activity android:name=".ImageGameScreen" />
-        <activity android:name=".ImageGameCompletionScreen" />
+        <activity android:name=".GameCompletionScreen" />
     </application>
 
 </manifest>
