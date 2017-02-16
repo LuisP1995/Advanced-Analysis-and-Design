@@ -59,11 +59,39 @@ public class CreateProfileScreenTests {
         });
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         assertTrue("Submit closes profile create screen.", profileCreateScreen.isDestroyed());
+    }
+
+    @Test
+    public void profileExistLoadsMainScreenInstead() throws Exception {
+
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        Intent intent = new Intent(appContext, ProfileCreateScreen.class);
+
+        ProfileSetup profileSetup = new ProfileSetup(appContext);
+        profileSetup.setupBasicProfile();
+
+        ProfileCreateScreen profileCreateScreen = mActivityRule.launchActivity(intent);
+
+        assertFalse("Profile screen doesn't show.", profileCreateScreen.hasWindowFocus());
+    }
+
+    @Test
+    public void showProfileCreateScreenNoProfile() throws Exception {
+
+        Context appContext = InstrumentationRegistry.getTargetContext();
+        Intent intent = new Intent(appContext, ProfileCreateScreen.class);
+
+        ProfileSetup profileSetup = new ProfileSetup(appContext);
+        profileSetup.clearProfile();
+
+        ProfileCreateScreen profileCreateScreen = mActivityRule.launchActivity(intent);
+
+        assertTrue("Profile screen shows.", profileCreateScreen.hasWindowFocus());
     }
 }
