@@ -1,7 +1,6 @@
 package com.example.rebecca.aadproject;
 
 import android.graphics.drawable.Drawable;
-
 import android.support.v7.widget.AppCompatDrawableManager;
 import android.content.Context;
 import android.widget.GridLayout;
@@ -14,7 +13,7 @@ import android.widget.ImageButton;
  * Created by Luis Parcon on 03/02/2017.
  */
 
-public class MemoryGameCard extends ImageButton //creation of custom button object inheriter
+public class MemoryGameCard extends ImageButton //creation of custom imagebutton object
 {
     //information obtained from the pairsGame activity
     private int _row;
@@ -52,12 +51,12 @@ public class MemoryGameCard extends ImageButton //creation of custom button obje
         //generate the games layout in the game activity
         GridLayout.LayoutParams gameLayout = new GridLayout.LayoutParams(GridLayout.spec(row), GridLayout.spec(column));
 
-
-        gameLayout.width = (getResources().getDisplayMetrics().widthPixels -200) /4;
-        gameLayout.height = (getResources().getDisplayMetrics().heightPixels -400) /4 ;
+        gameLayout.width = (getResources().getDisplayMetrics().widthPixels - 200) /4;
+        gameLayout.height = (getResources().getDisplayMetrics().heightPixels - 400) /4 ;
 
         setLayoutParams(gameLayout);
     }
+
     /*
     flips a card object to either its back or front on call
     param: none
@@ -65,10 +64,9 @@ public class MemoryGameCard extends ImageButton //creation of custom button obje
      */
     public void flipCard()
     {
-        if (isMatch) //case 1; the card has already been flipped
+        if (isMatch) //case 1: the card has already been matched
         {
-            setBackground(backSide);
-            isFlipped = false;
+            return;
         }
 
         if(isFlipped) //case 2: the front image is showing
