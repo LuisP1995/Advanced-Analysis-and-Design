@@ -15,6 +15,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import org.mockito.stubbing.OngoingStubbing;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
@@ -31,6 +32,20 @@ public class SequenceControllerTests {
 
     @Mock
     ImageButton imagebutton;
+    @Mock
+    ImageButton imagebutton1;
+
+    @Mock
+    ImageButton imagebutton2;
+
+    @Mock
+    ImageButton imagebutton3;
+
+    @Mock
+    ImageButton imagebutton4;
+
+    @Mock
+    ImageButton imagebutton5;
 
     @Mock
     TextView textView;
@@ -42,19 +57,25 @@ public class SequenceControllerTests {
     public void setup(){
         when(sequenceScreen.findViewById(R.id.seqRound)).thenReturn(textView);
         when(sequenceScreen.findViewById(R.id.seqImg1)).thenReturn(imagebutton);
-        when(sequenceScreen.findViewById(R.id.seqImg2)).thenReturn(imagebutton);
-        when(sequenceScreen.findViewById(R.id.seqImg3)).thenReturn(imagebutton);
-        when(sequenceScreen.findViewById(R.id.seqImg4)).thenReturn(imagebutton);
-        when(sequenceScreen.findViewById(R.id.seqImg5)).thenReturn(imagebutton);
-        when(sequenceScreen.findViewById(R.id.seqImg6)).thenReturn(imagebutton);
+        when(sequenceScreen.findViewById(R.id.seqImg2)).thenReturn(imagebutton1);
+        when(sequenceScreen.findViewById(R.id.seqImg3)).thenReturn(imagebutton2);
+        when(sequenceScreen.findViewById(R.id.seqImg4)).thenReturn(imagebutton3);
+        when(sequenceScreen.findViewById(R.id.seqImg5)).thenReturn(imagebutton4);
+        when(sequenceScreen.findViewById(R.id.seqImg6)).thenReturn(imagebutton5);
     }
 
     @Test
     public void CorrectButtonSetup()throws Exception{
-        SequenceController sc = new SequenceController(sequenceScreen);
+        SequenceController sc = new SequenceController(new SequenceScreen());
         sc.SetupGame();
 
         assertThat(sc.getButtonList().size(),is(3));
+        imagebutton.performClick();
+        imagebutton1.performClick();
+        imagebutton2.performClick();
+
+        CharSequence text = textView.getText();
+        assertEquals("Round: 2", text);
     }
 
     @Test
