@@ -176,6 +176,4 @@ public class SequenceController {
             button.setEnabled(true);
         }
     }
-
-    protected List<ImageButton> getButtonList(){return _buttonList;}
 }

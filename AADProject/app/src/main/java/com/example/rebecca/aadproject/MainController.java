@@ -66,7 +66,9 @@ class MainController {
         info_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(_mainScreen.getApplicationContext(), "Information Here", Toast.LENGTH_LONG).show();
+                Toast.makeText(_mainScreen.getApplicationContext(),
+                        "This application has been developed with the intention to aid stroke survivors suffering with memory loss.",
+                        Toast.LENGTH_LONG).show();
             }
         });
 

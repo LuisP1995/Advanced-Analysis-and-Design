@@ -9,7 +9,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.rebecca.aadproject.SequenceScreen">
+    tools:context="com.example.rebecca.aadproject.SequenceScreen"
+    android:screenOrientation="portrait">
 
     <ImageButton
         android:layout_width="@dimen/imageSize"

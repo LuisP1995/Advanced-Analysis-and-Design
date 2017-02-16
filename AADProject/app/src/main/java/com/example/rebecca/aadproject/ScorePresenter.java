@@ -33,6 +33,7 @@ public class ScorePresenter {
             public void onClick(View v) {
                 Intent newIntent = new Intent(_compScreen, MainScreen.class);
                 _compScreen.startActivity(newIntent);
+                _compScreen.finish();
             }
 
         });
@@ -60,6 +61,7 @@ public class ScorePresenter {
             public void onClick(View v) {
                 Intent newIntent = new Intent(_compScreen,  newScreen);
                 _compScreen.startActivity(newIntent);
+                _compScreen.finish();
             }
 
         });

@@ -10,7 +10,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.rebecca.aadproject.PairsGame"
     android:columnCount="10"
-    android:rowCount="10">
+    android:rowCount="10"
+    android:screenOrientation="portrait">
 
     <TextView
         android:layout_width="wrap_content"

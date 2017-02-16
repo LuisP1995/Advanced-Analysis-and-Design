@@ -1,6 +1,7 @@
 package com.example.rebecca.aadproject;
 
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -23,8 +24,8 @@ public class PairsGame extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pairs_game);
 
+        super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
         PairsController pairsController = new PairsController(this);
         pairsController.setupGame();
-
     }
 }
