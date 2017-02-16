@@ -2,7 +2,10 @@ package com.example.rebecca.aadproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -14,6 +17,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -54,9 +58,15 @@ public class SequenceControllerTest {
             }
         });
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ImageButton button = (ImageButton) _sequenceScreen.findViewById(R.id.seqImg1);
         ColorFilter filter = button.getBackground().getColorFilter();
 
-
+        assertNotNull(filter);
     }
 }
