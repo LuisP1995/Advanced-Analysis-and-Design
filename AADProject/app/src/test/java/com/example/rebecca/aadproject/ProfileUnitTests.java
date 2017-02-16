@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 import android.content.Context;
+import android.util.Xml;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -110,6 +111,18 @@ public class ProfileUnitTests {
         assertEquals("Assert sequence score updates correctly position 4.", 40.625, pm.getSequenceScores()[3], 0);
         assertEquals("Assert sequence score updates correctly position 5.", 45.3125, pm.getSequenceScores()[4], 0);
     }
+
+    @Test
+    public void sequenceGameScoreUpdatesPlays() throws Exception {
+        Context c = null;
+        ProfileModel pm = new ProfileModel(c);
+        assertEquals("Plays start as 0.", 0, pm.getSequencePlays());
+
+        pm.updateSequenceScore(10);
+
+        assertEquals("Sequence plays update to 1.", 1, pm.getSequencePlays());
+    }
+
 
     @Test
     public void usernameUpdates() throws Exception {
