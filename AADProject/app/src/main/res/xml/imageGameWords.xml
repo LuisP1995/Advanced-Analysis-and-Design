@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<imageGame>
+    <round>
+        <imageName>bus</imageName>
+        <correctWord>bus</correctWord>
+        <word>fence</word>
+        <word>wall</word>
+        <word>sign</word>
+    </round>
+    <round>
+        <imageName>hotel</imageName>
+        <correctWord>hotel</correctWord>
+        <word>bag</word>
+        <word>socks</word>
+        <word>towel</word>
+    </round>
+    <round>
+        <imageName>ambulance</imageName>
+        <correctWord>ambulance</correctWord>
+        <word>police</word>
+        <word>helicopter</word>
+        <word>boat</word>
+    </round>
+    <round>
+        <imageName>stop</imageName>
+        <correctWord>stop</correctWord>
+        <word>services</word>
+        <word>parking</word>
+        <word>road works</word>
+    </round>
+    <round>
+        <imageName>giveway</imageName>
+        <correctWord>give way</correctWord>
+        <word>crossing</word>
+        <word>toilet</word>
+        <word>stop</word>
+    </round>
+</imageGame>

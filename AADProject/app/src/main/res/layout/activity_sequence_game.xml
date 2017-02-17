@@ -9,6 +9,109 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.rebecca.aadproject.SequenceGame">
+    tools:context="com.example.rebecca.aadproject.SequenceScreen"
+    android:screenOrientation="portrait">
+
+    <ImageButton
+        android:layout_width="@dimen/imageSize"
+        android:layout_height="@dimen/imageSize"
+        android:id="@+id/seqImg2"
+        android:scaleType="fitXY"
+        android:layout_alignTop="@+id/seqImg1"
+        android:layout_toRightOf="@+id/seqImg1"
+        android:layout_toEndOf="@+id/seqImg1"
+        android:layout_marginLeft="49dp"
+        android:layout_marginStart="49dp"
+        android:padding="0dp"
+        android:cropToPadding="false"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:layout_width="@dimen/imageSize"
+        android:layout_height="@dimen/imageSize"
+        android:id="@+id/seqImg3"
+        android:scaleType="fitXY"
+        android:layout_below="@+id/seqImg1"
+        android:layout_alignLeft="@+id/seqImg1"
+        android:layout_alignStart="@+id/seqImg1"
+        android:layout_marginTop="31dp"
+        android:padding="0dp"
+        android:cropToPadding="false"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:layout_width="@dimen/imageSize"
+        android:layout_height="@dimen/imageSize"
+        android:id="@+id/seqImg4"
+        android:scaleType="fitXY"
+        android:layout_alignTop="@+id/seqImg3"
+        android:layout_alignLeft="@+id/seqImg2"
+        android:layout_alignStart="@+id/seqImg2"
+        android:padding="0dp"
+        android:cropToPadding="false"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:layout_width="@dimen/imageSize"
+        android:layout_height="@dimen/imageSize"
+        android:id="@+id/seqImg5"
+        android:scaleType="fitXY"
+        android:layout_marginTop="27dp"
+        android:layout_below="@+id/seqImg3"
+        android:layout_alignLeft="@+id/seqImg3"
+        android:layout_alignStart="@+id/seqImg3"
+        android:padding="0dp"
+        android:cropToPadding="false"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:layout_width="@dimen/imageSize"
+        android:layout_height="@dimen/imageSize"
+        android:id="@+id/seqImg6"
+        android:scaleType="fitXY"
+        android:layout_alignTop="@+id/seqImg5"
+        android:layout_alignLeft="@+id/seqImg4"
+        android:layout_alignStart="@+id/seqImg4"
+        android:padding="0dp"
+        android:cropToPadding="false"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:text="Round: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seqRound"
+        android:textSize="@dimen/fontGeneral"
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Score: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/seqScore"
+        android:textSize="@dimen/fontGeneral"
+        android:textColor="@android:color/black"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:layout_width="@dimen/imageSize"
+        android:layout_height="@dimen/imageSize"
+        android:id="@+id/seqImg1"
+        android:scaleType="fitXY"
+        android:layout_marginTop="48dp"
+        android:padding="0dp"
+        android:cropToPadding="false"
+        android:background="@android:color/transparent"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp"
+        android:layout_below="@+id/seqRound"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

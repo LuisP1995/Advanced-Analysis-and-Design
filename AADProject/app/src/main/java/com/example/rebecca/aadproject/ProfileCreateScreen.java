@@ -1,36 +1,48 @@
 package com.example.rebecca.aadproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ProfileCreateScreen extends AppCompatActivity {
 
-    private ProfileCreationPresenter pcp;
-    private int avatar = -1;
-    private String userName = "";
+    private ProfileCreationController _pcp;
+    private int _avatar = -1;
+    private String _userName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_create_screen);
 
-        pcp = new ProfileCreationPresenter(this);
-        SetAvatarButtonListeners();
-        SetSubmitButtonListener();
+        _pcp = new ProfileCreationController(this);
+        setAvatarButtonListeners();
+        setSubmitButtonListener();
 
-        if(pcp.profileExist()) {
+        if(_pcp.profileExist()) {
             Intent newIntent = new Intent(ProfileCreateScreen.this, MainScreen.class);
             startActivity(newIntent);
+            ProfileCreateScreen.this.finish();
         }
     }
 
-    private void SetSubmitButtonListener() {
+    private void setSubmitButtonListener() {
         Button submit_button = (Button) findViewById(R.id.submit);
 
         submit_button.setOnClickListener(new View.OnClickListener() {
@@ -38,12 +50,13 @@ public class ProfileCreateScreen extends AppCompatActivity {
             public void onClick(View v) {
 
                 EditText textField = (EditText)findViewById(R.id.username);
-                userName = textField.getText().toString();
+                _userName = textField.getText().toString();
 
                 if(profileValid()) {
                     createNewProfile();
                     Intent newIntent = new Intent(ProfileCreateScreen.this, MainScreen.class);
                     startActivity(newIntent);
+                    ProfileCreateScreen.this.finish();
                 }else
                 {
                     Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
@@ -52,12 +65,13 @@ public class ProfileCreateScreen extends AppCompatActivity {
         });
     }
 
-    private void SetAvatarButtonListeners() {
+    private void setAvatarButtonListeners() {
         ImageButton avt1 = (ImageButton)findViewById(R.id.avatar1);
         avt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatar = 1;
+                _avatar = 1;
+                setHighlight(v);
             }
         });
 
@@ -65,7 +79,8 @@ public class ProfileCreateScreen extends AppCompatActivity {
         avt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatar = 2;
+                _avatar = 2;
+                setHighlight(v);
             }
         });
 
@@ -73,7 +88,8 @@ public class ProfileCreateScreen extends AppCompatActivity {
         avt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatar = 3;
+                _avatar = 3;
+                setHighlight(v);
             }
         });
 
@@ -81,16 +97,32 @@ public class ProfileCreateScreen extends AppCompatActivity {
         avt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                avatar = 4;
+                _avatar = 4;
+                setHighlight(v);
             }
         });
     }
 
+    private void setHighlight(View v) {
+        ImageButton avt1 = (ImageButton)findViewById(R.id.avatar1);
+        ImageButton avt2 = (ImageButton)findViewById(R.id.avatar2);
+        ImageButton avt3 = (ImageButton)findViewById(R.id.avatar3);
+        ImageButton avt4 = (ImageButton)findViewById(R.id.avatar4);
+
+        List<ImageButton> buttons = new ArrayList<>(Arrays.asList(avt1,avt2,avt3,avt4));
+
+        for (ImageButton button: buttons){
+            button.getBackground().clearColorFilter();
+        }
+
+        v.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.ADD);
+    }
+
     protected boolean profileValid() {
-        return (userName != "" && avatar != -1);
+        return (_userName != "" && _avatar != -1);
     }
 
     protected void createNewProfile() {
-        pcp.createNewProfile(userName, avatar);
+        _pcp.createNewProfile(_userName, _avatar);
     }
 }
