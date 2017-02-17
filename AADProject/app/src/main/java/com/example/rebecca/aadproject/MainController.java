@@ -40,7 +40,7 @@ class MainController {
             }
         }
 
-        return plays >= REQUIRED_PLAYS || (scoreCount > 0 && totalScore/scoreCount >= REQUIRED_SCORE && plays >= 1);
+        return plays >= REQUIRED_PLAYS || (scoreCount > 0 && totalScore/scoreCount >= REQUIRED_SCORE && plays > 1);
     }
 
     private void setButtonListeners() {
