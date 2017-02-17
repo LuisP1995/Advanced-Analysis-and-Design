@@ -29,7 +29,6 @@ public class ProfileScreen extends AppCompatActivity {
         TextView textview = (TextView)findViewById(R.id.username_text);
         textview.setText(_psp.getUserName());
         setAvatar();
-        //ScoreSetup
     }
 
     private void setAvatar() {
